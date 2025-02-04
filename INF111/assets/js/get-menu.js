@@ -3,7 +3,7 @@ fetch("menu.html")
     .then(text => define(text));
 
 function define(html) {
-    class XCounter extends HTMLElement {
+    class Menu extends HTMLElement {
         set value(value) {
             this._value = value;
             this.valueElement.innerText = this._value;
@@ -29,5 +29,5 @@ function define(html) {
         }
     }
 
-    customElements.define('x-counter', XCounter);
+    customElements.define('menu', Menu);
 }
