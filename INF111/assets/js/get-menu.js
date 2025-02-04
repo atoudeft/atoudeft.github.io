@@ -29,5 +29,5 @@ function define(html) {
         }
     }
 
-    customElements.define('menu', Menu);
+    customElements.define('mon-menu', Menu);
 }
