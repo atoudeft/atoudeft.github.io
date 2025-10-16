@@ -1,12 +1,28 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>INF111</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.1"/>
+  <title>Notes de cours</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/theme/theme-prunes.css">
+  <link rel="stylesheet" href="assets/contenu.css">
 </head>
 <body>
-  <h1>Site INF111</h1>
-  <p>Page de départ.</p>
+  <header class="site">
+    <button class="mobile-toggle" id="openSidebar" aria-controls="sidebar"
+          aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    <strong>Notes de cours</strong>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar">
+      <nav class="menu">
+        <ul id="sidebar-list"></ul>
+      </nav>
+    </aside>
+    <main id="content" aria-live="polite"></main>
+  </div>
+  <script type="module" src="assets/app.js"></script>
 </body>
 </html>
