@@ -1,0 +1,86 @@
+:root{
+  --content-max: 75ch;
+  --content-leading: 1.7;
+  --h1: clamp(1.6rem, 2vw + 1rem, 2.2rem);
+  --h2: clamp(1.3rem, 1.6vw + 1rem, 1.6rem);
+  --h3: clamp(1.15rem, 0.9vw + 1rem, 1.25rem);
+  --code-bg:#f7f7fa; --code-bd:#e6e6ef;
+  --blockquote-bg:#fafcff; --blockquote-bd:#cfe2ff;
+  --table-stripe:#fafbfc;
+}
+
+/* Conteneur */
+main#content{
+  line-height: var(--content-leading) !important;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  color: var(--main-text) !important;
+}
+
+/* Titres : forcer contre les styles inline exportés */
+main#content h1, main#content h2, main#content h3{
+  color: var(--main-heading) !important;
+  line-height: 1.25 !important;
+  scroll-margin-top: 80px;
+}
+main#content h1{ font-size: var(--h1) !important; font-weight: 800 !important; letter-spacing: -.01em; }
+main#content h2{ font-size: var(--h2) !important; font-weight: 750 !important; border-bottom:1px solid var(--border) !important; padding-bottom:.25rem !important; }
+main#content h3{ font-size: var(--h3) !important; font-weight: 700 !important; }
+
+/* Texte & listes */
+main#content p{ margin: 0 0 12px 0 !important; color: var(--main-text) !important; }
+main#content ul, main#content ol{ padding-left:1.25rem !important; margin:.25rem 0 12px !important; }
+main#content li{ margin:.2rem 0 !important; }
+main#content li::marker{ color: var(--muted) }
+
+/* Liens */
+main#content a{ color: var(--accent) !important; text-decoration: underline; text-underline-offset:2px }
+main#content a:hover{ text-decoration-thickness: 2px; }
+
+/* Images & figures */
+main#content img{ max-width:100% !important; height:auto !important; border-radius:8px }
+main#content figure{ margin:.5rem 0 !important; }
+main#content figcaption{ font-size:.9rem; color:var(--muted); text-align:center; margin-top:.25rem }
+
+/* Blockquote */
+main#content blockquote{
+  margin:.4rem 0 !important; padding:.75rem 1rem !important;
+  background: var(--blockquote-bg) !important; border-left:4px solid var(--blockquote-bd) !important;
+  border-radius:8px !important;
+}
+
+/* Tableaux */
+main#content table{
+  width:100% !important; border-collapse:collapse !important; overflow:hidden;
+  border:1px solid var(--border) !important; border-radius:8px;
+}
+main#content th, main#content td{ padding:.6rem .7rem !important; border-top:1px solid var(--border) !important; }
+main#content thead th{ background:#f6f7f9 !important; text-align:left !important; border-top:0 !important; font-weight:700 !important; }
+main#content tbody tr:nth-child(odd){ background:var(--table-stripe) }
+
+/* Code */
+main#content code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace !important;
+  background:var(--code-bg) !important; border:1px solid var(--code-bd) !important;
+  padding:.06rem .35rem !important; border-radius:6px !important; font-size:.92em !important;
+}
+main#content pre{
+  background:var(--code-bg) !important; border:1px solid var(--code-bd) !important;
+  padding:.9rem 1rem !important; border-radius:10px !important; overflow:auto !important;
+}
+main#content pre code{ background:transparent !important; border:0 !important; padding:0 !important; }
+
+/* Règles utilitaires douces (pour contrer quelques inline courants) */
+main#content [style*="text-align:center"]{ text-align:center !important; }
+main#content [style*="font-size"]{ font-size:inherit !important; } /* garde nos tailles */
+main#content [style*="line-height"]{ line-height:inherit !important; }
+
+/* HR */
+main#content hr{ border:0 !important; height:1px !important; background:var(--border) !important; margin:.9rem 0 !important; }
+
+/* Impression */
+@media print{
+  main#content{ max-width: none; }
+  aside#sidebar{ display: none !important; }
+  a[href]::after{ content:" (" attr(href) ")"; font-size:.85em; color: var(--muted); }
+}

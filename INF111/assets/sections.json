@@ -1,0 +1,105 @@
+[
+  {
+    "title": "01-heritage",
+    "id": "module1-01-heritage",
+    "href": "index.html#module1-01-heritage",
+    "index": 1,
+    "children": [
+      {
+        "title": "Terminologie",
+        "href": "index.html#module1-01-heritage--heritage-par-extension1--terminologie"
+      },
+      {
+        "title": "Accès protégé (protected)",
+        "href": "index.html#module1-01-heritage--heritage-par-extension1--acces-protege-protected"
+      },
+      {
+        "title": "Héritage vs. Agrégation/Composition",
+        "href": "index.html#module1-01-heritage--heritage-par-extension1--heritage-vs-agregationcomposition"
+      },
+      {
+        "title": "Graphe (ou hiérarchie) d’héritage",
+        "href": "index.html#module1-01-heritage--heritage-par-extension1--graphe-ou-hierarchie-dheritage"
+      },
+      {
+        "title": "Appel du constructeur de la classe mère – super()",
+        "href": "index.html#module1-01-heritage--heritage-par-extension1--appel-du-constructeur-de-la-classe-mere-super"
+      },
+      {
+        "title": "Héritage simple vs. Héritage multiple",
+        "href": "index.html#module1-01-heritage--heritage-par-extension1--heritage-simple-vs-heritage-multiple"
+      },
+      {
+        "title": "Généralisation et spécialisation",
+        "href": "index.html#module1-01-heritage--heritage-par-extension1--generalisation-et-specialisation"
+      }
+    ]
+  },
+  {
+    "title": "02-polymorphisme",
+    "id": "module2-02-polymorphisme",
+    "href": "index.html#module2-02-polymorphisme",
+    "index": 2,
+    "children": [
+      {
+        "title": "Introduction",
+        "href": "index.html#module2-02-polymorphisme--polymorphisme--introduction"
+      },
+      {
+        "title": "Surcharge de méthodes (overloading)",
+        "href": "index.html#module2-02-polymorphisme--polymorphisme--surcharge-de-methodes-overloading"
+      },
+      {
+        "title": "Redéfinition de méthodes (overriding)",
+        "href": "index.html#module2-02-polymorphisme--polymorphisme--redefinition-de-methodes-overriding"
+      },
+      {
+        "title": "Méthodes virtuelles et liaison dynamique",
+        "href": "index.html#module2-02-polymorphisme--polymorphisme--methodes-virtuelles-et-liaison-dynamique"
+      },
+      {
+        "title": "Méthodes non polymorphiques",
+        "href": "index.html#module2-02-polymorphisme--polymorphisme--methodes-non-polymorphiques"
+      },
+      {
+        "title": "Méthodes et classes abstraites",
+        "href": "index.html#module2-02-polymorphisme--polymorphisme--methodes-et-classes-abstraites"
+      },
+      {
+        "title": "Méthodes et classes finales",
+        "href": "index.html#module2-02-polymorphisme--polymorphisme--methodes-et-classes-finales"
+      }
+    ]
+  },
+  {
+    "title": "03-interfaces",
+    "id": "module3-03-interfaces",
+    "href": "index.html#module3-03-interfaces",
+    "index": 3,
+    "children": [
+      {
+        "title": "Définition d’une interface",
+        "href": "index.html#module3-03-interfaces--interfaces--definition-dune-interface"
+      },
+      {
+        "title": "Implémentation d’une interface",
+        "href": "index.html#module3-03-interfaces--interfaces--implementation-dune-interface"
+      },
+      {
+        "title": "Propriétés des interfaces",
+        "href": "index.html#module3-03-interfaces--interfaces--proprietes-des-interfaces"
+      },
+      {
+        "title": "Programmation par contrats",
+        "href": "index.html#module3-03-interfaces--interfaces--programmation-par-contrats"
+      }
+    ]
+  },
+  {
+    "title": "04-observer",
+    "id": "module4-04-observer",
+    "href": "index.html#module4-04-observer",
+    "index": 4,
+    "children": []
+  }
+]

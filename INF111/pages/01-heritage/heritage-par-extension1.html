@@ -1,0 +1,368 @@
+<p>
+  L’héritage constitue, avec l’agrégation/composition, le deuxième mécanisme de
+  base de <strong>réutilisation de code</strong> en programmation objet.
+</p>
+<p>
+  L’héritage consiste à
+  <strong>créer une classe en étendant une autre classe </strong>afin de lui
+  ajouter des propriétés (attributs et méthodes).
+</p>
+<p>
+  Par exemple, on peut créer une classe <strong><em>Etudiant</em></strong> en
+  étendant une classe <strong><em>Personne</em></strong> (la classe
+  <strong><em>Etudiant</em></strong> <strong>dérive</strong> de la classe
+  <strong><em>Personne</em></strong
+  >).
+</p>
+<p>
+  La classe <strong><em>Etudiant </em>hérite</strong> des propriétés (attributs
+  et méthodes) de la classe <strong><em>Personne</em></strong
+  >.
+</p>
+<p>
+  La classe <strong><em>Etudiant</em></strong> <strong>n’hérite pas</strong> les
+  constructeurs de la classe <strong><em>Personne</em></strong
+  >.
+</p>
+<p>
+  La classe <strong><em>Etudiant </em></strong>peut définir de nouvelles
+  propriétés (attributs et méthodes) qui lui sont propres.
+</p>
+<p>
+  La classe <strong><em>Etudiant </em></strong>peut redéfinir
+  les méthodes héritées afin de les adapter à ses besoins. On parle de
+  <strong>redéfinition de méthodes</strong> (<em>overriding</em>). La
+  redéfinition de méthodes fait partie du polymorphisme.
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Personne {<br>
+&nbsp;&nbsp;private String nom, prenom, ville;<br>
+&nbsp;&nbsp;public String getNom() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return nom;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public void setNom(String nom) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.nom = nom;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//...etc<br>
+}<br>
+public class Etudiant <span class="en-evidence">extends</span> Personne {<br>
+&nbsp;&nbsp;private String etablissement, programme;<br>
+&nbsp;&nbsp;public String getEtablissement() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return etablissement;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public void setEtablissement(String etablissement) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.etablissement = etablissement;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//...etc <br>
+}
+</p>
+<p>
+  En faisant dériver notre classe <strong><em>Etudiant</em></strong> de la
+  classe <strong><em>Personne</em></strong
+  >, nous avons fait plus que réutiliser du code. Nous avons relié entre eux les
+  types <strong><em>Personne</em></strong> et
+  <strong><em>Etudiant</em></strong> qui font maintenant partie de la même
+  famille&nbsp;: tout objet de type <strong><em>Etudiant</em></strong> est aussi
+  de type <strong><em>Personne</em></strong
+  >. Nous concrétisons ainsi la relation entre les étudiants et les personnes
+  qui dit que <strong>«&nbsp;tout étudiant est une personne&nbsp;»</strong>. En
+  conception objet, cette relation est notée <strong><em>isA</em></strong> (qui
+  est une concaténation de <strong><em>is a</em></strong
+  >, qui veut dire <strong><em>est un</em></strong
+  >).
+</p>
+<p>
+  Ainsi, une référence de type <strong><em>Personne</em></strong> peut
+  référencer un objet de type <strong><em>Etudiant</em></strong
+  >&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+  Personne p = new Etudiant()
+</p>
+<p>
+  Et l’inverse est bien évidemment incorrect puisqu’une personne n’est pas
+  forcément un étudiant&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+  Etudiant e = new Personne()&nbsp;; <span class="en-evidence">//NON</span>
+</p>
+<h2 id="sec-terminologie"><a id="_Toc97498592"></a>Terminologie</h2>
+<p>
+  Lorsqu’une classe (comme <em>Etudiant</em>) étend une autre classe
+  (<em>Personne</em>), on peut dire que&nbsp;:
+</p>
+<ul>
+  <li>
+    <em>Personne</em> est la <strong>classe mère</strong> et
+    <em>Etudiant</em> est la <strong>classe fille</strong>.
+  </li>
+  <li>
+    <em>Personne</em> est la <strong>classe parent</strong> et
+    <em>Etudiant</em> est la <strong>classe enfant</strong>.
+  </li>
+  <li>
+    <em>Personne</em> est la <strong>classe de base</strong> et
+    <em>Etudiant</em> est la <strong>classe dérivée</strong>.
+  </li>
+</ul>
+<p>
+  En Java, on dit que la classe <em>Etudiant</em> <strong>dérive de</strong> ou
+  <strong>étend</strong> la classe <em>Personne</em>.
+</p>
+<h2 id="sec-acces-protege-protected">
+  <a id="_Toc97498593"></a>Accès protégé (<em>protected</em>)
+</h2>
+<p>
+  La classe fille hérite les propriétés de sa classe mère mais ses méthodes ne
+  peuvent pas accéder directement aux propriétés de la classe mère qui sont
+  privées.
+</p>
+<p>
+  Pour permettre aux méthodes de la classe fille d’accéder directement aux
+  propriétés privées de la classe mère, ces dernières doivent être déclarées
+  protégées (<strong><em>protected</em></strong> au lieu de
+  <strong><em>private</em></strong
+  >)&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Personne {<br>
+&nbsp;&nbsp;<span class="en-evidence">protected</span> String nom, prenom, ville;<br>
+&nbsp;&nbsp;public String getNom() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return nom;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public void setNom(String nom) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.nom = nom;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//...etc<br>
+}
+</p>
+<h2 id="sec-heritage-vs-agregationcomposition">
+  <a id="_Toc97498594"></a>Héritage vs. Agrégation/Composition
+</h2>
+<p>
+  Tandis que l’agrégation/composition réalise la
+  <strong>relation «&nbsp;a un&nbsp;»</strong> ou
+  <strong>«&nbsp;possède un&nbsp;»</strong> (<strong><em>hasA</em></strong
+  >), l’héritage implémente la <strong>relation «est un» </strong>(<strong
+    ><em>isA</em></strong
+  >) entre les objets : un <strong>étudiant est une personne</strong>. Par
+  conséquent,
+  <strong
+    >tout instance de la classe <em>Etudiant</em> est aussi instance de la
+    classe <em>Personne</em></strong
+  >.
+</p>
+<p><strong>Personne</strong></p>
+<p><strong>Etudiant</strong></p>
+<p>
+  <strong><em>est un-e</em></strong>
+</p>
+<p><strong>Personne</strong></p>
+<p><strong>Adresse</strong></p>
+<p><strong>possède un-e</strong></p>
+<p><strong> Héritage Agrégation/Composition</strong></p>
+<h2 id="sec-graphe-ou-hierarchie-dheritage">
+  <a id="_Toc97498595"></a>Graphe (ou hiérarchie) d’héritage
+</h2>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p>Une classe fille peut avoir à son tour des classes filles.</p>
+        <p>
+          Par ce mécanisme, on construit une hiérarchie (ou graphe) d’héritage.
+        </p>
+        <p>Une hiérarchie d’héritage constitue une famille de classes.</p>
+        <p>
+          L’API Java regorge de familles constituées de dizaines de classes.
+        </p>
+      </td>
+      <td>
+        <p><img src="./assets/img-1760561654441-1ltgrp3rv9s.png" /></p>
+        <p><strong>Graphe ou hiérarchie d’héritage</strong></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  Une variable d’une classe mère peut référencer un objet instance d’une de ses
+  classes filles, petites-filles, …
+</p>
+<p>
+  Ainsi, une référence de type <strong><em>Personne</em></strong> peut
+  référencer des objets de type <strong><em>Etudiant</em></strong
+  >, <strong><em>Employe</em></strong
+  >, <strong><em>Stagiaire</em></strong
+  >, <strong><em>Manager</em></strong> et <strong><em>Secretaire</em></strong
+  >.
+</p>
+<p>
+  Une référence de type <strong><em>Etudiant</em></strong> peut référencer des
+  objets de type <strong><em>Stagiaire</em></strong
+  >.
+</p>
+<p>
+  Une référence de type <strong><em>Employe</em></strong> peut référencer des
+  objets de type <strong><em>Manager</em></strong> et
+  <strong><em>Secretaire</em></strong
+  >.
+</p>
+<p>
+  On peut donc créer un tableau ou une collection d’objets de type
+  <strong><em>Personne</em></strong
+  >&nbsp;:
+</p>
+<p>Personne[] tabPersonnes = new Personne[10];</p>
+<p>ArrayList&lt;Personne&gt; listePersonnes = new ArrayList&lt;&gt;();</p>
+<p>Et y stoker différents objets de la même famille&nbsp;:</p>
+<p>tabPersonnes[0] = new Personne();</p>
+<p>tabPersonnes[1] = new Etudiant();</p>
+<p>tabPersonnes[2] = new Manager();</p>
+<p>tabPersonnes[3] = new Stagiaire();</p>
+<p>listePersonnes.add(new Personne());</p>
+<p>listePersonnes.add(new Secretaire());</p>
+<p>listePersonnes.add(new Etudiant());</p>
+<h2 id="sec-appel-du-constructeur-de-la-classe-mere-super">
+  <a id="_Toc97498596"></a>Appel du constructeur de la classe mère –
+  <em>super()</em>
+</h2>
+<p>Un objet d’une classe fille est composé de 2 parties&nbsp;:</p>
+<p>nom :</p>
+<p>prenom :</p>
+<p>ville :</p>
+<p>etablissement :</p>
+<p>programme :</p>
+<p>:Etudiant</p>
+<p>Partie héritée</p>
+<p>
+  de <strong><em>Personne</em></strong>
+</p>
+<p>Partie définie</p>
+<p>
+  dans <strong><em>Etudiant</em></strong>
+</p>
+<ul>
+  <li>La partie héritée de sa classe mère;</li>
+  <li>La partie définie dans sa propre classe.</li>
+</ul>
+<p>
+  Le constructeur d’une classe fille
+  <strong>fait toujours appel à un constructeur de la classe mère</strong> pour
+  s’occuper d’initialiser la partie héritée.
+</p>
+<p>
+  Lorsque la classe mère possède un constructeur sans argument (qui peut être le
+  constructeur par défaut), l’<strong>appel est implicite</strong> (et ce n’est
+  pas toujours ce qu’on veut).
+</p>
+<p>
+  Lorsque la classe mère ne possède pas de constructeur sans argument, le
+  programmeur doit faire cet <strong>appel explicitement</strong> en utilisant
+  <strong><em>super()</em></strong
+  >. L’appel doit être la première instruction dans le constructeur.
+</p>
+<p><strong>Exemple&nbsp;:</strong></p>
+<p>
+  Considérons la classe <strong><em>Figure</em></strong> qui représente une
+  figure géométrique&nbsp;:
+</p>
+<p><strong>public class Figure {</strong></p>
+<p><strong> private Color couleur;</strong></p>
+<p><strong> public Figure(Color couleur) {</strong></p>
+<p><strong> this.couleur = couleur;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Color getCouleur() {</strong></p>
+<p><strong> return couleur;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public void setCouleur(Color couleur) {</strong></p>
+<p><strong> this.couleur = couleur;</strong></p>
+<p><strong> } </strong></p>
+<p><strong>}</strong></p>
+<p>
+  La classe n’a pas de constructeur sans argument. La seule façon de créer une
+  figure est de fournir une couleur&nbsp;:
+</p>
+<p>Figure f = new Figure(Color.RED);</p>
+<p>
+  Le code de la classe <strong><em>Cercle</em></strong> suivant ne compilera pas
+  car le constructeur de <strong><em>Cercle</em></strong> ne trouve pas de
+  constructeur sans argument dans la classe <strong><em>Figure</em></strong> à
+  appeler implicitement&nbsp;:
+</p>
+<p><img src="./assets/img-1760561654443-rbqi4v3pbis.png" /></p>
+<p>
+  Il faut donc définir un ou plusieurs constructeurs dans la classe
+  <strong><em>Cercle</em></strong> et chacun d’eux doit appeler explicitement le
+  constructeur de la classe <strong><em>Figure</em></strong
+  >&nbsp;en utilisant <strong><em>super()</em></strong
+  >&nbsp;:
+</p>
+<p><strong>public class Cercle extends Figure {</strong></p>
+<p><strong> private Point centre;</strong></p>
+<p><strong> private double rayon;</strong></p>
+<p><strong> </strong></p>
+<p><strong> public Cercle() {</strong></p>
+<p><strong> super(Color.<em>BLUE</em>);</strong></p>
+<p><strong> //...etc</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Cercle(Color couleur) {</strong></p>
+<p><strong> super(couleur);</strong></p>
+<p><strong>//...etc</strong></p>
+<p><strong> }</strong></p>
+<p><strong>}</strong></p>
+<h2 id="sec-heritage-simple-vs-heritage-multiple">
+  <a id="_Toc97498597"></a>Héritage simple vs. Héritage multiple
+</h2>
+<p>
+  Dans certains langages, tel le
+  <em
+    >C++<sup><a href="#footnote-2" id="footnote-ref-2">[2]</a></sup></em
+  >, une classe peut dériver de plusieurs autres classes. La classe peut donc
+  avoir plusieurs classes mères. Il s’agit de l’<strong
+    >héritage multiple</strong
+  >.
+</p>
+<p>
+  En Java, l’<strong>héritage est simple</strong>&nbsp;: une classe ne peut pas
+  avoir plus d’une classe mère. Une partie de l’utilité de l’héritage multiple
+  est récupérée en <em>Java</em> dans le <strong>concept d’interface</strong>.
+</p>
+<h2 id="sec-generalisation-et-specialisation">
+  <a id="_Toc97498598"></a>Généralisation et spécialisation
+</h2>
+<p>
+  Il y a habituellement 2 scénarios dans la création d’une hiérarchie
+  d’héritage&nbsp;:
+</p>
+<ul>
+  <li>
+    On crée la classe mère qu’on spécialise ensuite en créant les classes
+    filles, petites-filles, … En conception objet, on parle dans ce cas de
+    <strong>spécialisation</strong>;
+  </li>
+  <li>
+    On crée les classes filles ensuite on crée la classe mère afin de répondre
+    au besoin de les regrouper dans une même famille. En conception objet, on
+    parle dans ce cas de <strong>généralisation</strong>.
+  </li>
+</ul>
+<ol>
+  <li id="footnote-1">
+    <p>
+      En <em>Java</em>, l’héritage se fait par extension. Il existe d’autres
+      types d’héritage tel que, par exemple, l’héritage par prototype utilisé en
+      <em>JavaScript</em>. <a href="#footnote-ref-1">↑</a>
+    </p>
+  </li>
+  <li id="footnote-2">
+    <p>
+      De plus, en <em>C++</em>, l’héritage peut être <em>public</em>,
+      <em>privé</em> ou <em>protégé</em>. En <em>Java</em>, il est toujours
+      <em>public</em>. <a href="#footnote-ref-2">↑</a>
+    </p>
+  </li>
+</ol>

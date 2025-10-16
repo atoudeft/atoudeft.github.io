@@ -1,0 +1,6 @@
+:root{
+  --bg:#0d0f12; --text:#e8eaf0; --muted:#9aa3b2; --accent:#6aa9ff; --border:#1c222b;
+  --sidebar-bg:#11151b; --active-bg:#182131; --active-bd:#274064;
+  --main-bg:#0f1216; --main-text:#e8eaf0; --main-heading:#ffffff;
+  --nav-heading:#cbd5e1; --nav-link:#e8eaf0; --nav-active:#ffffff;
+}

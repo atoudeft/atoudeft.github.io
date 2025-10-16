@@ -1,0 +1,31 @@
+/* Thème olive-sauge (terres vertes feutrées) */
+:root{
+  --bg:#fbfef9; --text:#1f251c; --muted:#5a6a57; --accent:#5c7f3b; --border:#dde9cf;
+  --sidebar-bg:#f4faee; --active-bg:#e9f5da; --active-bd:#cfe7b2;
+  --main-bg:#ffffff; --main-text:#1f251c; --main-heading:#121712;
+  --nav-heading:#263024; --nav-link:#1f251c; --nav-active:#141a13;
+}
+
+/* Shared layout targets */
+body{ background:var(--bg) !important; color:var(--text) !important; }
+aside#sidebar{ background:var(--sidebar-bg) !important; border-right:1px solid var(--border) !important; }
+header.site{ background:var(--sidebar-bg) !important; border-bottom:1px solid var(--border) !important; }
+.menu h3{ color:var(--nav-heading) !important; }
+.menu a{ color:var(--nav-link) !important; }
+.menu a:hover{ background:var(--active-bg) !important; outline:1px solid var(--active-bd) !important; }
+.menu a.active{ background:var(--active-bg) !important; outline:1px solid var(--active-bd) !important; color:var(--nav-active) !important; }
+main#content{ background:var(--main-bg) !important; color:var(--main-text) !important; }
+main#content h1, main#content h2, main#content h3{ color:var(--main-heading) !important; }
+a{ color:var(--accent); }
+
+
+/* Compact variant overrides */
+:root{ --sidebar-w: 214px !important; }
+header.site{ padding:8px 10px !important; }
+.menu h3{ margin:8px 8px 4px !important; font-size:.78rem !important; letter-spacing:.02em !important; }
+.menu a{ padding:7px 9px !important; border-radius:9px !important; font-size:.92rem !important; }
+.menu ul ul{ padding-left:8px !important; }
+main#content{ padding:18px clamp(12px,2.3vw,26px) !important; }
+main#content h1{ font-size:1.45rem !important; }
+main#content h2{ font-size:1.18rem !important; }
+main#content h3{ font-size:1.04rem !important; }

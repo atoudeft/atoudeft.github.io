@@ -1,0 +1,19 @@
+/* Thème dune-bleu (sable + bleu ardoise) */
+:root{
+  --bg:#fffcf7; --text:#222325; --muted:#5a636a; --accent:#446c9e; --border:#eadfcd;
+  --sidebar-bg:#faf3e6; --active-bg:#e6f0ff; --active-bd:#cfdcff;
+  --main-bg:#fffefb; --main-text:#1b1e21; --main-heading:#0b0f13;
+  --nav-heading:#1c2024; --nav-link:#222325; --nav-active:#111417;
+}
+
+/* Shared layout targets */
+body{ background:var(--bg) !important; color:var(--text) !important; }
+aside#sidebar{ background:var(--sidebar-bg) !important; border-right:1px solid var(--border) !important; }
+header.site{ background:var(--sidebar-bg) !important; border-bottom:1px solid var(--border) !important; }
+.menu h3{ color:var(--nav-heading) !important; }
+.menu a{ color:var(--nav-link) !important; }
+.menu a:hover{ background:var(--active-bg) !important; outline:1px solid var(--active-bd) !important; }
+.menu a.active{ background:var(--active-bg) !important; outline:1px solid var(--active-bd) !important; color:var(--nav-active) !important; }
+main#content{ background:var(--main-bg) !important; color:var(--main-text) !important; }
+main#content h1, main#content h2, main#content h3{ color:var(--main-heading) !important; }
+a{ color:var(--accent); }

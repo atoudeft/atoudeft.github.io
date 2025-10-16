@@ -1,0 +1,357 @@
+/* === Base structural stylesheet (use with one theme variables file) ===
+   HTML attendu :
+   <header class="site">
+     <button id="openSidebar" class="mobile-toggle" aria-label="Ouvrir le menu">☰</button>
+     <strong>Notes de cours</strong>
+   </header>
+   <div class="layout">
+     <aside id="sidebar"><nav class="menu">...</nav></aside>
+     <main id="content"></main>
+   </div>
+*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root{ --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+body, main#content, header.site, aside#sidebar, nav.menu{ font-family: var(--font-sans) !important; }
+main#content *:not(code):not(pre):not(kbd):not(samp){ font-family: inherit !important; }
+
+:root{
+  /* Dimensions */
+  --sidebar-w: 300px;
+  --radius: 10px;
+  --header-h: 56px;
+
+  /* Couleurs (définies/overridées par le thème) */
+  --bg:#ffffff; --text:#0e0f13; --muted:#4a4a4a; --accent:#0b5ed7; --border:#e5e7eb;
+  --sidebar-bg:#f7f7f7; --active-bg:#eaf2ff; --active-bd:#cfe2ff;
+  --main-bg:#ffffff; --main-text:#0e0f13; --main-heading:#07090c;
+  --nav-heading:#0b0e12; --nav-link:#0e0f13; --nav-active:#0a0d10;
+}
+
+*{ box-sizing:border-box }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+}
+a{ color:var(--accent); text-decoration:none }
+a:hover{ text-decoration:underline }
+
+/* Header */
+header.site{
+  display:flex; gap:.75rem; align-items:center;
+  padding:12px 14px;
+  position:fixed/*sticky*/; top:0; z-index:50;
+  width: 100%;
+  background:var(--sidebar-bg);
+  border-bottom:1px solid var(--border);
+}
+header.site strong{ font-weight:700 }
+
+/* Grid layout */
+.layout{ display:grid; grid-template-columns:var(--sidebar-w) 1fr; 
+  min-height:calc(100vh - var(--header-h));
+  overflow: visible; 
+  margin-top: var(--header-h);
+}
+
+/* Sidebar (desktop) */
+aside#sidebar{
+  position:sticky; 
+  top: var(--header-h);                 /* ← décolle la sidebar du header fixe */
+  height: calc(100vh - var(--header-h));/* ← conserve toute la hauteur visible */
+  overflow:auto;
+  background:var(--sidebar-bg);
+  border-right:1px solid var(--border);
+  padding:8px 10px 20px 10px;
+}
+
+/* Menu */
+nav.menu h3{
+  margin:16px 8px 6px;
+  color:var(--nav-heading);
+  font-size:.85rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.03em;
+}
+nav.menu ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.25rem }
+nav.menu ul ul{ margin:.25rem 0 .5rem 1rem; gap:.15rem }
+
+nav.menu a{
+  display:block; padding:10px 12px; border-radius:var(--radius);
+  color:var(--nav-link); text-decoration:none;
+  transition:background .12s ease, color .12s ease;
+}
+nav.menu a:hover{ background:rgba(11,94,215,0.06) }
+nav.menu a.active{
+  background:var(--active-bg);
+  outline:1px solid var(--active-bd);
+  color:var(--nav-active); font-weight:700;
+  position:relative;
+}
+nav.menu a.active::before{
+  content:""; position:absolute; left:-.75rem; top:.25rem; bottom:.25rem;
+  width:4px; background:var(--accent); border-radius:999px;
+}
+
+/* Content area */
+main#content{
+  padding:28px clamp(14px,3vw,40px);
+  background:var(--main-bg);
+  color:var(--main-text);
+  overflow: visible;
+}
+main#content h1,h2,h3{ 
+  color:var(--main-heading);
+ }
+
+/* Mobile toggle caché en desktop */
+.mobile-toggle, #openSidebar{ display:none; }
+
+/* ========== Responsive ========== */
+@media (max-width: 900px){
+  /* 1 colonne */
+  .layout{ grid-template-columns:1fr }
+
+  /* Bouton hamburger visible */
+  .mobile-toggle, #openSidebar{
+    display:inline-flex !important;
+    align-items:center; justify-content:center;
+    width:40px; height:36px;
+    border:1px solid var(--border); background:var(--bg);
+    color:var(--nav-link);
+    border-radius:8px; font-size:20px; line-height:1; cursor:pointer;
+    z-index:60;
+  }
+
+  /* Sidebar coulissante (fermée par défaut) */
+  aside#sidebar{
+    position:fixed; left:0; top:var(--header-h); bottom:0;
+    width:min(88vw, 400px);
+    max-width:400px;
+    transform:translateX(-100%);
+    transition:transform .2s ease;
+    box-shadow:2px 0 20px rgba(0,0,0,.08);
+    z-index:55;
+  }
+  /* État ouvert = classe .open (AJAX/JS) */
+  aside#sidebar.open{ transform:translateX(0) }
+}
+/* Modules (niveau 1) */
+#sidebar-list > li > a,
+#sidebar-list > ul > li > a{ /* compat ancienne structure */
+  display:block;
+  font-weight:800 !important;
+  font-size:1rem !important;
+  padding:10px 12px;
+  border-radius:var(--radius,10px);
+  color:var(--nav-link) !important;
+  position:relative;
+  transition:background .12s ease, color .12s ease;
+}
+#sidebar-list > li > a::before,
+#sidebar-list > ul > li > a::before{
+  content:""; position:absolute; left:-10px; top:8px; bottom:8px;
+  width:4px; border-radius:999px; background:var(--accent); opacity:.65;
+}
+#sidebar-list > li > a:hover,
+#sidebar-list > ul > li > a:hover{
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+#sidebar-list > li > a.active,
+#sidebar-list > ul > li > a.active{
+  background: var(--active-bg);
+  outline: 1px solid var(--active-bd);
+  color: var(--nav-active) !important;
+}
+
+/* Sections (niveau 2+) */
+#sidebar-list li li > a{
+  display:block;
+  font-weight:500 !important;
+  font-size:.95rem !important;
+  padding:6px 10px;
+  border-radius:8px;
+  color:var(--nav-link) !important;
+  opacity:.96;
+}
+#sidebar-list li li > a:hover{
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+#sidebar-list li li > a.active{
+  background: var(--active-bg);
+  outline: 1px solid var(--active-bd);
+  color: var(--nav-active) !important;
+}
+
+/* Espaces & indentation */
+#sidebar-list > li{ margin-top:10px; }
+#sidebar-list > li > ul{ margin:.25rem 0 .5rem 1rem; }
+
+/* Aspect du préfixe "M.S" devant les H2 */
+main#content .sec-num{
+  color: var(--muted);
+  font-weight: 700;
+  margin-right: .25rem;
+}
+
+/*************************/
+/* =========================
+   Contenu (pro, lisible)
+   S'appuie sur tes variables de thème
+   ========================= */
+
+:root{
+  --content-max: 78ch;
+  --content-leading: 1.75;
+  --content-gap: 14px;
+  --h1: clamp(1.8rem, 2vw + 1rem, 2.3rem);
+  --h2: clamp(1.4rem, 1.3vw + 1rem, 1.7rem);
+  --h3: clamp(1.15rem, .8vw + 1rem, 1.3rem);
+  --code-bg: #f7f7fa;
+  --code-bd: #e6e6ef;
+  --thead-bg: #f6f7f9;
+  --row-alt: #fafbfc;
+}
+
+/* Gabarit */
+main#content{
+  line-height: var(--content-leading) !important;
+  color: var(--main-text) !important;
+}
+
+/* Titres */
+main#content h1, main#content h2, main#content h3{
+  color: var(--main-heading) !important;
+  line-height: 1.25 !important;
+  margin: calc(var(--content-gap) * 1.25) 0 .4rem 0;
+  scroll-margin-top: calc(var(--header-h) + 12px);
+}
+main#content h1{ font-size: var(--h1) !important; font-weight: 800 !important; letter-spacing:-.01em; }
+main#content h2{ font-size: var(--h2) !important; font-weight: 750 !important; border-bottom:1px solid var(--border) !important; padding-bottom:.25rem; }
+main#content h3{ font-size: var(--h3) !important; font-weight: 700 !important; }
+
+/* Numéro de section injecté (déjà en place côté JS) */
+main#content .sec-num{
+  color: var(--muted);
+  font-weight: 700;
+  margin-right: .35rem;
+}
+
+/* Paragraphe & listes */
+main#content p{ margin: 0 0 var(--content-gap) 0 !important; }
+main#content ul, main#content ol{
+  margin: .25rem 0 var(--content-gap) 0 !important;
+  padding-left: 1.25rem !important;
+}
+main#content li{ margin: .2rem 0; }
+main#content li::marker{ color: var(--muted); }
+
+/* Liens */
+main#content a{
+  color: var(--accent) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+main#content a:hover{ text-decoration-thickness: 2px; }
+
+/* Images & figures */
+main#content img{
+  max-width: 100% !important; height: auto !important; display: block;
+  border-radius: 10px;
+}
+main#content figure{ margin: .75rem 0 var(--content-gap) 0; }
+main#content figcaption{
+  font-size: .92rem; color: var(--muted); text-align: center; margin-top: .35rem;
+}
+
+/* Blockquote */
+main#content blockquote{
+  margin: .6rem 0 var(--content-gap) 0; padding: .85rem 1rem;
+  background: color-mix(in srgb, var(--active-bg) 55%, white);
+  border-left: 4px solid var(--active-bd);
+  border-radius: 10px;
+}
+
+/* Code inline & blocs */
+main#content code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace !important;
+  background: var(--code-bg) !important;
+  border: 1px solid var(--code-bd) !important;
+  padding: .05rem .35rem; border-radius: 6px; font-size: .92em;
+}
+main#content pre{
+  background: var(--code-bg) !important;
+  border: 1px solid var(--code-bd) !important;
+  padding: 1rem 1.1rem; border-radius: 12px; overflow: auto;
+  margin-bottom: var(--content-gap);
+}
+main#content pre code{ background: transparent !important; border: 0 !important; padding: 0 !important; }
+
+/* Tableaux */
+main#content table{
+  width: 100%; border-collapse: collapse; overflow: hidden;
+  border: 1px solid var(--border); border-radius: 12px;
+  margin: .5rem 0 var(--content-gap) 0;
+}
+main#content th, main#content td{
+  padding: .6rem .75rem; border-top: 1px solid var(--border);
+}
+main#content thead th{ background: var(--thead-bg); text-align: left; border-top: 0; font-weight: 700; }
+main#content tbody tr:nth-child(odd){ background: var(--row-alt); }
+
+/* HR */
+main#content hr{ border:0; height:1px; background: var(--border); margin: 1rem 0; }
+
+/* Notes / encadrés (si tu ajoutes ces classes dans tes docs) */
+main#content .callout{
+  padding: .85rem 1rem; border:1px solid var(--border); border-radius: 12px;
+  background: #fff;
+  margin: .75rem 0 var(--content-gap) 0;
+}
+main#content .callout.note{ background: color-mix(in srgb, var(--accent) 4%, #fff); border-color: var(--active-bd); }
+main#content .callout.warn{ background: #fff6f6; border-color: #ffd0d0; }
+main#content .callout .title{ font-weight: 700; margin-bottom: .35rem; }
+
+/* Petites corrections contre styles inline des convertisseurs */
+main#content [style*="line-height"]{ line-height: inherit !important; }
+main#content [style*="font-size"]{ font-size: inherit !important; }
+main#content [style*="color"]{ color: inherit !important; }
+
+/*********************/
+/* Réglages fins pour Inter */
+:root{
+  --body-size: 16px;          /* 15–17 selon ton goût */
+  --leading: 1.7;             /* interligne global */
+  --h1: clamp(1.9rem, 1.4rem + 2vw, 2.4rem);
+  --h2: clamp(1.45rem, 1.1rem + 1.2vw, 1.8rem);
+  --h3: clamp(1.16rem, 1.02rem + .6vw, 1.32rem);
+}
+
+html, body{
+  font-size: var(--body-size);
+  line-height: var(--leading);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "calt" 1, "liga" 1;   /* ligatures contextuelles */
+  font-kerning: normal;
+}
+
+/* Titres plus nets */
+main#content h1{ font-size: var(--h1); font-weight: 800; letter-spacing: -.01em; }
+main#content h2{ font-size: var(--h2); font-weight: 700; letter-spacing: -.005em; }
+main#content h3{ font-size: var(--h3); font-weight: 600; }
+
+/* Texte courant un poil plus “serré” visuellement */
+main#content p{ letter-spacing: .005em; }
+
+/* Listes un peu plus aérées (lisibilité) */
+main#content ul, main#content ol{ margin: .25rem 0 14px 0; }
+
+/* Liens : soulignement propre */
+main#content a{
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+main#content a:hover{ text-decoration-thickness: 2px; }

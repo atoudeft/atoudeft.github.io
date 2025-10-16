@@ -1,0 +1,17 @@
+
+:root{
+  --bg:#fff; --text:#121016; --muted:#5a5462; --accent:#7b2cbf; --border:#eadcf8;
+  --sidebar-bg:#faf6ff; --active-bg:#efe7ff; --active-bd:#dcc6ff;
+  --main-bg:#ffffff; --main-text:#121016; --main-heading:#0e0a11;
+  --nav-heading:#261429; --nav-link:#1a1520; --nav-active:#120b18;
+}
+body{ background:var(--bg) !important; color:var(--text) !important; }
+aside#sidebar{ background:var(--sidebar-bg) !important; border-right:1px solid var(--border) !important; }
+header.site{ background:var(--sidebar-bg) !important; border-bottom:1px solid var(--border) !important; }
+.menu h3{ color:var(--nav-heading) !important; }
+.menu a{ color:var(--nav-link) !important; }
+.menu a:hover{ background:var(--active-bg) !important; outline:1px solid var(--active-bd); }
+.menu a.active{ background:var(--active-bg) !important; outline:1px solid var(--active-bd) !important; color:var(--nav-active) !important; }
+main#content{ background:var(--main-bg) !important; color:var(--main-text) !important; }
+main#content h1, main#content h2, main#content h3{ color:var(--main-heading) !important; }
+a{ color:var(--accent); }

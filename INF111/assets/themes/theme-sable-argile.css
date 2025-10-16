@@ -1,0 +1,19 @@
+/* Thème sable-argile (inspiré de la palette fournie) */
+:root{
+  --bg:#fffdf9; --text:#222222; --muted:#5a5a5a; --accent:#d8654a; --border:#e9dccb;
+  --sidebar-bg:#fbf4e8; --active-bg:#ffe5db; --active-bd:#f2c2b4;
+  --main-bg:#fffefb; --main-text:#191c20; --main-heading:#0a0d10;
+  --nav-heading:#1a1a1a; --nav-link:#222222; --nav-active:#0a0d10;
+}
+
+/* Shared layout targets */
+body{ background:var(--bg) !important; color:var(--text) !important; }
+aside#sidebar{ background:var(--sidebar-bg) !important; border-right:1px solid var(--border) !important; }
+header.site{ background:var(--sidebar-bg) !important; border-bottom:1px solid var(--border) !important; }
+.menu h3{ color:var(--nav-heading) !important; }
+.menu a{ color:var(--nav-link) !important; }
+.menu a:hover{ background:var(--active-bg) !important; outline:1px solid var(--active-bd) !important; }
+.menu a.active{ background:var(--active-bg) !important; outline:1px solid var(--active-bd) !important; color:var(--nav-active) !important; }
+main#content{ background:var(--main-bg) !important; color:var(--main-text) !important; }
+main#content h1, main#content h2, main#content h3{ color:var(--main-heading) !important; }
+a{ color:var(--accent); }

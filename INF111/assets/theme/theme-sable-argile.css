@@ -1,0 +1,7 @@
+/* Thème "sable-argile" — variables uniquement */
+:root{
+  --bg:#fffdf9; --text:#222222; --muted:#5a5a5a; --accent:#d8654a; --border:#e9dccb;
+  --sidebar-bg:#fbf4e8; --active-bg:#ffe5db; --active-bd:#f2c2b4;
+  --main-bg:#fffefb; --main-text:#191c20; --main-heading:#0a0d10;
+  --nav-heading:#1a1a1a; --nav-link:#222222; --nav-active:#0a0d10;
+}

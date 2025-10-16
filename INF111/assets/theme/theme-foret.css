@@ -1,0 +1,7 @@
+/* Thème "forêt" — variables uniquement */
+:root{
+  --bg:#fbfefb; --text:#0e140f; --muted:#4a5e4e; --accent:#2e7d32; --border:#dfefe2;
+  --sidebar-bg:#f2fbf3; --active-bg:#e6f7e8; --active-bd:#cdecd1;
+  --main-bg:#ffffff; --main-text:#0e140f; --main-heading:#0a100b;
+  --nav-heading:#0c1a0f; --nav-link:#0e140f; --nav-active:#0a100b;
+}

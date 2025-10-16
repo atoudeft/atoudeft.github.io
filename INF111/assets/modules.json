@@ -1,0 +1,154 @@
+{
+  "generatedAt": "2025-10-15T20:54:14.962Z",
+  "modules": [
+    {
+      "title": "01-heritage",
+      "slug": "01-heritage",
+      "id": "module1-01-heritage",
+      "href": "index.html#module1-01-heritage",
+      "pages": [
+        {
+          "title": "Héritage par extension[1]",
+          "slug": "heritage-par-extension1",
+          "href": "pages/01-heritage/heritage-par-extension1.html",
+          "sections": [
+            {
+              "title": "Terminologie",
+              "slug": "terminologie",
+              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--terminologie"
+            },
+            {
+              "title": "Accès protégé (protected)",
+              "slug": "acces-protege-protected",
+              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--acces-protege-protected"
+            },
+            {
+              "title": "Héritage vs. Agrégation/Composition",
+              "slug": "heritage-vs-agregationcomposition",
+              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--heritage-vs-agregationcomposition"
+            },
+            {
+              "title": "Graphe (ou hiérarchie) d’héritage",
+              "slug": "graphe-ou-hierarchie-dheritage",
+              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--graphe-ou-hierarchie-dheritage"
+            },
+            {
+              "title": "Appel du constructeur de la classe mère – super()",
+              "slug": "appel-du-constructeur-de-la-classe-mere-super",
+              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--appel-du-constructeur-de-la-classe-mere-super"
+            },
+            {
+              "title": "Héritage simple vs. Héritage multiple",
+              "slug": "heritage-simple-vs-heritage-multiple",
+              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--heritage-simple-vs-heritage-multiple"
+            },
+            {
+              "title": "Généralisation et spécialisation",
+              "slug": "generalisation-et-specialisation",
+              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--generalisation-et-specialisation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "02-polymorphisme",
+      "slug": "02-polymorphisme",
+      "id": "module2-02-polymorphisme",
+      "href": "index.html#module2-02-polymorphisme",
+      "pages": [
+        {
+          "title": "Polymorphisme",
+          "slug": "polymorphisme",
+          "href": "pages/02-polymorphisme/polymorphisme.html",
+          "sections": [
+            {
+              "title": "Introduction",
+              "slug": "introduction",
+              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--introduction"
+            },
+            {
+              "title": "Surcharge de méthodes (overloading)",
+              "slug": "surcharge-de-methodes-overloading",
+              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--surcharge-de-methodes-overloading"
+            },
+            {
+              "title": "Redéfinition de méthodes (overriding)",
+              "slug": "redefinition-de-methodes-overriding",
+              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--redefinition-de-methodes-overriding"
+            },
+            {
+              "title": "Méthodes virtuelles et liaison dynamique",
+              "slug": "methodes-virtuelles-et-liaison-dynamique",
+              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--methodes-virtuelles-et-liaison-dynamique"
+            },
+            {
+              "title": "Méthodes non polymorphiques",
+              "slug": "methodes-non-polymorphiques",
+              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--methodes-non-polymorphiques"
+            },
+            {
+              "title": "Méthodes et classes abstraites",
+              "slug": "methodes-et-classes-abstraites",
+              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--methodes-et-classes-abstraites"
+            },
+            {
+              "title": "Méthodes et classes finales",
+              "slug": "methodes-et-classes-finales",
+              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--methodes-et-classes-finales"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "03-interfaces",
+      "slug": "03-interfaces",
+      "id": "module3-03-interfaces",
+      "href": "index.html#module3-03-interfaces",
+      "pages": [
+        {
+          "title": "Interfaces",
+          "slug": "interfaces",
+          "href": "pages/03-interfaces/interfaces.html",
+          "sections": [
+            {
+              "title": "Définition d’une interface",
+              "slug": "definition-dune-interface",
+              "hrefDeep": "index.html#module3-03-interfaces--interfaces--definition-dune-interface"
+            },
+            {
+              "title": "Implémentation d’une interface",
+              "slug": "implementation-dune-interface",
+              "hrefDeep": "index.html#module3-03-interfaces--interfaces--implementation-dune-interface"
+            },
+            {
+              "title": "Propriétés des interfaces",
+              "slug": "proprietes-des-interfaces",
+              "hrefDeep": "index.html#module3-03-interfaces--interfaces--proprietes-des-interfaces"
+            },
+            {
+              "title": "Programmation par contrats",
+              "slug": "programmation-par-contrats",
+              "hrefDeep": "index.html#module3-03-interfaces--interfaces--programmation-par-contrats"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "04-observer",
+      "slug": "04-observer",
+      "id": "module4-04-observer",
+      "href": "index.html#module4-04-observer",
+      "pages": [
+        {
+          "title": "Patron Observer",
+          "slug": "patron-observer",
+          "href": "pages/04-observer/patron-observer.html",
+          "sections": []
+        }
+      ]
+    }
+  ]
+}

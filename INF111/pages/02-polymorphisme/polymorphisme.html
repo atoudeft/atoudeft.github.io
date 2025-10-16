@@ -1,0 +1,472 @@
+<h2 id="sec-introduction">Introduction</h2>
+<p>
+  Le terme polymorphisme signifie plusieurs (<em>poly</em>) formes
+  (<em>morphe</em>). C’est la capacité d’une méthode à se présenter sous
+  différentes formes, selon le contexte. En réalité, il s’agit de plusieurs
+  méthodes qui portent le même nom.
+</p>
+<h2 id="sec-surcharge-de-methodes-overloading">
+  <a id="_Toc97498600"></a>Surcharge de méthodes (<em>overloading</em>)
+</h2>
+<p>
+  Nous avons vu qu’une classe peut avoir plusieurs constructeurs (surcharge de
+  constructeurs).
+</p>
+<p>
+  De la même façon, une classe peut avoir plusieurs méthodes de même nom.
+  Chacune des méthodes doit se distinguer des autres par sa
+  <strong>signature</strong> spécifique. La signature est le nombre et le type
+  des paramètres. Le type de retour <strong>ne fait pas</strong> partie de la
+  signature d’une méthode.
+</p>
+<p>
+  Autrement dit, dans une même classe, deux méthodes peuvent avoir le même nom à
+  condition qu’elles aient un nombre différent de paramètres ou le même nombre
+  de paramètres dont au moins un possède un type différent.
+</p>
+<p>
+  <strong>Exemple&nbsp;:</strong> voici 2 méthodes
+  <strong><em>distance()</em></strong> dans une classe
+  <strong><em>Point</em></strong
+  >&nbsp;:
+</p>
+<p><strong>public class Point {</strong></p>
+<p><strong> private double abscisse, ordonnee;</strong></p>
+<p><strong> </strong></p>
+<p><strong> public double distance(Point p) {</strong></p>
+<p>
+  <strong>
+    return Math.<em>hypot</em>(abscisse-p.abscisse,
+    ordonnee-p.ordonnee);</strong
+  >
+</p>
+<p><strong> }</strong></p>
+<p><strong> public double distance(double x, double y) {</strong></p>
+<p><strong> return Math.<em>hypot</em>(abscisse-x, ordonnee-y);</strong></p>
+<p><strong> } </strong></p>
+<p><strong>}</strong></p>
+<h2 id="sec-redefinition-de-methodes-overriding">
+  <a id="_Toc97498601"></a>Redéfinition de méthodes (<em>overriding</em>)
+</h2>
+<p>
+  Une classe peut redéfinir une méthode qu’elle a héritée de sa classe mère pour
+  l’adapter à ses besoins. La méthode dans la classe fille
+  <strong>doit garder la même signature</strong> que dans la classe mère.
+</p>
+<p>
+  Nous avons déjà vu 2 cas de redéfinition&nbsp;: les méthodes
+  <strong><em>toString()</em></strong> et <strong><em>equals()</em></strong
+  >, héritées de la classe <strong><em>Object</em></strong
+  >.
+</p>
+<p>
+  Voici un autre exemple&nbsp;: la classe
+  <strong><em>Etudiant</em></strong> redéfinit la méthode
+  <strong><em>demenage()</em></strong> pour l’adapter à ses besoins (une
+  personne qui déménage change de ville alors qu’un étudiant qui déménage change
+  d’établissement scolaire)&nbsp;:
+</p>
+<p><strong>public class Personne {</strong></p>
+<p><strong> private String nom, prenom, ville;</strong></p>
+<p><strong> public void demenage(String nouvelleVille) {</strong></p>
+<p><strong> this.ville = nouvelleVille;</strong></p>
+<p><strong> }</strong></p>
+<p><strong>//...etc</strong></p>
+<p><strong>}</strong></p>
+<p><strong>public class Etudiant extends Personne {</strong></p>
+<p><strong> private String etablissement, programme;</strong></p>
+<p><strong> public void demenage(String nouvelEtablissement) {</strong></p>
+<p><strong> this.etablissement = nouvelEtablissement;</strong></p>
+<p><strong> }</strong></p>
+<p><strong>//...etc</strong></p>
+<p><strong>}</strong></p>
+<h2 id="sec-methodes-virtuelles-et-liaison-dynamique">
+  <a id="_Toc97498602"></a>Méthodes virtuelles et liaison dynamique
+</h2>
+<p>
+  Lorsqu’une méthode est redéfinie (présente dans la classe mère et dans la
+  classe fille), <strong>comment</strong> le compilateur choisit laquelle
+  appeler ?
+</p>
+<p>
+  <strong
+    >1<sup>er</sup> cas&nbsp;: une référence de la classe mère sur un objet de
+    la classe mère</strong
+  >
+</p>
+<p>
+  Dans ce cas, il n’y a pas d’ambiguïté&nbsp;: c’est la méthode de la classe
+  mère qui est appelée&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Personne p1 = new Personne();<br>
+String str = "…";<br>
+p1.demenage(str); //<span class="en-evidence">appelle demenage() de Personne (modifie la ville de p1).</span>
+</p>
+<p>
+  <strong
+    >2<sup>e</sup> cas&nbsp;: une référence de la classe fille sur un objet de
+    la classe fille</strong
+  >
+</p>
+<p>
+  Dans ce cas aussi, il n’y a pas d’ambiguïté&nbsp;: c’est la méthode de la
+  classe fille qui est appelée&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+  Etudiant e1 = new Etudiant();<br>
+String str = "…";<br>
+e1.demenage(str); //<span class="en-evidence">appelle demenage() de Etudiant (modifie l’établissement de e1).</span>
+</p>
+<p>
+  <strong
+    >3<sup>e</sup> cas&nbsp;: une référence de la classe mère sur un objet de la
+    classe fille</strong
+  >
+</p>
+<p>
+  Ce cas est <strong>beaucoup plus fréquent</strong> qu’on le pense. C’est le
+  cœur du polymorphisme.
+</p>
+<p>
+  Dans ce cas, la référence est de la classe mère mais l’objet est de la classe
+  fille.
+</p>
+<p>
+  <strong>Question</strong>&nbsp;: Pour choisir quelle méthode appeler, est-ce
+  que le compilateur va se baser sur le type de la référence (qui est connue à
+  la compilation) ou sur le type de l’objet référencé (qui n’est connu qu’à
+  l’exécution et qui peut même changer durant l’exécution) ?
+</p>
+<p>
+  <strong>Réponse</strong>&nbsp;: ça dépend si la méthode est
+  <strong>virtuelle</strong> ou non.
+</p>
+<p>
+  Si la méthode <strong>n’est pas virtuelle</strong>, le compilateur décide à la
+  compilation que la méthode à appeler est celle de la classe mère.
+</p>
+<p>
+  Si la méthode <strong>est virtuelle</strong>, le compilateur attend à
+  l’exécution et choisit la méthode à appeler en fonction de l’objet référencé.
+  C’est ce qu’on appelle la <strong>liaison dynamique</strong> (<strong
+    ><em>dynamic binding</em></strong
+  >). Certains appellent cela le <strong>polymorphisme dynamique</strong>.
+</p>
+<p>
+  <strong>En <em>Java</em>, les méthodes sont toujours virtuelles</strong>. Dans
+  d’autres langages, tels <em>C++</em> et <em>C#</em>, c’est le programmeur qui
+  décide quelle méthode est virtuelle.
+</p>
+<p>
+  En <em>Java</em> donc, la méthode est choisie en fonction de l’objet
+  référencée et <strong>non pas</strong> en fonction du type de la
+  référence&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Personne p1 = new Etudiant();<br>
+String str = "…";<br>
+p1.demenage(str); //<span class="en-evidence">appelle demenage() de Etudiant (modifie l’établissement de p1).</span>
+</p>
+<p>
+  Les méthodes virtuelles, telle que <strong><em>demenage()</em></strong
+  >, nous permettent de raisonner de manière polymorphique. On peut, par
+  exemple, itérer sur un tableau ou une collection de
+  <strong><em>Personnes</em></strong> qui contient un mélange d'objets de type
+  <strong><em>Etudiant</em></strong
+  >, <strong><em>Stagiaire</em></strong
+  >, <strong><em>Employe</em></strong
+  >, <strong><em>Secretaire</em></strong> et <strong><em>Manager</em></strong
+  >. Lors des itérations, on peut appeler pour chaque élément la méthode
+  <strong><em>demenage()</em></strong
+  >. Le compilateur appellera la bonne méthode
+  <strong><em>demenage()</em></strong> en fonction du type de l’élément&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Personne[] tabPersonnes = new Personne[10];<br>
+tabPersonnes[0] = new Secretaire();<br>
+tabPersonnes[1] = new Etudiant();<br>
+tabPersonnes[2] = new Manager();<br>
+tabPersonnes[3] = new Stagiaire();<br>
+//...etc<br>
+for (int i=0; i&lt; tabPersonnes.length; i++) {<br>
+&nbsp;&nbsp;tabPersonnes[i].demenage(...); //<span class="en-evidence">choisit demenage() en fonction du type de l'objet à la case i.</span><br>
+}
+</p>
+<h2 id="sec-methodes-non-polymorphiques">
+  <a id="_Toc97498603"></a>Méthodes non polymorphiques
+</h2>
+<p>
+  Une classe fille peut définir de nouvelles méthodes qui lui sont spécifiques.
+  Ces méthodes ne sont pas dans la classe mère.
+</p>
+<p>
+  Par exemple, la classe <strong><em>Etudiant</em></strong> peut définir la
+  méthode <strong><em>getEtablissement()</em></strong> pour obtenir
+  l’établissement de l’étudiant.
+</p>
+<p>
+  Ce genre de méthodes (spécifiques à la classe fille) sont qualifiées de non
+  polymorphiques car elles nous empêchent de raisonner de manière polymorphe.
+</p>
+<p>
+  On ne peut pas appeler une telle méthode à partir d’une référence de la classe
+  mère&nbsp;:
+<p class="code java">
+  <span class="langage">Java</span>
+Personne p1 = new Etudiant();<br>
+String str;<br>
+str = p1.getEtablissement(); //<span class="en-evidence">NON : pas de méthode getEtablissement() dans la classe Personne.</span>
+</p>
+<p>
+  Il faudrait convertir la référence vers la classe fille, après s’être assuré
+  que l’objet référencé est bien de la classe fille&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Personne p1 = new Etudiant();<br>
+String str;<br>
+if (p1 instanceof Etudiant) {<br>
+&nbsp;&nbsp;<span class="en-evidence">str = ((Etudiant)p1).getEtablissement(); //OK.</span><br>
+}
+</p>
+<p>
+  Les méthodes non polymorphiques, on ne les aime pas trop. On aurait aimé que
+  la méthode <strong><em>getEtablissement()</em></strong> soit comme
+  <strong><em>demenage()</em></strong
+  >&nbsp;: présente dans la classe mère et redéfinie dans la classe fille. Mais,
+  ce n’est pas toujours possible&nbsp;: mettre la méthode
+  <strong><em>getEtablissement()</em></strong> dans la classe
+  <strong><em>Personne</em></strong> revient à dire que toute personne possède
+  un établissement, ce qui est conceptuellement incorrect.
+</p>
+<h2 id="sec-methodes-et-classes-abstraites">
+  <a id="_Toc97498604"></a>Méthodes et classes abstraites
+</h2>
+<p>
+  Pour rendre une méthode d’une classe fille polymorphique, il est parfois
+  conceptuellement correct de la mettre dans la classe mère mais on ne peut pas
+  la définir.
+</p>
+<p>
+  Voici un exemple typique&nbsp;: deux classes
+  <strong><em>Cercle</em></strong> et
+  <strong><em>Rectangle</em></strong> dérivent de la classe
+  <strong><em>Figure</em></strong
+  >. Chacune des deux classes possède une méthode
+  <strong><em>getSurface()</em></strong> qui calcule et retourne la surface de
+  la figure&nbsp;:
+</p>
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p><strong>public class Figure {</strong></p>
+        <p><strong>private Color couleur;</strong></p>
+        <p><strong>public Figure(Color couleur) {</strong></p>
+        <p><strong> this.couleur = couleur;</strong></p>
+        <p><strong>}</strong></p>
+        <p><strong>//etc...</strong></p>
+        <p><strong>}</strong></p>
+      </td>
+      <td>
+        <p><strong>public class Cercle extends Figure {</strong></p>
+        <p><strong>private Point centre;</strong></p>
+        <p><strong>private double rayon; </strong></p>
+        <p><strong>public Cercle(Color couleur) {</strong></p>
+        <p><strong> super(couleur);</strong></p>
+        <p><strong> //etc...</strong></p>
+        <p><strong>}</strong></p>
+        <p><strong>public double getSurface() {</strong></p>
+        <p>
+          <strong>
+            return Math.<em>PI</em> * Math.<em>pow</em>(rayon, 2);</strong
+          >
+        </p>
+        <p><strong>}</strong></p>
+        <p><strong>}</strong></p>
+        <p><strong>public class Rectangle extends Figure {</strong></p>
+        <p><strong>private Point sommetHautGauche;</strong></p>
+        <p><strong>private double largeur, longueur;</strong></p>
+        <p><strong> </strong></p>
+        <p><strong>public Rectangle(Color couleur) {</strong></p>
+        <p><strong> super(couleur);</strong></p>
+        <p><strong> //etc...</strong></p>
+        <p><strong>}</strong></p>
+        <p><strong>public double getSurface() {</strong></p>
+        <p><strong> return largeur*longueur;</strong></p>
+        <p><strong>}</strong></p>
+        <p><strong>}</strong></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  Ici, la méthode <strong><em>getSurface()</em></strong> n’est pas
+  polymorphique. Ce qui nous empêche de l’appeler à partir d’une référence de
+  type <strong><em>Figure</em></strong
+  >&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Figure fig = ...;<br>
+double surface = fig.getSurface();//<span class="en-evidence">NON : pas de méthode getSurface() dans la classe Figure.</span>
+</p>
+<p>
+  En particulier, si on a une liste de figures dans un tableau ou une collection
+  (comme dans la classe <strong><em>Dessin</em></strong> vue en laboratoire), on
+  ne peut pas faire un traitement polymorphique&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Figure[] figures = new Figure[5];<br>
+figures[0] = new Cercle(...);<br>
+figures[1] = new Rectangle(...);<br>
+figures[2] = new Cercle(...);<br>
+//...etc<br>
+for (int i=0; i&lt;figures.length; i++) {<br>
+&nbsp;&nbsp;System.out.println("Surface : "+figures[i].getSurface());//<span class="en-evidence">NON</span><br>
+}
+</p>
+<p>
+  La solution ici est de rendre la méthode
+  <strong><em>getSurface()</em></strong> polymorphique en l’ajoutant à la classe
+  mère <strong><em>Figure</em></strong
+  >. Conceptuellement, c’est correct, puisque toute figure possède une surface.
+</p>
+<p>
+  Sauf que, on ne sait pas comment définir
+  <strong><em>getSurface()</em></strong> dans
+  <strong><em>Figure</em></strong> (quelle formule de calcul de surface utiliser
+  ?).
+</p>
+<p>
+  On va mettre la méthode dans la classe mais
+  <strong>sans la définir</strong>&nbsp;: ce sera une
+  <strong>méthode abstraite</strong>.
+</p>
+<p>
+  Lorsqu’une classe contient au moins une méthode abstraite, la classe aussi
+  doit être abstraite.
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+public abstract class Figure {<br>
+&nbsp;&nbsp;private Color couleur;<br>
+&nbsp;&nbsp;<span class="en-evidence">abstract double getSurface();</span><br>
+&nbsp;&nbsp;public Figure(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.couleur = couleur;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//etc...<br>
+}
+</p>
+<p>
+  Une méthode abstraite n’a pas de corps (on termine son en-tête par un point-virgule).
+</p>
+<p>On peut déclarer des variables du type d'une classe abstraite :</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Figure fig;
+</p>
+<p>Mais, une classe abstraite ne peut pas être instanciée :</p>
+<p class="code java">
+  <span class="langage">Java</span>
+fig = new Figure(…);<span class="en-evidence">//NON</span>
+</p>
+<p>La variable va servir pour référencer un objet instance d'une classe concrète fille de la classe abstraite :</p>
+<p class="code java">
+  <span class="langage">Java</span>
+fig = new Cercle(…);<span class="en-evidence">//OK</span>
+</p>
+<p>
+  Maintenant, la méthode <strong><em>getSurface()</em></strong> est
+  polymorphique&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Figure fig = …;<br>
+double surface = fig.getSurface();//OK<br>
+for (int i=0; i&lt;figures.length; i++) {<br>
+&nbsp;&nbsp;System.out.println("Surface : "+figures[i].getSurface());//<span class="en-evidence">OK</span><br>
+}
+</p>
+<p>
+  Une classe peut être abstraite même si elle n’a pas de méthode abstraite. Par
+  exemple, les classes <strong><em>AbstractPersonnage</em></strong> et
+  <strong><em>AbstractCreature</em></strong> du <em>TP 2</em>. Dans ce cas, la
+  classe va définir une base commune aux classes filles mais n’aura pas ses
+  propres instances.
+</p>
+<h2 id="sec-methodes-et-classes-finales">
+  <a id="_Toc97498605"></a>Méthodes et classes finales
+</h2>
+<p>
+  On peut empêcher qu’une méthode soit redéfinie dans les classes filles. Pour
+  cela, en <em>Java</em>, on déclare la <strong>méthode finale</strong>&nbsp;:
+</p>
+<p><strong>public class Personne {</strong></p>
+<p><strong> private String nom, prenom, ville;</strong></p>
+<p><strong> public final String getNom() {</strong></p>
+<p><strong> return nom;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> //etc...</strong></p>
+<p><strong>}</strong></p>
+<p><strong>public class Etudiant extends Personne {</strong></p>
+<p><strong> private String etablissement, programme;</strong></p>
+<p><strong> public String getNom() {//NON, getNom() est finale</strong></p>
+<p><strong> return ...;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> //etc...</strong></p>
+<p><strong>}</strong></p>
+<p>Il y a 2 raisons qui peuvent motiver à rendre une méthode finale&nbsp;:</p>
+<ol>
+  <li>
+    <strong>Fixer le sens d’une méthode</strong>&nbsp;: on ne veut pas que la
+    méthode soit redéfinie dans une classe fille avec un traitement différent.
+  </li>
+  <li>
+    <strong>Améliorer les performances</strong>&nbsp;: lorsqu’une méthode est
+    finale, il se passe 2 choses&nbsp;:
+    <ol>
+      <li>
+        Le compilateur ne met pas en œuvre la liaison dynamique (qui a un coût).
+        Il décide à la compilation de la méthode à appeler (puisqu’il sait qu’il
+        n’y pas d’autres versions dans les classes filles).
+      </li>
+      <li>
+        Lorsque le traitement de la méthode est simple (pas de boucles ni de
+        conditionnelles), le compilateur en fera une
+        <strong>méthode «&nbsp;inline&nbsp;»</strong>&nbsp;: il remplace l’appel
+        par le corps de la méthode de sorte qu’il n’y est pas de
+        branchement/retour de/vers la méthode. Ce qui est plus efficace.
+      </li>
+    </ol>
+  </li>
+</ol>
+<p>
+Les méthodes d’accès sont de bonnes candidates à être finales.
+</p>
+<p>
+  On peut aussi empêcher une classe d’avoir des classes filles. Pour cela, en
+  <em>Java</em>, on déclare la <strong>classe finale</strong>&nbsp;:
+</p>
+<p><strong>public final class Manager extends Employe {</strong></p>
+<p><strong> //etc...</strong></p>
+<p><strong>}</strong></p>
+<p>
+  <strong
+    >public class Directeur extends Manager {//NON, Manager est finale</strong
+  >
+</p>
+<p><strong>}</strong></p>
+<p>
+  Lorsqu’une classe est finale, toutes ses méthodes sont automatiquement
+  finales.
+</p>
+<p>
+  Par exemple, la classe <strong><em>String</em></strong> est finale.
+</p>

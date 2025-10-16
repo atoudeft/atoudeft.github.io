@@ -1,0 +1,29 @@
+
+:root{
+  --bg:#fffaf4; --text:#20150b; --muted:#7b5a3a; --accent:#f59e0b; --border:#f1e1c8;
+  --sidebar-bg:#fff3e2; --active-bg:#ffe9c7; --active-bd:#ffdca0;
+  --main-bg:#ffffff; --main-text:#20150b; --main-heading:#1a1109;
+  --nav-heading:#29170a; --nav-link:#20150b; --nav-active:#1a1109;
+}
+body{ background:var(--bg) !important; color:var(--text) !important; }
+aside#sidebar{ background:var(--sidebar-bg) !important; border-right:1px solid var(--border) !important; }
+header.site{ background:var(--sidebar-bg) !important; border-bottom:1px solid var(--border) !important; }
+.menu h3{ color:var(--nav-heading) !important; }
+.menu a{ color:var(--nav-link) !important; }
+.menu a:hover{ background:var(--active-bg) !important; outline:1px solid var(--active-bd); }
+.menu a.active{ background:var(--active-bg) !important; outline:1px solid var(--active-bd) !important; color:var(--nav-active) !important; }
+main#content{ background:var(--main-bg) !important; color:var(--main-text) !important; }
+main#content h1, main#content h2, main#content h3{ color:var(--main-heading) !important; }
+a{ color:var(--accent); }
+
+
+/* Compact layout overrides */
+:root{ --sidebar-w: 220px !important; }
+header.site{ padding:8px 10px !important; }
+.menu h3{ margin:10px 8px 4px !important; font-size:.78rem !important; }
+.menu a{ padding:7px 10px !important; border-radius:8px !important; font-size:.92rem !important; }
+.menu ul ul{ padding-left:8px !important; }
+main#content{ padding:20px clamp(12px,2.5vw,28px) !important; }
+main#content h1{ font-size:1.5rem !important; }
+main#content h2{ font-size:1.2rem !important; }
+main#content h3{ font-size:1.05rem !important; }

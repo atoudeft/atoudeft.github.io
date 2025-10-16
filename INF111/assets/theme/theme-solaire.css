@@ -1,0 +1,7 @@
+/* Thème "solaire" — variables uniquement */
+:root{
+  --bg:#fffaf4; --text:#20150b; --muted:#7b5a3a; --accent:#f59e0b; --border:#f1e1c8;
+  --sidebar-bg:#fff3e2; --active-bg:#ffe9c7; --active-bd:#ffdca0;
+  --main-bg:#ffffff; --main-text:#20150b; --main-heading:#1a1109;
+  --nav-heading:#29170a; --nav-link:#20150b; --nav-active:#1a1109;
+}

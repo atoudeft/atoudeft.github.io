@@ -1,0 +1,7 @@
+/* Thème "prunes" — variables uniquement */
+:root{
+  --bg:#ffffff; --text:#121016; --muted:#5a5462; --accent:#7b2cbf; --border:#eadcf8;
+  --sidebar-bg:#faf6ff; --active-bg:#efe7ff; --active-bd:#dcc6ff;
+  --main-bg:#ffffff; --main-text:#121016; --main-heading:#0e0a11;
+  --nav-heading:#261429; --nav-link:#1a1520; --nav-active:#120b18;
+}

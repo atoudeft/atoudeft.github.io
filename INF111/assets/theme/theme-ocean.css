@@ -1,0 +1,7 @@
+/* Thème "océan" — variables uniquement (reprend votre exemple) */
+:root{
+  --bg:#0e1a1d; --text:#e6f7f9; --muted:#b6d6da; --accent:#2dd4bf; --border:#173238;
+  --sidebar-bg:#112326; --active-bg:#eaf2ff; --active-bd:#2a636a;
+  --main-bg:#f4fbfc; --main-text:#0a0d10; --main-heading:#07090c;
+  --nav-heading:#ffffff; --nav-link:#e6f6f8; --nav-active:#0a0d10;
+}

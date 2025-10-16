@@ -1,0 +1,333 @@
+<p>
+  Une interface est comme une classe abstraite qui ne contient que des méthodes
+  abstraites et des constantes (les attributs d’une interface sont
+  automatiquement constants).
+</p>
+<h2 id="sec-definition-dune-interface">
+  <a id="_Toc97498607"></a>Définition d’une interface
+</h2>
+<p>
+  Une interface est définie à l’aide du mot-clé
+  <strong><em>interface</em></strong> au lieu de <strong><em>class</em></strong
+  >&nbsp;:
+</p>
+<p>public interface MonInterface {</p>
+<p>void methode1(int x, double y);</p>
+<p>double methode2(String s);</p>
+<p>}</p>
+<p>
+  Une interface permet de définir (ou plutôt d’imposer) la liste des méthodes
+  que des classes doivent fournir pour interagir avec.
+</p>
+<p>
+  Par exemple, il existe différents types de messages&nbsp;: message texte,
+  message audio, vidéo, … On peut imposer que tous les types de messages
+  fournissent une méthode <strong><em>lire()</em></strong> pour lire le
+  message&nbsp;:
+</p>
+<p>public interface Message {</p>
+<p>void lire();</p>
+<p>}</p>
+<p>
+  Autre exemple, on peut définir une interface
+  <strong><em>Pile</em></strong> pour imposer les méthodes qu’une pile doit
+  fournir, indépendamment de la façon dont elle est implémentée&nbsp;:
+</p>
+<p><strong>public interface Pile {</strong></p>
+<p><strong> boolean empiler(Object x);</strong></p>
+<p><strong> Object depiler() throws Exception;</strong></p>
+<p><strong> boolean estVide();</strong></p>
+<p><strong> Object peek() throws Exception;</strong></p>
+<p><strong> int taille();</strong></p>
+<p><strong> void vider();</strong></p>
+<p><strong>}</strong></p>
+<p>On peut faire la même chose pour les files (queues) et les listes.</p>
+<h2 id="sec-implementation-dune-interface">
+  <a id="_Toc97498608"></a>Implémentation d’une interface
+</h2>
+<p>
+  Une classe peut <strong>implémenter une interface</strong>. Elle est alors
+  <strong>obligée</strong> de définir toutes les méthodes de l’interface (sinon
+  la classe doit être abstraite)&nbsp;:
+</p>
+<p>public class MaClasse implements MonInterface {</p>
+<p>//attributs et méthodes...</p>
+<p>//Définition des 2 méthodes de l’interface&nbsp;:</p>
+<p>void methode1(int x, double y) {</p>
+<p>//...</p>
+<p>}</p>
+<p>double methode2(String s) {</p>
+<p>//...</p>
+<p>}</p>
+<p>}</p>
+<p>
+  Par exemple, l’interface <strong><em>Message</em></strong> va être implémentée
+  par toutes les classes de messages&nbsp;:
+</p>
+<p>public class MessageTexte implements Message {</p>
+<p>//attributs et méthodes...</p>
+<p>//Définition de la méthode de l’interface&nbsp;:</p>
+<p>void lire() {</p>
+<p>//lire le message texte</p>
+<p>}</p>
+<p>}</p>
+<p>public class MessageAudio implements Message {</p>
+<p>//attributs et méthodes...</p>
+<p>//Définition de la méthode de l’interface&nbsp;:</p>
+<p>void lire() {</p>
+<p>//lire le message audio</p>
+<p>}</p>
+<p>}</p>
+<p>public class MessageVideo implements Message {</p>
+<p>//attributs et méthodes...</p>
+<p>//Définition de la méthode de l’interface&nbsp;:</p>
+<p>void lire() {</p>
+<p>//lire le message vidéo</p>
+<p>}</p>
+<p>}</p>
+<p>
+  De même, les classes <strong><em>PileStatique</em></strong
+  >, <strong><em>PileChaineeSimple</em></strong> et
+  <strong><em>PileChaineeDouble</em></strong> vont implémenter l’interface
+  <strong><em>Pile</em></strong> et fournir les mêmes méthodes imposées par
+  l’interface mais implémentées différemment dans chacune des classes&nbsp;:
+</p>
+<p><strong>public class PileStatique implements Pile {</strong></p>
+<p><strong> //...implémentation statique avec tableau</strong></p>
+<p><strong>}</strong></p>
+<p><strong>public class PileChaineeSimple implements Pile {</strong></p>
+<p><strong> //...implémentation avec chainage simple</strong></p>
+<p><strong>}</strong></p>
+<p><strong>public class PileChaineeDouble implements Pile {</strong></p>
+<p><strong> //...implémentation avec chainage double</strong></p>
+<p><strong>}</strong></p>
+<p>
+  En <em>Java</em>, une classe ne peut dériver que d’une classe mère (héritage
+  simple) mais <strong>peut implémenter plusieurs interfaces</strong>&nbsp;:
+</p>
+<p>
+  public class MaClasse2 extends MaClasse1 implements MonInterface1,
+  MonInterface2, MonInterface3 {
+</p>
+<p>//attributs et méthodes...</p>
+<p>//Définition de toutes les méthodes de toutes les interfaces</p>
+<p>//...</p>
+<p>}</p>
+<h2 id="sec-proprietes-des-interfaces">
+  <a id="_Toc97498609"></a>Propriétés des interfaces
+</h2>
+<ul>
+  <li>On peut faire de l’héritage (même multiple) d’interfaces&nbsp;:</li>
+</ul>
+<p>public interface MonInterface1 {</p>
+<p>void f();</p>
+<p>}</p>
+<p>public interface MonInterface2 {</p>
+<p>void g();</p>
+<p>}</p>
+<p>public interface MonInterface3 extends MonInterface1 {</p>
+<p>void h();</p>
+<p>}</p>
+<p>
+  <strong><em>MonInterface3</em></strong> contient les méthodes
+  <strong><em>h()</em></strong> et <strong><em>f()</em></strong> (héritée de
+  <strong><em>MonInterface1</em></strong
+  >).
+</p>
+<p>public interface MonInterface4 extends MonInterface1, MonInterface2 {</p>
+<p>void r();</p>
+<p>}</p>
+<p>
+  <strong><em>MonInterface4</em></strong> contient les méthodes
+  <strong><em>r()</em></strong
+  >, <strong><em>f()</em></strong> (héritée de
+  <strong><em>MonInterface1</em></strong
+  >) et <strong><em>g()</em></strong> (héritée de
+  <strong><em>MonInterface2</em></strong
+  >).
+</p>
+<ul>
+  <li>On peut déclarer des variables de type interface&nbsp;:</li>
+</ul>
+<p>Message message;</p>
+<p>Pile pile;</p>
+<p>Mais, on ne peut pas instancier une interface&nbsp;:</p>
+<p>message = new Message(); //NON</p>
+<p>pile = new Pile(); //NON</p>
+<p>Ces variables doivent référencer des objets de classes concrètes&nbsp;:</p>
+<p>message = new MessageTexte(); //OK</p>
+<p>pile = new PileChaineeSimple(); //OK</p>
+<ul>
+  <li>
+    On peut tester si un objet est «&nbsp;instance&nbsp;» d’une interface. Cela
+    veut dire que l’objet est instance d’une classe qui implémente
+    l’interface&nbsp;:
+  </li>
+</ul>
+<p>PileChaineeDouble pile2 = new PileChaineeDouble();</p>
+<p>if (pile2 instanceof Pile) { //teste si la classe de pile2</p>
+<p>//implémente l’interface Pile.</p>
+<p>}</p>
+<h2 id="sec-programmation-par-contrats">
+  <a id="_Toc97498610"></a>Programmation par contrats
+</h2>
+<p>
+  Les interfaces sont au cœur de la <strong>programmation par contrats</strong>,
+  utilisée en particulier dans le développement des API (bibliothèques orientées
+  objet).
+</p>
+<p>
+  La programmation par contrats permet aussi à différentes équipes de
+  programmeurs de travailler sur un même projet de développement sans se
+  connaitre et sans mélanger leurs codes. Les équipes s’entendent sur un même
+  contrat qui se présente sous forme d’une série d’interfaces.
+</p>
+<p><strong>Exemple&nbsp;: </strong></p>
+<p>
+  On veut créer un menu de navigation dans différentes listes d’objets (pour
+  naviguer dans une liste d’étudiants, dans une liste de produits, dans une
+  liste de compte bancaires, …).
+</p>
+<p>Le menu de navigation permettra les opérations suivantes&nbsp;:</p>
+<ul>
+  <li>Se déplacer au <strong>premier</strong> élément;</li>
+  <li>Se déplacer au <strong>dernier</strong> élément;</li>
+  <li>
+    Obtenir l’élément <strong>courant</strong> (là où on est rendu dans la
+    navigation);
+  </li>
+  <li>Se déplacer au <strong>suivant</strong> (de l’élément courant);</li>
+  <li>Se déplacer au <strong>précédent</strong> (de l’élément courant);</li>
+</ul>
+<p>
+  Le menu de navigation a-t-il besoin de connaitre dans quel type de liste on
+  navigue (des étudiants, des produits, …) ?
+</p>
+<p>
+  Grâce aux interfaces, la <strong>réponse est non</strong>. On va définir un
+  contrat qui impose les méthodes que les listes doivent fournir pour qu’on
+  puisse naviguer dedans. On définit donc une interface qu’on va appeler, par
+  exemple, <strong><em>Navigable</em></strong
+  >&nbsp;:
+</p>
+<p><strong>public interface Navigable {</strong></p>
+<p><strong> public boolean allerAuPremier();</strong></p>
+<p><strong> public boolean allerAuDernier();</strong></p>
+<p><strong> public boolean allerAuSuivant();</strong></p>
+<p><strong> public boolean allerAuPrecedent();</strong></p>
+<p><strong> public Object getCourant();</strong></p>
+<p><strong>}</strong></p>
+<p>
+  À partir de là, on peut programmer notre menu de navigation qui va travailler
+  sur un objet de type <strong><em>Navigable</em></strong
+  >.
+</p>
+<p>
+  En mode console, le code de navigation ressemblerait à ceci (on peut aussi
+  envisager une implémentation similaire en mode graphique)&nbsp;:
+</p>
+<p><strong>Navigable navigable = ???;</strong></p>
+<p><strong>Object courant;</strong></p>
+<p><strong>char choix = clavier.nextLine().charAt(0);</strong></p>
+<p>
+  <strong>while</strong> (choix != <strong><em>QUITTER</em></strong
+  >) {
+</p>
+<p><strong> switch (choix) {</strong></p>
+<p><strong> case 'p': //premier</strong></p>
+<p><strong> navigable.allerAuPremier();</strong></p>
+<p><strong> break;</strong></p>
+<p><strong> case 'd': //dernier</strong></p>
+<p><strong> navigable.allerAuDernier();</strong></p>
+<p><strong> break;</strong></p>
+<p><strong> case 's': //suivant</strong></p>
+<p><strong> navigable.allerAuSuivant();</strong></p>
+<p><strong> break;</strong></p>
+<p><strong> case 'r': //précédent</strong></p>
+<p><strong> navigable.allerAuPrecedent();</strong></p>
+<p><strong> break;</strong></p>
+<p><strong> case 'c': //obtenir le courant et l’afficher</strong></p>
+<p><strong> courant = navigable.getCourant();</strong></p>
+<p><strong> if (courant!=null)</strong></p>
+<p><strong>System.<em>out</em>.println(courant);</strong></p>
+<p><strong> break;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> choix = clavier.nextLine().charAt(0);</strong></p>
+<p><strong>}</strong></p>
+<p>
+  Le code de navigation est complet. Tout ce qui manque, c’est l’objet référencé
+  par la variable <strong><em>navigable</em></strong
+  >.
+</p>
+<p>
+  Le programmeur qui crée la liste d’étudiants peut bénéficier de ce code de
+  navigation pour naviguer à travers les étudiants à condition qu’il respecte le
+  contrat&nbsp;: sa classe <strong><em>ListeEtudiants</em></strong> doit
+  implémenter l’interface <strong><em>Navigable</em></strong
+  >.
+</p>
+<p>Voici, par exemple, à quoi peut ressembler la classe&nbsp;:</p>
+<p><strong>public class ListeEtudiants implements Navigable {</strong></p>
+<p><strong> private Etudiant[] lesEtudiants = new Etudiant[50];</strong></p>
+<p><strong> private int nbEtudiants;</strong></p>
+<p><strong> private int indiceCourant = -1; </strong></p>
+<p><strong> public boolean ajouter(Etudiant e) {</strong></p>
+<p><strong> if (this.nbEtudiants==this.lesEtudiants.length)</strong></p>
+<p><strong> return false;</strong></p>
+<p><strong> this.lesEtudiants[nbEtudiants] = e;</strong></p>
+<p><strong> nbEtudiants++;</strong></p>
+<p><strong> return true;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public boolean allerAuPremier() {</strong></p>
+<p><strong> if (nbEtudiants==0)</strong></p>
+<p><strong> return false;</strong></p>
+<p><strong> else {</strong></p>
+<p><strong> indiceCourant = 0;</strong></p>
+<p><strong> return true;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public boolean allerAuDernier() {</strong></p>
+<p><strong> if (nbEtudiants==0)</strong></p>
+<p><strong> return false;</strong></p>
+<p><strong> else {</strong></p>
+<p><strong> indiceCourant = nbEtudiants-1;</strong></p>
+<p><strong> return true;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public boolean allerAuSuivant() {</strong></p>
+<p><strong> if (indiceCourant == nbEtudiants-1)</strong></p>
+<p><strong> return false;</strong></p>
+<p><strong> else {</strong></p>
+<p><strong> indiceCourant++;</strong></p>
+<p><strong> return true;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public boolean allerAuPrecedent() {</strong></p>
+<p><strong> if (indiceCourant &lt;= 0)</strong></p>
+<p><strong> return false;</strong></p>
+<p><strong> else {</strong></p>
+<p><strong> indiceCourant--;</strong></p>
+<p><strong> return true;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Object getCourant() {</strong></p>
+<p><strong> if (nbEtudiants==0 || indiceCourant &lt; 0)</strong></p>
+<p><strong> return null;</strong></p>
+<p><strong> else {</strong></p>
+<p><strong> return this.lesEtudiants[indiceCourant];</strong></p>
+<p><strong> }</strong></p>
+<p><strong> }</strong></p>
+<p><strong>}</strong></p>
+<p>
+  Une liste de produits ou de comptes bancaires peut être implémentée de manière
+  similaire (avec tableaux ou <strong><em>ArrayList</em></strong> ou autre).
+</p>
+<p>
+  Il suffit de référencer la liste avec la variable
+  <strong><em>navigable</em></strong> pour naviguer dedans&nbsp;:
+</p>
+<p><strong>ListeEtudiants etuds = new ListeEtudiants();</strong></p>
+<p><strong>ListeProduits prods = new ListeProduits();</strong></p>
+<p><strong>navigable = etuds;</strong></p>
+<p><strong>//ou&nbsp;:</strong></p>
+<p><strong>navigable = prods;</strong></p>
