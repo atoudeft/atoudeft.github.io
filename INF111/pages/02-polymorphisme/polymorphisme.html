@@ -66,16 +66,16 @@ public class Point {<br>
   <span class="langage">Java</span>
 public class Personne {br>
 &nbsp;&nbsp;private String nom, prenom, ville;<br>
-&nbsp;&nbsp;public void demenage(String nouvelleVille) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;this.ville = nouvelleVille;<br>
-&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="en-evidence">public void demenage(String nouvelleVille) {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">this.ville = nouvelleVille;</span><br>
+&nbsp;&nbsp;<span class="en-evidence">}</span><br>
 &nbsp;&nbsp;//...etc<br>
 }<br>
 public class Etudiant extends Personne {<br>
 &nbsp;&nbsp;private String etablissement, programme;<br>
-&nbsp;&nbsp;public void demenage(String nouvelEtablissement) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;this.etablissement = nouvelEtablissement;<br>
-&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="en-evidence">public void demenage(String nouvelEtablissement) {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">this.etablissement = nouvelEtablissement;</span><br>
+&nbsp;&nbsp;<span class="en-evidence">}</span><br>
 &nbsp;&nbsp;//...etc<br>
 }
 </p>
@@ -276,9 +276,9 @@ public class Cercle extends Figure {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;super(couleur);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;//etc...<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;public double getSurface() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;return Math.<em>PI</em> * Math.<em>pow</em>(rayon, 2);<br>
-&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="en-evidence">public double getSurface() {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">return Math.<em>PI</em> * Math.<em>pow</em>(rayon, 2);</span><br>
+&nbsp;&nbsp;<span class="en-evidence">}</span><br>
 }<br>
 public class Rectangle extends Figure {<br>
 &nbsp;&nbsp;private Point sommetHautGauche;<br>
@@ -287,9 +287,9 @@ public class Rectangle extends Figure {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;super(couleur);<br>
 &nbsp;&nbsp;&nbsp;&nbsp;//etc...<br>
 &nbsp;&nbsp;}<br>
-&nbsp;&nbsp;public double getSurface() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;return largeur*longueur;<br>
-&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="en-evidence">public double getSurface() {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">return largeur*longueur;</span><br>
+&nbsp;&nbsp;<span class="en-evidence">}</span><br>
 }
 </p>
 <p>
@@ -399,14 +399,14 @@ for (int i=0; i&lt;figures.length; i++) {<br>
   <span class="langage">Java</span>
 public class Personne {<br>
 &nbsp;&nbsp;private String nom, prenom, ville;<br>
-&nbsp;&nbsp;public final String getNom() {<br>
+&nbsp;&nbsp;public <span class="en-evidence">final</span> String getNom() {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;return nom;<br>
 &nbsp;&nbsp;}<br>
 &nbsp;&nbsp;//etc...<br>
 }<br>
 public class Etudiant extends Personne {<br>
 &nbsp;&nbsp;private String etablissement, programme;<br>
-&nbsp;&nbsp;public String getNom() {//NON, getNom() est finale<br>
+&nbsp;&nbsp;public String getNom() {/*NON, getNom() est finale*/<br>
 &nbsp;&nbsp;&nbsp;&nbsp;return ...;<br>
 &nbsp;&nbsp;}<br>
 &nbsp;&nbsp;//etc...<br>
@@ -446,10 +446,11 @@ Les méthodes d’accès sont de bonnes candidates à être finales.
 </p>
 <p class="code java">
   <span class="langage">Java</span>
-public final class Manager extends Employe {<br>
+public <span class="en-evidence">final</span>class Manager extends Employe {<br>
 &nbsp;&nbsp;//etc...<br>
 }<br>
 public class Directeur extends Manager { /*NON, Manager est finale*/<br>
+}
 </p>
 <p>
   Lorsqu’une classe est finale, toutes ses méthodes sont automatiquement
