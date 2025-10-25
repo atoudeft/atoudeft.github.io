@@ -62,20 +62,23 @@ public class Point {<br>
   personne qui déménage change de ville alors qu’un étudiant qui déménage change
   d’établissement scolaire)&nbsp;:
 </p>
-<p><strong>public class Personne {</strong></p>
-<p><strong> private String nom, prenom, ville;</strong></p>
-<p><strong> public void demenage(String nouvelleVille) {</strong></p>
-<p><strong> this.ville = nouvelleVille;</strong></p>
-<p><strong> }</strong></p>
-<p><strong>//...etc</strong></p>
-<p><strong>}</strong></p>
-<p><strong>public class Etudiant extends Personne {</strong></p>
-<p><strong> private String etablissement, programme;</strong></p>
-<p><strong> public void demenage(String nouvelEtablissement) {</strong></p>
-<p><strong> this.etablissement = nouvelEtablissement;</strong></p>
-<p><strong> }</strong></p>
-<p><strong>//...etc</strong></p>
-<p><strong>}</strong></p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Personne {br>
+&nbsp;&nbsp;private String nom, prenom, ville;<br>
+&nbsp;&nbsp;public void demenage(String nouvelleVille) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.ville = nouvelleVille;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//...etc<br>
+}<br>
+public class Etudiant extends Personne {<br>
+&nbsp;&nbsp;private String etablissement, programme;<br>
+&nbsp;&nbsp;public void demenage(String nouvelEtablissement) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.etablissement = nouvelEtablissement;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//...etc<br>
+}
+</p>
 <h2 id="sec-methodes-virtuelles-et-liaison-dynamique">
   <a id="_Toc97498602"></a>Méthodes virtuelles et liaison dynamique
 </h2>
