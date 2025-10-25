@@ -448,9 +448,8 @@ Les méthodes d’accès sont de bonnes candidates à être finales.
   <span class="langage">Java</span>
 public final class Manager extends Employe {<br>
 &nbsp;&nbsp;//etc...<br>
-}<br
-public class Directeur extends Manager {//NON, Manager est finale<br>
-}
+}<br>
+public class Directeur extends Manager { /*NON, Manager est finale*/<br>
 </p>
 <p>
   Lorsqu’une classe est finale, toutes ses méthodes sont automatiquement
