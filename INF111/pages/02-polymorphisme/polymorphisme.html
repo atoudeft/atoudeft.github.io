@@ -260,50 +260,38 @@ if (p1 instanceof Etudiant) {<br>
   <strong><em>getSurface()</em></strong> qui calcule et retourne la surface de
   la figure&nbsp;:
 </p>
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <p><strong>public class Figure {</strong></p>
-        <p><strong>private Color couleur;</strong></p>
-        <p><strong>public Figure(Color couleur) {</strong></p>
-        <p><strong> this.couleur = couleur;</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>//etc...</strong></p>
-        <p><strong>}</strong></p>
-      </td>
-      <td>
-        <p><strong>public class Cercle extends Figure {</strong></p>
-        <p><strong>private Point centre;</strong></p>
-        <p><strong>private double rayon; </strong></p>
-        <p><strong>public Cercle(Color couleur) {</strong></p>
-        <p><strong> super(couleur);</strong></p>
-        <p><strong> //etc...</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>public double getSurface() {</strong></p>
-        <p>
-          <strong>
-            return Math.<em>PI</em> * Math.<em>pow</em>(rayon, 2);</strong
-          >
-        </p>
-        <p><strong>}</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>public class Rectangle extends Figure {</strong></p>
-        <p><strong>private Point sommetHautGauche;</strong></p>
-        <p><strong>private double largeur, longueur;</strong></p>
-        <p><strong> </strong></p>
-        <p><strong>public Rectangle(Color couleur) {</strong></p>
-        <p><strong> super(couleur);</strong></p>
-        <p><strong> //etc...</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>public double getSurface() {</strong></p>
-        <p><strong> return largeur*longueur;</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>}</strong></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Figure {<br>
+&nbsp;&nbsp;private Color couleur;<br>
+&nbsp;&nbsp;public Figure(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.couleur = couleur;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//etc...<br>
+}<br>
+public class Cercle extends Figure {<br>
+&nbsp;&nbsp;private Point centre;<br>
+&nbsp;&nbsp;private double rayon; <br>
+&nbsp;&nbsp;public Cercle(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super(couleur);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//etc...<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public double getSurface() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return Math.<em>PI</em> * Math.<em>pow</em>(rayon, 2);<br>
+&nbsp;&nbsp;}<br>
+}<br>
+public class Rectangle extends Figure {<br>
+&nbsp;&nbsp;private Point sommetHautGauche;<br>
+&nbsp;&nbsp;private double largeur, longueur;<br>
+&nbsp;&nbsp;public Rectangle(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super(couleur);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//etc...<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public double getSurface() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return largeur*longueur;<br>
+&nbsp;&nbsp;}<br>
+}
+</p>
 <p>
   Ici, la méthode <strong><em>getSurface()</em></strong> n’est pas
   polymorphique. Ce qui nous empêche de l’appeler à partir d’une référence de
