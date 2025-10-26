@@ -276,23 +276,29 @@ listePersonnes.add(new Etudiant());
   Considérons la classe <strong><em>Figure</em></strong> qui représente une
   figure géométrique&nbsp;:
 </p>
-<p><strong>public class Figure {</strong></p>
-<p><strong> private Color couleur;</strong></p>
-<p><strong> public Figure(Color couleur) {</strong></p>
-<p><strong> this.couleur = couleur;</strong></p>
-<p><strong> }</strong></p>
-<p><strong> public Color getCouleur() {</strong></p>
-<p><strong> return couleur;</strong></p>
-<p><strong> }</strong></p>
-<p><strong> public void setCouleur(Color couleur) {</strong></p>
-<p><strong> this.couleur = couleur;</strong></p>
-<p><strong> } </strong></p>
-<p><strong>}</strong></p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Figure {<br>
+&nbsp;&nbsp;private Color couleur;<br>
+&nbsp;&nbsp;public Figure(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.couleur = couleur;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public Color getCouleur() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return couleur;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public void setCouleur(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.couleur = couleur;<br>
+&nbsp;&nbsp;} <br>
+}
+</p>
 <p>
   La classe n’a pas de constructeur sans argument. La seule façon de créer une
   figure est de fournir une couleur&nbsp;:
 </p>
-<p>Figure f = new Figure(Color.RED);</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Figure f = new Figure(Color.RED);
+</p>
 <p>
   Le code de la classe <strong><em>Cercle</em></strong> suivant ne compilera pas
   car le constructeur de <strong><em>Cercle</em></strong> ne trouve pas de
@@ -307,19 +313,21 @@ listePersonnes.add(new Etudiant());
   >&nbsp;en utilisant <strong><em>super()</em></strong
   >&nbsp;:
 </p>
-<p><strong>public class Cercle extends Figure {</strong></p>
-<p><strong> private Point centre;</strong></p>
-<p><strong> private double rayon;</strong></p>
-<p><strong> </strong></p>
-<p><strong> public Cercle() {</strong></p>
-<p><strong> super(Color.<em>BLUE</em>);</strong></p>
-<p><strong> //...etc</strong></p>
-<p><strong> }</strong></p>
-<p><strong> public Cercle(Color couleur) {</strong></p>
-<p><strong> super(couleur);</strong></p>
-<p><strong>//...etc</strong></p>
-<p><strong> }</strong></p>
-<p><strong>}</strong></p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Cercle extends Figure {<br>
+&nbsp;&nbsp;private Point centre;<br>
+&nbsp;&nbsp;private double rayon;<br>
+&nbsp;&nbsp;public Cercle() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super(Color.<em>BLUE</em>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//...etc<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public Cercle(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super(couleur);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//...etc<br>
+&nbsp;&nbsp;}<br>
+}
+</p>
 <h2 id="sec-heritage-simple-vs-heritage-multiple">
   <a id="_Toc97498597"></a>Héritage simple vs. Héritage multiple
 </h2>
