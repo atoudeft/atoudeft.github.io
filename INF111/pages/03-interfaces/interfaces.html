@@ -14,8 +14,8 @@
 <p class="code java">
   <span class="langage">Java</span>
 public <span class="en-evidence">interface</span> MonInterface {<br>
-void methode1(int x, double y);<br>
-double methode2(String s);<br>
+&nbsp;&nbsp;void methode1(int x, double y);<br>
+&nbsp;&nbsp;double methode2(String s);<br>
 }
 </p>
 <p>
@@ -31,7 +31,7 @@ double methode2(String s);<br>
 <p class="code java">
   <span class="langage">Java</span>
 public interface Message {<br>
-void lire();<br>
+&nbsp;&nbsp;void lire();<br>
 }
 </p>
 <p>
@@ -42,13 +42,14 @@ void lire();<br>
 <p class="code java">
   <span class="langage">Java</span>
 public interface Pile {<br>
-boolean empiler(Object x);<br>
-Object depiler() throws Exception;<br>
-boolean estVide();<br>
-Object peek() throws Exception;<br>
-int taille();<br>
-void vider();<br>
+&nbsp;&nbsp;boolean empiler(Object x);<br>
+&nbsp;&nbsp;Object depiler() throws Exception;<br>
+&nbsp;&nbsp;boolean estVide();<br>
+&nbsp;&nbsp;Object peek() throws Exception;<br>
+&nbsp;&nbsp;int taille();<br>
+&nbsp;&nbsp;void vider();<br>
 }<br>
+</p>
 <p>On peut faire la même chose pour les files (queues) et les listes.</p>
 <h2 id="sec-implementation-dune-interface">
   <a id="_Toc97498608"></a>Implémentation d’une interface
@@ -61,14 +62,14 @@ void vider();<br>
 <p class="code java">
   <span class="langage">Java</span>
 public class MaClasse <span class="en-evidence">implements</span> MonInterface {<br>
-//attributs et méthodes...<br>
-//Définition des 2 méthodes de l’interface&nbsp;:<br>
-void methode1(int x, double y) {<br>
-//...</p>
-}</p>
-double methode2(String s) {<br>
-//...<br>
-}<br>
+&nbsp;&nbsp;//attributs et méthodes...<br>
+&nbsp;&nbsp;//Définition des 2 méthodes de l’interface&nbsp;:<br>
+&nbsp;&nbsp;void methode1(int x, double y) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//...</p>
+&nbsp;&nbsp;}</p>
+&nbsp;&nbsp;double methode2(String s) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//...<br>
+&nbsp;&nbsp;}<br>
 }
 </p>
 <p>
@@ -78,27 +79,27 @@ double methode2(String s) {<br>
 <p class="code java">
   <span class="langage">Java</span>
 public class MessageTexte implements Message {<br>
-//attributs et méthodes...<br>
-//Définition de la méthode de l’interface&nbsp;:<br>
-void lire() {<br>
-//lire le message texte<br>
-}<br>
+&nbsp;&nbsp;//attributs et méthodes...<br>
+&nbsp;&nbsp;//Définition de la méthode de l’interface&nbsp;:<br>
+&nbsp;&nbsp;void lire() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//lire le message texte<br>
+&nbsp;&nbsp;}<br>
 }<br>
 <br>
 public class MessageAudio implements Message {<br>
-//attributs et méthodes...<br>
-//Définition de la méthode de l’interface&nbsp;:<br>
-void lire() {<br>
-//lire le message audio<br>
-}<br>
+&nbsp;&nbsp;//attributs et méthodes...<br>
+&nbsp;&nbsp;//Définition de la méthode de l’interface&nbsp;:<br>
+&nbsp;&nbsp;void lire() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//lire le message audio<br>
+&nbsp;&nbsp;}<br>
 }<br>
 <br>
 public class MessageVideo implements Message {<br>
-//attributs et méthodes...<br>
-//Définition de la méthode de l’interface&nbsp;:<br>
-void lire() {<br>
-//lire le message vidéo<br>
-}<br>
+&nbsp;&nbsp;//attributs et méthodes...<br>
+&nbsp;&nbsp;//Définition de la méthode de l’interface&nbsp;:<br>
+&nbsp;&nbsp;void lire() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//lire le message vidéo<br>
+&nbsp;&nbsp;}<br>
 }
 </p>
 <p>
@@ -111,14 +112,14 @@ void lire() {<br>
 <p class="code java">
   <span class="langage">Java</span>
 public class PileStatique implements Pile {<br>
-//...implémentation statique avec tableau<br>
+&nbsp;&nbsp;//...implémentation statique avec tableau<br>
 }<br>
 public class PileChaineeSimple implements Pile {<br>
-//...implémentation avec chainage simple<br>
+&nbsp;&nbsp;//...implémentation avec chainage simple<br>
 }<br>
 <br>
 public class PileChaineeDouble implements Pile {<br>
-//...implémentation avec chainage double<br>
+&nbsp;&nbsp;//...implémentation avec chainage double<br>
 }
 </p>
 <p>
@@ -142,13 +143,13 @@ public class PileChaineeDouble implements Pile {<br>
 <p class="code java">
   <span class="langage">Java</span>
 public interface MonInterface1 {<br>
-void f();<br>
+&nbsp;&nbsp;void f();<br>
 }<br>
 public interface MonInterface2 {<br>
-void g();<br>
+&nbsp;&nbsp;void g();<br>
 }<br>
 public interface MonInterface3 extends MonInterface1 {<br>
-void h();<br>
+&nbsp;&nbsp;void h();<br>
 }
 </p>
 <p>
@@ -160,7 +161,7 @@ void h();<br>
 <p class="code java">
   <span class="langage">Java</span>
 public interface MonInterface4 extends MonInterface1, MonInterface2 {<br>
-void r();<br>
+&nbsp;&nbsp;void r();<br>
 }
 </p>
 <p>
@@ -250,11 +251,11 @@ if (pile2 instanceof Pile) { /*teste si la classe de pile2 implémente l’inter
 <p class="code java">
   <span class="langage">Java</span>
 public interface Navigable {<br>
-public boolean allerAuPremier();<br>
-public boolean allerAuDernier();<br>
-public boolean allerAuSuivant();<br>
-public boolean allerAuPrecedent();<br>
-public Object getCourant();<br>
+&nbsp;&nbsp;public boolean allerAuPremier();<br>
+&nbsp;&nbsp;public boole4an allerAuDernier();<br>
+&nbsp;&nbsp;public boolean allerAuSuivant();<br>
+&nbsp;&nbsp;public boolean allerAuPrecedent();<br>
+&nbsp;&nbsp;public Object getCourant();<br>
 }
 </p>
 <p>
@@ -273,26 +274,26 @@ Object courant;<br>
 char choix = clavier.nextLine().charAt(0);<br>
 
 while (choix != <strong><em>QUITTER</em></strong>) {<br>
-switch (choix) {<br>
-case 'p': //premier<br>
-navigable.allerAuPremier();<br>
-break;<br>
-case 'd': //dernier<br>
-navigable.allerAuDernier();<br>
-break;<br>
-case 's': //suivant<br>
-navigable.allerAuSuivant();<br>
-break;<br>
-case 'r': //précédent<br>
-navigable.allerAuPrecedent();<br>
-break;<br>
-case 'c': //obtenir le courant et l’afficher<br>
-courant = navigable.getCourant();<br>
-if (courant!=null)<br>
-System.<em>out</em>.println(courant);<br>
-break;<br>
-}<br>
-choix = clavier.nextLine().charAt(0);<br>
+&nbsp;&nbsp;switch (choix) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 'p': //premier<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigable.allerAuPremier();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 'd': //dernier<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigable.allerAuDernier();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 's': //suivant<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigable.allerAuSuivant();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 'r': //précédent<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigable.allerAuPrecedent();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;case 'c': //obtenir le courant et l’afficher<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;courant = navigable.getCourant();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (courant!=null)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.<em>out</em>.println(courant);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;choix = clavier.nextLine().charAt(0);<br>
 }
 </p>
 <p>
@@ -311,54 +312,54 @@ choix = clavier.nextLine().charAt(0);<br>
 <p class="code java">
   <span class="langage">Java</span>
 public class ListeEtudiants implements Navigable {<br>
-private Etudiant[] lesEtudiants = new Etudiant[50];<br>
-private int nbEtudiants;<br>
-private int indiceCourant = -1; <br>
-public boolean ajouter(Etudiant e) {<br>
-if (this.nbEtudiants==this.lesEtudiants.length)<br>
-return false;<br>
-this.lesEtudiants[nbEtudiants] = e;<br>
-nbEtudiants++;<br>
-return true;<br>
-}<br>
-public boolean allerAuPremier() {<br>
-if (nbEtudiants==0)<br>
-return false;<br>
-else {<br>
-indiceCourant = 0;<br>
-return true;<br>
-}<br>
-}<br>
-public boolean allerAuDernier() {<br>
-if (nbEtudiants==0)<br>
-return false;<br>
-else {<br>
-indiceCourant = nbEtudiants-1;<br>
-return true;<br>
-}<br>
-}<br>
-public boolean allerAuSuivant() {<br>
-if (indiceCourant == nbEtudiants-1)<br>
-return false;<br>
-else {<br>
-indiceCourant++;<br>
-return true;<br>
-}<br>
-}<br>
-public boolean allerAuPrecedent() {<br>
-if (indiceCourant &lt;= 0)<br>
-return false;<br>
-else {<br>
-indiceCourant--;<br>
-return true;<br>
-}<br>
-}<br>
-public Object getCourant() {<br>
-if (nbEtudiants==0 || indiceCourant &lt; 0)<br>
-return null;<br>
-else {<br>
-return this.lesEtudiants[indiceCourant];<br>
-}<br>
+&nbsp;&nbsp;private Etudiant[] lesEtudiants = new Etudiant[50];<br>
+&nbsp;&nbsp;private int nbEtudiants;<br>
+&nbsp;&nbsp;private int indiceCourant = -1; <br>
+&nbsp;&nbsp;public boolean ajouter(Etudiant e) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (this.nbEtudiants==this.lesEtudiants.length)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.lesEtudiants[nbEtudiants] = e;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nbEtudiants++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public boolean allerAuPremier() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (nbEtudiants==0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indiceCourant = 0;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public boolean allerAuDernier() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (nbEtudiants==0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indiceCourant = nbEtudiants-1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public boolean allerAuSuivant() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (indiceCourant == nbEtudiants-1)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indiceCourant++;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public boolean allerAuPrecedent() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (indiceCourant &lt;= 0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indiceCourant--;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public Object getCourant() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (nbEtudiants==0 || indiceCourant &lt; 0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return null;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this.lesEtudiants[indiceCourant];<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
 }<br>
 }
 </p>
