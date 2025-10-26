@@ -65,8 +65,8 @@ public class MaClasse <span class="en-evidence">implements</span> MonInterface {
 &nbsp;&nbsp;//attributs et méthodes...<br>
 &nbsp;&nbsp;//Définition des 2 méthodes de l’interface&nbsp;:<br>
 &nbsp;&nbsp;void methode1(int x, double y) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;//...</p>
-&nbsp;&nbsp;}</p>
+&nbsp;&nbsp;&nbsp;&nbsp;//...<br>
+&nbsp;&nbsp;}<br>
 &nbsp;&nbsp;double methode2(String s) {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;//...<br>
 &nbsp;&nbsp;}<br>
@@ -126,14 +126,14 @@ public class PileChaineeDouble <span class="en-evidence">implements</span> Pile 
   En <em>Java</em>, une classe ne peut dériver que d’une classe mère (héritage
   simple) mais <strong>peut implémenter plusieurs interfaces</strong>&nbsp;:
 </p>
-<p>
-  public class MaClasse2 extends MaClasse1 implements MonInterface1,
-  MonInterface2, MonInterface3 {
+<p class="code java">
+  <span class="langage">Java</span>
+public class MaClasse2 extends MaClasse1 implements MonInterface1, MonInterface2, MonInterface3 {<br>
+&nbsp;&nbsp;//attributs et méthodes...<br>
+&nbsp;&nbsp;//Définition de toutes les méthodes de toutes les interfaces<br>
+&nbsp;&nbsp;//...<br>
+}
 </p>
-<p>//attributs et méthodes...</p>
-<p>//Définition de toutes les méthodes de toutes les interfaces</p>
-<p>//...</p>
-<p>}</p>
 <h2 id="sec-proprietes-des-interfaces">
   <a id="_Toc97498609"></a>Propriétés des interfaces
 </h2>
