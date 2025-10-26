@@ -78,7 +78,7 @@ public class MaClasse <span class="en-evidence">implements</span> MonInterface {
 </p>
 <p class="code java">
   <span class="langage">Java</span>
-public class MessageTexte implements Message {<br>
+public class MessageTexte <span class="en-evidence">implements</span> Message {<br>
 &nbsp;&nbsp;//attributs et méthodes...<br>
 &nbsp;&nbsp;//Définition de la méthode de l’interface&nbsp;:<br>
 &nbsp;&nbsp;void lire() {<br>
@@ -86,7 +86,7 @@ public class MessageTexte implements Message {<br>
 &nbsp;&nbsp;}<br>
 }<br>
 <br>
-public class MessageAudio implements Message {<br>
+public class MessageAudio <span Message {<br>
 &nbsp;&nbsp;//attributs et méthodes...<br>
 &nbsp;&nbsp;//Définition de la méthode de l’interface&nbsp;:<br>
 &nbsp;&nbsp;void lire() {<br>
@@ -94,7 +94,7 @@ public class MessageAudio implements Message {<br>
 &nbsp;&nbsp;}<br>
 }<br>
 <br>
-public class MessageVideo implements Message {<br>
+public class MessageVideo <span class="en-evidence">implements</span> Message {<br>
 &nbsp;&nbsp;//attributs et méthodes...<br>
 &nbsp;&nbsp;//Définition de la méthode de l’interface&nbsp;:<br>
 &nbsp;&nbsp;void lire() {<br>
@@ -111,14 +111,14 @@ public class MessageVideo implements Message {<br>
 </p>
 <p class="code java">
   <span class="langage">Java</span>
-public class PileStatique implements Pile {<br>
+public class PileStatique <span class="en-evidence">implements</span> Pile {<br>
 &nbsp;&nbsp;//...implémentation statique avec tableau<br>
 }<br>
-public class PileChaineeSimple implements Pile {<br>
+public class PileChaineeSimple <span class="en-evidence">implements</span> Pile {<br>
 &nbsp;&nbsp;//...implémentation avec chainage simple<br>
 }<br>
 <br>
-public class PileChaineeDouble implements Pile {<br>
+public class PileChaineeDouble <span class="en-evidence">implements</span> Pile {<br>
 &nbsp;&nbsp;//...implémentation avec chainage double<br>
 }
 </p>
@@ -148,7 +148,7 @@ public interface MonInterface1 {<br>
 public interface MonInterface2 {<br>
 &nbsp;&nbsp;void g();<br>
 }<br>
-public interface MonInterface3 extends MonInterface1 {<br>
+public interface MonInterface3 <span class="en-evidence">extends</span> MonInterface1 {<br>
 &nbsp;&nbsp;void h();<br>
 }
 </p>
@@ -203,7 +203,7 @@ pile = new PileChaineeSimple(); //OK
 <p class="code java">
   <span class="langage">Java</span>
 PileChaineeDouble pile2 = new PileChaineeDouble();<br>
-if (pile2 instanceof Pile) { /*teste si la classe de pile2 implémente l’interface Pile.*/<br>
+if (pile2 <span class="en-evidence">instanceof</span> Pile) { /*teste si la classe de pile2 implémente l’interface Pile.*/<br>
 }
 </p>
 <h2 id="sec-programmation-par-contrats">
