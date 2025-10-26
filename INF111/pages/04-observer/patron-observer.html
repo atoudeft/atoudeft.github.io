@@ -57,60 +57,33 @@
   Pour concrétiser ce patron, on définit une interface qui représente les
   observateurs et une classe (abstraite) qui représente les observables&nbsp;:
 </p>
-<p><strong>public interface Observateur {</strong></p>
-<p>
-  <strong>
-    //Permet à l'observateur de se mettre à jour lorsqu'il est notifié
-    par</strong
-  >
-</p>
-<p><strong> //l'objet Observable qu'il observe :</strong></p>
-<p><strong> public void seMettreAJour(Observable observable);</strong></p>
-<p><strong>}</strong></p>
-<p><strong>public abstract class Observable {</strong></p>
-<p><strong> //Liste des objets qui observent cet Observable :</strong></p>
-<p>
-  <strong>
-    private ArrayList&lt;Observateur&gt; observateurs = new
-    ArrayList&lt;&gt;();</strong
-  >
-</p>
-<p><strong> </strong></p>
-<p>
-  <strong> //Ajoute un observateur à la liste, s'il n'y est pas déjà :</strong>
-</p>
-<p>
-  <strong> public boolean ajouterObservateur(Observateur observateur) {</strong>
-</p>
-<p><strong> boolean ajoutEffectue;</strong></p>
-<p><strong> </strong></p>
-<p><strong> if (this.observateurs.contains(observateur))</strong></p>
-<p><strong> ajoutEffectue = false;</strong></p>
-<p><strong> else {</strong></p>
-<p><strong> this.observateurs.add(observateur);</strong></p>
-<p><strong> ajoutEffectue = true;</strong></p>
-<p><strong> }</strong></p>
-<p><strong> return ajoutEffectue;</strong></p>
-<p><strong> }</strong></p>
-<p><strong> </strong></p>
-<p><strong> //Demande à tous les observateurs de se mettre à jour :</strong></p>
-<p><strong> public void notifierObservateurs() {</strong></p>
-<p>
-  <strong>
-    ListIterator&lt;Observateur&gt; iterateur =
-    this.observateurs.listIterator();</strong
-  >
-</p>
-<p><strong> while (iterateur.hasNext())</strong></p>
-<p><strong> iterateur.next().seMettreAJour(this);</strong></p>
-<p><strong> }</strong></p>
-<p><strong>}</strong></p>
-<p>
-  <strong>Remarque :</strong> cette classe et cette interface sont définies dans
-  le <strong>TP 2</strong> (<strong><em>MonObservable</em></strong> et
-  <strong><em>MonObserver</em></strong> du package
-  <strong><em>observer</em></strong
-  >)
+<p class="code java">
+  <span class="langage">Java</span>
+public interface Observateur {<br>
+&nbsp;&nbsp;/*Permet à l'observateur de se mettre à jour lorsqu'il est notifié par l'objet Observable qu'il observe :*/<br>
+&nbsp;&nbsp;public void seMettreAJour(Observable observable);<br>
+}<br>
+public abstract class Observable {<br>
+&nbsp;&nbsp;/*Liste des objets qui observent cet Observable :*/<br>
+&nbsp;&nbsp;private ArrayList&lt;Observateur&gt; observateurs = new ArrayList&lt;&gt;();<br>
+&nbsp;&nbsp;/*Ajoute un observateur à la liste, s'il n'y est pas déjà :*/<br>
+&nbsp;&nbsp;public boolean ajouterObservateur(Observateur observateur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;boolean ajoutEffectue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (this.observateurs.contains(observateur))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ajoutEffectue = false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.observateurs.add(observateur);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ajoutEffectue = true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return ajoutEffectue;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;/*Demande à tous les observateurs de se mettre à jour :*/<br>
+&nbsp;&nbsp;public void notifierObservateurs() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ListIterator&lt;Observateur&gt; iterateur = this.observateurs.listIterator();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;while (iterateur.hasNext())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iterateur.next().seMettreAJour(this);<br>
+&nbsp;&nbsp;}<br>
+}
 </p>
 <p>
   Les classes des observateurs (objets <strong><em>vue1</em></strong> et
@@ -120,57 +93,56 @@
   de l’observable dans la méthode <strong><em>seMettreAJour()</em></strong
   >&nbsp;:
 </p>
-<p><strong>public class ClasseVue1 implements Observateur {</strong></p>
-<p><strong> //...attributs et méthodes</strong></p>
-<p><strong> </strong></p>
-<p><strong> public void seMettreAJour(Observable observable);</strong></p>
-<p><strong> </strong></p>
-<p><strong> if (observable instanceof Personnage) {</strong></p>
-<p><strong> Personnage p = (Personnage)observable;</strong></p>
-<p>
-  <strong>
-    //chercher la position de p - p.getPosition() - et l’afficher</strong
-  >
+<p class="code java">
+  <span class="langage">Java</span>
+public class ClasseVue1 implements Observateur {<br>
+&nbsp;&nbsp;//...attributs et méthodes<br>
+&nbsp;&nbsp;public void seMettreAJour(Observable observable);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (observable instanceof Personnage) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personnage p = (Personnage)observable;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*chercher la position de p - p.getPosition() - et l’afficher*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+public class ClasseVue2 implements Observateur {<br>
+&nbsp;&nbsp;//...attributs et méthodes<br>
+&nbsp;&nbsp;public void seMettreAJour(Observable observable){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (observable instanceof Personnage) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Personnage p = (Personnage)observable;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*chercher l’énergie de p - p.getEnergie() - et l’afficher.*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;}<br>
+}
 </p>
-<p><strong> }</strong></p>
-<p><strong> }</strong></p>
-<p><strong>public class ClasseVue2 implements Observateur {</strong></p>
-<p><strong> //...attributs et méthodes</strong></p>
-<p><strong> </strong></p>
-<p><strong> public void seMettreAJour(Observable observable);</strong></p>
-<p><strong> </strong></p>
-<p><strong> if (observable instanceof Personnage) {</strong></p>
-<p><strong> Personnage p = (Personnage)observable;</strong></p>
-<p>
-  <strong> //chercher l’énergie de p - p.getEnergie() - et l’afficher.</strong>
-</p>
-<p><strong> }</strong></p>
-<p><strong> }</strong></p>
 <p>
   La classe du personnage étend la classe
   <strong><em>Observable</em></strong> (pour rendre les personnages
   observables)&nbsp;:
 </p>
-<p><strong>public class Personnage extends Observable {</strong></p>
-<p><strong> //...attributs et méthodes</strong></p>
-<p><strong> </strong></p>
-<p><strong> public void bouge() { </strong></p>
-<p><strong> //changer la position et l’énergie...</strong></p>
-<p><strong> //Informer les observateurs&nbsp;:</strong></p>
-<p><strong>this.notifierObservateurs();</strong></p>
-<p><strong> }</strong></p>
-<p><strong> public void court() { </strong></p>
-<p><strong> //changer la position et l’énergie...</strong></p>
-<p><strong> //Informer les observateurs&nbsp;:</strong></p>
-<p><strong>this.notifierObservateurs();</strong></p>
-<p><strong> }</strong></p>
-<p><strong>}</strong></p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Personnage extends Observable {<br>
+&nbsp;&nbsp;//...attributs et méthodes<br>
+&nbsp;&nbsp;public void bouge() { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;//changer la position et l’énergie...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//Informer les observateurs&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.notifierObservateurs();<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public void court() { <br>
+&nbsp;&nbsp;&nbsp;&nbsp;//changer la position et l’énergie...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//Informer les observateurs&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.notifierObservateurs();<br>
+&nbsp;&nbsp;}<br>
+}
+</p>
 <p>On peut maintenant connecter les observateurs à l’observable&nbsp;:</p>
-<p>Personnage personnage = new Personnage();</p>
-<p>ClasseVue1 vue1 = new ClasseVue1();</p>
-<p>ClasseVue1 vue2 = new ClasseVue2();</p>
-<p>personnage.ajouterObservateur(vue1);</p>
-<p>personnage.ajouterObservateur(vue2);</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Personnage personnage = new Personnage();<br>
+ClasseVue1 vue1 = new ClasseVue1();<br>
+ClasseVue1 vue2 = new ClasseVue2();<br>
+personnage.ajouterObservateur(vue1);<br>
+personnage.ajouterObservateur(vue2);
+</p>
 <p>
   À partir de là, le personnage peut évoluer à sa guise. À chacun de ses
   changements, les observateurs <strong><em>vue1</em></strong> et
