@@ -46,6 +46,7 @@ public class Personne {<br>
 &nbsp;&nbsp;}<br>
 &nbsp;&nbsp;//...etc<br>
 }<br>
+<br
 public class Etudiant <span class="en-evidence">extends</span> Personne {<br>
 &nbsp;&nbsp;private String etablissement, programme;<br>
 &nbsp;&nbsp;public String getEtablissement() {<br>
@@ -228,6 +229,7 @@ tabPersonnes[0] = new Personne();<br>
 tabPersonnes[1] = new Etudiant();<br>
 tabPersonnes[2] = new Manager();<br>
 tabPersonnes[3] = new Stagiaire();<br>
+<br>
 listePersonnes.add(new Personne());<br>
 listePersonnes.add(new Secretaire());<br>
 listePersonnes.add(new Etudiant());
@@ -319,11 +321,11 @@ public class Cercle extends Figure {<br>
 &nbsp;&nbsp;private Point centre;<br>
 &nbsp;&nbsp;private double rayon;<br>
 &nbsp;&nbsp;public Cercle() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;super(Color.<em>BLUE</em>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">super(Color.<em>BLUE</em>);</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;//...etc<br>
 &nbsp;&nbsp;}<br>
 &nbsp;&nbsp;public Cercle(Color couleur) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;super(couleur);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">super(couleur);</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;//...etc<br>
 &nbsp;&nbsp;}<br>
 }
