@@ -403,7 +403,13 @@ public class Personne {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;return nom;<br>
 &nbsp;&nbsp;}<br>
 &nbsp;&nbsp;//etc...<br>
-}<br>
+}
+</p>
+<p>
+  Puisque la méthode getNom() est finale, elle ne peut pas être redéfinie &nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
 public class Etudiant extends Personne {<br>
 &nbsp;&nbsp;private String etablissement, programme;<br>
 &nbsp;&nbsp;public String getNom() {/*NON, getNom() est finale*/<br>
@@ -446,10 +452,16 @@ Les méthodes d’accès sont de bonnes candidates à être finales.
 </p>
 <p class="code java">
   <span class="langage">Java</span>
-public <span class="en-evidence">final</span>class Manager extends Employe {<br>
+public <span class="en-evidence">final</span> class Manager extends Employe {<br>
 &nbsp;&nbsp;//etc...<br>
-}<br>
-public class Directeur extends Manager { /*NON, Manager est finale*/<br>
+}
+</p>
+<p>
+  Puisque la classe Manager est finale, elle ne peut pas être étendue&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Directeur extends Manager { /*<span class="en-evidence">NON</span>, Manager est finale*/<br>
 }
 </p>
 <p>
