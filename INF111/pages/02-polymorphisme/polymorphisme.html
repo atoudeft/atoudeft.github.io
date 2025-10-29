@@ -101,7 +101,7 @@ public class Etudiant extends Personne {<br>
   <span class="langage">Java</span>
 Personne p1 = new Personne();<br>
 String str = "…";<br>
-p1.demenage(str); //<span class="en-evidence">appelle demenage() de Personne (modifie la ville de p1).</span>
+p1.demenage(str); /*<span class="en-evidence">appelle demenage() de Personne (modifie la ville de p1).</span>*/
 </p>
 <p>
   <strong
@@ -117,7 +117,7 @@ p1.demenage(str); //<span class="en-evidence">appelle demenage() de Personne (mo
   <span class="langage">Java</span>
   Etudiant e1 = new Etudiant();<br>
 String str = "…";<br>
-e1.demenage(str); //<span class="en-evidence">appelle demenage() de Etudiant (modifie l’établissement de e1).</span>
+e1.demenage(str); /*<span class="en-evidence">appelle demenage() de Etudiant (modifie l’établissement de e1).</span>*/
 </p>
 <p>
   <strong
@@ -168,7 +168,7 @@ e1.demenage(str); //<span class="en-evidence">appelle demenage() de Etudiant (mo
   <span class="langage">Java</span>
 Personne p1 = new Etudiant();<br>
 String str = "…";<br>
-p1.demenage(str); //<span class="en-evidence">appelle demenage() de Etudiant (modifie l’établissement de p1).</span>
+p1.demenage(str); /*<span class="en-evidence">appelle demenage() de Etudiant (modifie l’établissement de p1).</span>*/
 </p>
 <p>
   Les méthodes virtuelles, telle que <strong><em>demenage()</em></strong
@@ -193,7 +193,7 @@ tabPersonnes[2] = new Manager();<br>
 tabPersonnes[3] = new Stagiaire();<br>
 //...etc<br>
 for (int i=0; i&lt; tabPersonnes.length; i++) {<br>
-&nbsp;&nbsp;tabPersonnes[i].demenage(...); //<span class="en-evidence">choisit demenage() en fonction du type de l'objet à la case i.</span><br>
+&nbsp;&nbsp;tabPersonnes[i].demenage(...); /*<span class="en-evidence">choisit demenage() en fonction du type de l'objet à la case i.</span>*/<br>
 }
 </p>
 <h2 id="sec-methodes-non-polymorphiques">
@@ -219,7 +219,7 @@ for (int i=0; i&lt; tabPersonnes.length; i++) {<br>
   <span class="langage">Java</span>
 Personne p1 = new Etudiant();<br>
 String str;<br>
-str = p1.getEtablissement(); //<span class="en-evidence">NON : pas de méthode getEtablissement() dans la classe Personne.</span>
+str = p1.getEtablissement(); /*<span class="en-evidence">NON : pas de méthode getEtablissement() dans la classe Personne.</span>*/
 </p>
 <p>
   Il faudrait convertir la référence vers la classe fille, après s’être assuré
@@ -301,7 +301,7 @@ public class Rectangle extends Figure {<br>
 <p class="code java">
   <span class="langage">Java</span>
 Figure fig = ...;<br>
-double surface = fig.getSurface();//<span class="en-evidence">NON : pas de méthode getSurface() dans la classe Figure.</span>
+double surface = fig.getSurface();/*<span class="en-evidence">NON : pas de méthode getSurface() dans la classe Figure.</span>*/
 </p>
 <p>
   En particulier, si on a une liste de figures dans un tableau ou une collection
