@@ -258,7 +258,7 @@ main#content .sec-num {
   background:  transparent !important;
   border:      0           !important;
   padding:     0           !important;
-  color:       var(--java-text) !important;
+  color:       #F8F8F2         !important;
   white-space: pre         !important;
   /* Garantir que les couleurs inline ne sont PAS écrasées */
 }
@@ -271,7 +271,7 @@ main#content .java-block [style*="color"] {
 }
 /* Et on redéfinit chaque token avec une règle CSS à haute spécificité */
 main#content .java-block .jkw  { color: var(--jkw)  !important; }
-main#content .java-block .jtype{ color: var(--jtype) !important; }
+main#content .java-block .jtype{ color: #F8F8F2 !important; }  /* types = white like plain text */
 main#content .java-block .jstr { color: var(--jstr)  !important; }
 main#content .java-block .jnum { color: var(--jnum)  !important; }
 main#content .java-block .jcmt { color: var(--jcmt)  !important; font-style: italic !important; }
@@ -380,7 +380,7 @@ main#content table.code-table pre {
 /* Tokens dans les tableaux code */
 main#content .code-table [style*="color"] { color: unset !important; }
 main#content .code-table .jkw  { color: var(--jkw)  !important; }
-main#content .code-table .jtype{ color: var(--jtype) !important; }
+main#content .code-table .jtype{ color: #F8F8F2 !important; }
 main#content .code-table .jstr { color: var(--jstr)  !important; }
 main#content .code-table .jnum { color: var(--jnum)  !important; }
 main#content .code-table .jcmt { color: var(--jcmt)  !important; font-style: italic !important; }

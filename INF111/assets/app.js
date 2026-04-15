@@ -128,9 +128,9 @@ function highlightJava(raw){
     }
     out+=raw[i]; i++;
   }
+  // Only color strict Java keywords — everything else stays white
   out = out.replace(/\b([A-Za-z_][A-Za-z0-9_]*)\b/g, m => {
     if (JAVA_KW.has(m)) return `<span class="jkw">${m}</span>`;
-    if (/^[A-Z][a-zA-Z0-9_]+$/.test(m)) return `<span class="jtype">${m}</span>`;
     return m;
   });
   out = out.replace(/(@[A-Za-z]+)/g, '<span class="jann">$1</span>');
