@@ -1,0 +1,186 @@
+<p>
+  Il arrive souvent qu’un objet <strong><em>A</em></strong> veuille être informé
+  qu’un objet <strong><em>B</em></strong> a changé pour qu’il réagisse à ce
+  changement.
+</p>
+<p>
+  Par exemple, un personnage d’un jeu est un objet en mémoire dont la position
+  et l’énergie change lorsqu’il fait des actions (bouge, court, …).
+</p>
+<p>
+  Un objet <strong><em>vue1</em></strong> s’occupe d’afficher le personnage sur
+  une scène à l’écran. Cet objet a besoin de redessiner le personnage à sa
+  nouvelle position chaque fois qu’il change de place (bouge, court, ...).
+</p>
+<p>
+  Un autre objet <strong><em>vue2</em></strong> s’occupe d’afficher la quantité
+  d’énergie qui reste au personnage. Cet objet a besoin de mettre à jour la
+  quantité affichée chaque fois que le personnage agit (bouge, court, ...).
+</p>
+<p>
+  Comment demander à <strong><em>vue1</em></strong> et
+  <strong><em>vue2</em></strong> de se rafraichir lorsque le personnage change ?
+</p>
+<p><strong>Première solution&nbsp;: couplage fort</strong></p>
+<p>
+  Cette solution est <strong>inacceptable</strong>. Le personnage doit connaitre
+  <strong><em>vue1</em></strong> et <strong><em>vue2</em></strong> et détenir
+  des références vers eux afin de les informer des changements.
+</p>
+<p>
+  Le couplage fort établit des liens forts entre les objets. Il devient alors
+  difficile de faire évoluer un objet sans influencer les autres. Il est aussi
+  difficile de tester les objets de manière isolée les uns des autres.
+</p>
+<p><strong>Deuxième solution&nbsp;: couplage faible</strong></p>
+<p>
+  Le personnage ne doit pas connaitre <strong><em>vue1</em></strong> et
+  <strong><em>vue2</em></strong> et doit pourvoir évoluer sans se soucier de
+  quel(s) objet(s) est/sont intéressé(s) par ses changements.
+</p>
+<p>
+  C’est ce que permet de réaliser le <strong>patron de conception</strong>
+  <strong><em>Observer</em></strong
+  >. Ce patron définit 2 types d’objets&nbsp;:
+</p>
+<ul>
+  <li>
+    <strong>Les observables</strong>&nbsp;: objets dont le changement d’état
+    peut intéresser d’autres objets (les observateurs);
+  </li>
+  <li>
+    <strong>Les observateurs</strong>&nbsp;: objets qui observent les objets
+    observables et réagissent à leurs changements d’états.
+  </li>
+</ul>
+<p>
+  Pour concrétiser ce patron, on définit une interface qui représente les
+  observateurs et une classe (abstraite) qui représente les observables&nbsp;:
+</p>
+<p><strong>public interface Observateur {</strong></p>
+<p>
+  <strong>
+    //Permet à l'observateur de se mettre à jour lorsqu'il est notifié
+    par</strong
+  >
+</p>
+<p><strong> //l'objet Observable qu'il observe :</strong></p>
+<p><strong> public void seMettreAJour(Observable observable);</strong></p>
+<p><strong>}</strong></p>
+<p><strong>public abstract class Observable {</strong></p>
+<p><strong> //Liste des objets qui observent cet Observable :</strong></p>
+<p>
+  <strong>
+    private ArrayList&lt;Observateur&gt; observateurs = new
+    ArrayList&lt;&gt;();</strong
+  >
+</p>
+<p><strong> </strong></p>
+<p>
+  <strong> //Ajoute un observateur à la liste, s'il n'y est pas déjà :</strong>
+</p>
+<p>
+  <strong> public boolean ajouterObservateur(Observateur observateur) {</strong>
+</p>
+<p><strong> boolean ajoutEffectue;</strong></p>
+<p><strong> </strong></p>
+<p><strong> if (this.observateurs.contains(observateur))</strong></p>
+<p><strong> ajoutEffectue = false;</strong></p>
+<p><strong> else {</strong></p>
+<p><strong> this.observateurs.add(observateur);</strong></p>
+<p><strong> ajoutEffectue = true;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> return ajoutEffectue;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> </strong></p>
+<p><strong> //Demande à tous les observateurs de se mettre à jour :</strong></p>
+<p><strong> public void notifierObservateurs() {</strong></p>
+<p>
+  <strong>
+    ListIterator&lt;Observateur&gt; iterateur =
+    this.observateurs.listIterator();</strong
+  >
+</p>
+<p><strong> while (iterateur.hasNext())</strong></p>
+<p><strong> iterateur.next().seMettreAJour(this);</strong></p>
+<p><strong> }</strong></p>
+<p><strong>}</strong></p>
+<p>
+  <strong>Remarque :</strong> cette classe et cette interface sont définies dans
+  le <strong>TP 2</strong> (<strong><em>MonObservable</em></strong> et
+  <strong><em>MonObserver</em></strong> du package
+  <strong><em>observer</em></strong
+  >)
+</p>
+<p>
+  Les classes des observateurs (objets <strong><em>vue1</em></strong> et
+  <strong><em>vue2</em></strong
+  >, par exemple) doivent implémenter l’interface
+  <strong><em>Observateur</em></strong> et définir leur réaction au changement
+  de l’observable dans la méthode <strong><em>seMettreAJour()</em></strong
+  >&nbsp;:
+</p>
+<p><strong>public class ClasseVue1 implements Observateur {</strong></p>
+<p><strong> //...attributs et méthodes</strong></p>
+<p><strong> </strong></p>
+<p><strong> public void seMettreAJour(Observable observable);</strong></p>
+<p><strong> </strong></p>
+<p><strong> if (observable instanceof Personnage) {</strong></p>
+<p><strong> Personnage p = (Personnage)observable;</strong></p>
+<p>
+  <strong>
+    //chercher la position de p - p.getPosition() - et l’afficher</strong
+  >
+</p>
+<p><strong> }</strong></p>
+<p><strong> }</strong></p>
+<p><strong>public class ClasseVue2 implements Observateur {</strong></p>
+<p><strong> //...attributs et méthodes</strong></p>
+<p><strong> </strong></p>
+<p><strong> public void seMettreAJour(Observable observable);</strong></p>
+<p><strong> </strong></p>
+<p><strong> if (observable instanceof Personnage) {</strong></p>
+<p><strong> Personnage p = (Personnage)observable;</strong></p>
+<p>
+  <strong> //chercher l’énergie de p - p.getEnergie() - et l’afficher.</strong>
+</p>
+<p><strong> }</strong></p>
+<p><strong> }</strong></p>
+<p>
+  La classe du personnage étend la classe
+  <strong><em>Observable</em></strong> (pour rendre les personnages
+  observables)&nbsp;:
+</p>
+<p><strong>public class Personnage extends Observable {</strong></p>
+<p><strong> //...attributs et méthodes</strong></p>
+<p><strong> </strong></p>
+<p><strong> public void bouge() { </strong></p>
+<p><strong> //changer la position et l’énergie...</strong></p>
+<p><strong> //Informer les observateurs&nbsp;:</strong></p>
+<p><strong>this.notifierObservateurs();</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public void court() { </strong></p>
+<p><strong> //changer la position et l’énergie...</strong></p>
+<p><strong> //Informer les observateurs&nbsp;:</strong></p>
+<p><strong>this.notifierObservateurs();</strong></p>
+<p><strong> }</strong></p>
+<p><strong>}</strong></p>
+<p>On peut maintenant connecter les observateurs à l’observable&nbsp;:</p>
+<p>Personnage personnage = new Personnage();</p>
+<p>ClasseVue1 vue1 = new ClasseVue1();</p>
+<p>ClasseVue1 vue2 = new ClasseVue2();</p>
+<p>personnage.ajouterObservateur(vue1);</p>
+<p>personnage.ajouterObservateur(vue2);</p>
+<p>
+  À partir de là, le personnage peut évoluer à sa guise. À chacun de ses
+  changements, les observateurs <strong><em>vue1</em></strong> et
+  <strong><em>vue2</em></strong> sont alertés et réagissent en conséquence,
+  chacun à sa manière.
+</p>
+<p>
+  Signalons, pour terminer, que le <strong>modèle de délégation</strong>,
+  utilisé dans la gestion des événements en programmation graphique avec
+  <strong><em>Swing</em></strong
+  >, est une implémentation du patron <strong><em>Observer</em></strong
+  >.
+</p>

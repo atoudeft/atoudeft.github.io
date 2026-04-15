@@ -1,0 +1,388 @@
+<h2 id="sec-introduction">Introduction</h2>
+<p>
+  <a id="_Toc164275380"></a><em>Des objets, des objets, encore des objets …</em>
+</p>
+<p>
+  Nous sommes entourés d’objets&nbsp;: tables, chaises, ordinateurs, stylos,
+  voitures, immeubles, …
+</p>
+<p>Nous-mêmes, comme personnes, nous sommes des objets.</p>
+<p>
+  Certains objets sont difficiles à voir ou à toucher&nbsp;: des molécules, des
+  planètes, des ouragans, ….
+</p>
+<p>
+  D’autres encore n’ont pas d’existence réelle et palpable&nbsp;: des
+  personnages de jeux vidéo, des formules mathématiques, des idées, des tâches,
+  des comptes bancaires, des rendez-vous médicaux, …
+</p>
+<p>
+  Si on regarde de plus près, les objets sont décrits par des caractéristiques
+  ou <strong>attributs</strong>&nbsp;: une voiture est caractérisée par la
+  marque, le modèle, l’année de construction, la couleur, la puissance du
+  moteur, etc… Un compte bancaire est caractérisé par son numéro, les
+  informations sur son propriétaire, le solde, le type de compte, etc…
+</p>
+<p>
+  Les attributs décrivent les objets, ou plus exactement l’<strong>état</strong>
+  des objets. La figure suivante montre des exemples d’objets avec leurs
+  attributs&nbsp;:
+</p>
+<p><strong>Voiture</strong></p>
+<p><strong>numéro plaque</strong> : Z67 LM8</p>
+<p><strong>marque</strong>&nbsp;: Toyota</p>
+<p><strong>modèle</strong>&nbsp;: Corolla</p>
+<p><strong>année</strong> <strong>construction</strong>&nbsp;: 2016</p>
+<p><strong>consommation au 100kms</strong>&nbsp;: 8.4 litres</p>
+<p>
+  <strong>quantité de gaz dans le réservoir</strong>&nbsp;: 35.2 litres litres
+</p>
+<p><strong>Programmeur</strong></p>
+<p><strong>courriel</strong> : Paul.Dupond@etsmtl.ca</p>
+<p><strong>nom</strong>&nbsp;: Paul Dupond</p>
+<p><strong>langage</strong>&nbsp;: Java</p>
+<p><strong>Compte bancaire</strong></p>
+<p><strong>numéro</strong> : AXV77658J</p>
+<p><strong>nom</strong> <strong>titulaire</strong>&nbsp;: Annie Duval</p>
+<p><strong>solde</strong>&nbsp;: 6780.55 $</p>
+<p><strong>Point2D</strong></p>
+<p><strong>abscisse</strong> : 5.8</p>
+<p><strong>ordonnée</strong>&nbsp;: 4.0</p>
+<p>Figure 1. Exemples d’objets avec leurs attributs</p>
+<p>
+  Les objets possèdent un <strong>comportement</strong>&nbsp;: une voiture peut
+  avancer, reculer, stationner, … Un compte bancaire peut être crédité, débité,
+  fermé, … Un étudiant peut s’inscrire à des cours, passer un examen, imprimer
+  son bulletin, …
+</p>
+<p>
+  Par leur comportement, les objets peuvent agir sur d’autres objets et affecter
+  leur état&nbsp;: une personne peut faire avancer une voiture, un client peut
+  créditer son compte, un enseignant peut attribuer une note à un étudiant pour
+  un cours donné, etc…
+</p>
+<p>
+  De manière générale, les
+  <strong>objets collaborent pour réaliser des tâches</strong>.
+</p>
+<p>
+  La programmation orientée objet s’inspire du monde réel. Un programme orienté
+  objet est composé d’objets qui collaborent pour réaliser les fonctionnalités
+  du programme.
+  <strong>Chaque objet du programme possède son état et son comportement</strong
+  >.
+</p>
+<h2 id="sec-classes"><a id="_Toc211689661"></a>Classes</h2>
+<p>
+  Un objet est donc une donnée structurée qui regroupe ensemble plusieurs
+  données plus simples appelées attributs de l’objet.
+</p>
+<p>
+  Nous disposons déjà de types de données primitifs pour créer et manipuler des
+  données simples ou élémentaires&nbsp;: nombres entiers, nombres réels,
+  caractères et booléens.
+</p>
+<p>
+  Cependant, le langage de programmation, <em>Java</em> ou autre, ne fournit pas
+  de types de données pour créer tous les objets possibles et imaginables.
+  <strong>Nous devons créer nous-mêmes</strong> les types de données nécessaires
+  pour créer et manipuler les objets dont on a besoin, tels que voitures,
+  programmeurs, comptes bancaires, …
+</p>
+<p>
+  Les types de données qui permettent de créer des objets s’appellent des
+  <strong>classes</strong>. Les classes sont des modèles qui décrivent la
+  structure (c’est à dire les attributs) et le comportement des objets.
+</p>
+<p>
+  Ainsi, une classe <strong>Voiture</strong> va décrire la structure et le
+  comportement des objets de type voiture, une classe
+  <strong>CompteBancaire</strong> va décrire la structure et le comportement des
+  objets de type compte bancaire, etc.
+</p>
+<p>
+  Voici les classes qui permettent de créer des objets tels que ceux décrits par
+  la figure 1&nbsp;:
+</p>
+<p>//Fichier : Voiture.java</p>
+<p>public <strong>class Voiture</strong> {</p>
+<p>String numeroPlaque;</p>
+<p>String marque;</p>
+<p>String modele;</p>
+<p>int annee;</p>
+<p>double consommation;</p>
+<p>double quantiteGazReservoir;</p>
+<p>}</p>
+<p>//Fichier : Point2D.java</p>
+<p>public <strong>class Point2D</strong> {</p>
+<p>double abscisse;</p>
+<p>double ordonnee;</p>
+<p>}</p>
+<p>//Fichier : Programmeur.java</p>
+<p>public <strong>class Programmeur</strong> {</p>
+<p>String courriel;</p>
+<p>String nom;</p>
+<p>String langage;</p>
+<p>}</p>
+<p>//Fichier : CompteBancaire.java</p>
+<p>public <strong>class CompteBancaire</strong> {</p>
+<p>String numero;</p>
+<p>String nomTitulaire;</p>
+<p>double solde;</p>
+<p>}</p>
+<p>
+  Notez-bien que chaque classe est publique (<em>public</em>) et est définie
+  dans son propre fichier. Ce
+  <strong>fichier doit porter le même nom que la classe</strong>, en respectant
+  la casse des caractères.
+</p>
+<h2 id="sec-valeurs-et-references">
+  <a id="_Toc164275382"></a><a id="_Toc211689662"></a>Valeurs et références
+</h2>
+<p>
+  On peut maintenant déclarer, dans un programme, des variables de ces classes
+  comme, par exemple&nbsp;:
+</p>
+<p>Voiture v1;</p>
+<p>
+  Cependant, la déclaration de cette variable
+  <strong>ne crée pas d’objet</strong>. Cette variable est une
+  <strong>référence</strong> destinée à contenir l’adresse mémoire d’un objet.
+  C’est la principale distinction entre une variable d’un type primitif et une
+  variable de type objet&nbsp;: une variable de type primitif contient la valeur
+  de la donnée primitive alors qu’une variable de type objet contient l’adresse
+  mémoire d’un objet.
+</p>
+<p>int a;</p>
+<p><strong>v1</strong></p>
+<p><strong>a</strong></p>
+<p>Voiture v1;</p>
+<p>
+  <strong>Valeur d’une donnée de type <em>int</em>.</strong>
+</p>
+<p>
+  <strong>Adresse mémoire d’un objet (l’objet n’est pas encore créé).</strong>
+</p>
+<p>Figure 2. Valeurs et références</p>
+<h2 id="sec-instanciation">
+  <a id="_Toc164275383"></a><a id="_Toc211689663"></a>Instanciation
+</h2>
+<p>
+  La création d’un objet se fait par
+  <strong>instanciation d’une classe</strong>. L’instanciation est le mécanisme
+  qui permet de créer, à partir d’une classe, un objet de cette classe.
+</p>
+<p>
+  En <em>Java</em>, l’instanciation se fait à l’aide de l’opérateur
+  <strong><em>new</em></strong
+  >&nbsp;:
+</p>
+<p><strong>new Voiture();</strong></p>
+<p>
+  Bien évidemment, il convient de référencer l’objet par une variable afin de
+  pouvoir l’utiliser&nbsp;:
+</p>
+<p>v1 = new Voiture();</p>
+<p>
+  L’adresse mémoire de l’objet créé est ainsi stockée dans la variable
+  <em>v1</em>. On dit que
+  <strong><em>v1</em> référence l’objet</strong>&nbsp;(ou que
+  <strong>v1 pointe sur l’objet</strong>) :
+</p>
+<p><strong>0x0012d2e4</strong></p>
+<p><strong>0x0012d2e4</strong></p>
+<p><strong>v1</strong></p>
+<p>numeroPlaque&nbsp;:</p>
+<p>marque&nbsp;:</p>
+<p>modele&nbsp;:</p>
+<p>annee :</p>
+<p>consommation&nbsp;:</p>
+<p><strong>v1</strong></p>
+<p><strong>Objet</strong></p>
+<p><strong>Voiture</strong></p>
+<p><strong>Objet </strong></p>
+<p><strong>Voiture</strong></p>
+<p><strong> (a) (b) </strong></p>
+<p>
+  Figure 3. La variable <em>v1</em> référence un objet de type <em>Voiture</em>.
+</p>
+<p>
+  La figure 3.a montre la représentation en mémoire d’un objet de type
+  <em>Voiture</em> référencé par une variable <em>v1</em>. Les cases de la
+  mémoire ont des numéros. Ces numéros sont des adresses mémoire. L’adresse de
+  l’objet <em>Voiture</em> est l’adresse de la première case de l’espace qui lui
+  a été alloué. Cette adresse est stockée dans la case allouée à la variable v1.
+  C’est comme ça que la variable <em>v1</em> référence l’objet <em>Voiture</em>.
+  Notez que, par convenance, les adresses mémoire sont écrites dans le système
+  hexadécimal (d’où le <strong>0x</strong> devant l’adresse).
+</p>
+<p>
+  La représentation de la figure 3.a est fidèle de ce qui se passe en mémoire
+  mais, on s’y perd rapidement dès qu’on a plusieurs variables et plusieurs
+  objets à représenter. Lors de la mise au point d’un programme, on lui préfère
+  souvent la représentation de la figure 3.b. La flèche qui va de la case de
+  <em>v1</em> vers l’objet signifie que <em>v1</em> référence l’objet. Les
+  valeurs réelles des adresses mémoire ne nous intéressent pas ici et n’ont
+  aucune incidence sur notre code.
+</p>
+<p>
+  Comme pour les types de données primitifs, la classe permet au compilateur de
+  connaître&nbsp;:
+</p>
+<ol>
+  <li>
+    La taille de l’espace mémoire alloué à un objet instance de la classe;
+  </li>
+  <li>Les valeurs possibles;</li>
+  <li>Les opérations possibles.</li>
+</ol>
+<p>Voici d’autres exemples de déclarations de variables objets&nbsp;:</p>
+<p>Programmeur prog1, prog2;</p>
+<p>Point2D m1, m2, m3;</p>
+<p>CompteBancaire cpt;</p>
+<h2 id="sec-valeurs-par-defaut-des-attributs">
+  <a id="_Toc211689664"></a>Valeurs par défaut des attributs
+</h2>
+<p>
+  En Java, les attributs d’un objet ont les valeurs suivantes par défaut&nbsp;:
+</p>
+<ul>
+  <li>
+    <em>0</em>, pour les attributs de type numérique (nombres entiers, nombres
+    réels et caractères);
+  </li>
+  <li>
+    <em>null</em>, pour les attributs de type objet (y compris les tableaux et
+    les chaînes de caractères);
+  </li>
+  <li>
+    <em>false</em>, pour les attributs de type booléen (<em>boolean</em>);
+  </li>
+</ul>
+<h2 id="sec-acces-aux-attributs-loperateur-point">
+  <a id="_Toc211689665"></a>Accès aux attributs&nbsp;: l’opérateur
+  <em>point</em> (.)
+</h2>
+<p>
+  L’accès aux attributs d’un objet se fait à l’aide de l’opérateur point (.)
+  selon la syntaxe&nbsp;:
+</p>
+<p><strong>objet.attribut</strong></p>
+<p>public static void main(String[] args) {</p>
+<p>CompteBancaire cpt1 = new CompteBancaire();</p>
+<p><strong>cpt1.numero = "A1254DF65";</strong></p>
+<p><strong> cpt1.titulaire = "Annie Dupont";</strong></p>
+<p><strong> cpt1.solde = 2560;</strong></p>
+<p><strong> cpt1.solde = cpt1.solde - 150;</strong></p>
+<p>
+  System.out.println("Solde du compte : " + <strong>cpt1.solde</strong> + "$");
+</p>
+<p>}</p>
+<h2 id="sec-encapsulation"><a id="_Toc211689666"></a>Encapsulation</h2>
+<p>
+  La manipulation directe, dans un programme, des attributs d’un objet pose
+  <strong>beaucoup de problèmes</strong> dont voici les deux principaux&nbsp;:
+</p>
+<ol>
+  <li>
+    <strong>Comment contrôler les opérations sur les attributs&nbsp;?</strong>
+  </li>
+</ol>
+<p>
+  Par exemple, comment empêcher d’affecter des valeurs négatives au solde d’un
+  compte bancaire ? ou comment prélever systématiquement des frais d’opération
+  de 1$ chaque fois que le solde du compte est inférieur à 1000$ ? …
+</p>
+<p>
+  Comment empêcher de modifier directement la quantité de gaz dans le réservoir
+  d’une voiture, puisque cette dernière doit diminuer uniquement lorsque la
+  voiture roule et augmenter uniquement lorsqu’on fait le plein ?
+</p>
+<ol>
+  <li>
+    <strong
+      >Comment changer la structure des objets sans avoir à modifier tous les
+      programmes qui les utilisent ?</strong
+    >
+  </li>
+</ol>
+<p>
+  La structure des objets est appelée à évoluer au fur et à mesure qu’on
+  améliore les programmes et qu’on ajoute des fonctionnalités. Il est important
+  de ne pas obliger les développeurs à modifier leur code à chaque fois qu’on
+  modifie la structure des objets.
+</p>
+<p>
+  La solution à ces problèmes tient en un seul mot&nbsp;:
+  <strong>encapsulation</strong>. C’est un concept fondamental de la
+  programmation orientée objet.
+</p>
+<p>
+  L’encapsulation consiste simplement à rendre privés les attributs d’un objet.
+  De cette façon, l’objet cache ses attributs au monde extérieur et il n’est
+  plus possible d’y accéder dans un programme.
+</p>
+<p>
+  En Java, pour rendre un attribut privé, on utilise le mot-clé
+  <strong>private</strong>&nbsp;:
+</p>
+<p>//Fichier : CompteBancaire.java</p>
+<p>public class CompteBancaire {</p>
+<p><strong>private</strong> String numero;</p>
+<p><strong>private</strong> String nomTitulaire;</p>
+<p><strong>private</strong> double solde;</p>
+<p>}</p>
+<p>
+  Maintenant que les attributs sont privés, il n’est plus possible d’y accéder
+  directement dans un programme&nbsp;:
+</p>
+<p>public static void main(String[] args) {</p>
+<p>CompteBancaire cpt1 = new CompteBancaire();</p>
+<p>
+  <strong><s>cpt1.numero = "A1254DF65"</s>;</strong>
+</p>
+<p>
+  <strong> <s>cpt1.titulaire = "Annie Dupont"</s>;</strong>
+</p>
+<p>
+  <strong> <s>cpt1.solde = 2560</s>;</strong>
+</p>
+<p>
+  <strong> <s>cpt1.solde = cpt1.solde - 150</s>;</strong>
+</p>
+<p>
+  System.out.println("Solde du compte : " + <strong><s>cpt1.solde</s></strong> +
+  "$");
+</p>
+<p>}</p>
+<p>
+  Pour accéder aux attributs d’un objet en dehors de la classe, cette dernière
+  doit fournir des <strong>méthodes d’accès</strong>.
+</p>
+<h2 id="sec-methodes-dacces"><a id="_Toc211689667"></a>Méthodes d’accès</h2>
+<p>
+  En Java, pour rendre un attribut privé, on utilise le mot-clé
+  <strong>private</strong>&nbsp;:
+</p>
+<p>//Fichier : CompteBancaire.java</p>
+<p>public class CompteBancaire {</p>
+<p><strong>private</strong> String numero;</p>
+<p><strong>private</strong> String nomTitulaire;</p>
+<p><strong>private</strong> double solde;</p>
+<p><strong>public void setNumero(String nouveauNumero) {</strong></p>
+<p><strong> numero = nouveauNumero;</strong></p>
+<p><strong>}</strong></p>
+<p><strong>public void setTitulaire(String nouveauTitulaire) {</strong></p>
+<p><strong> nomTitulaire = nouveauTitulaire;</strong></p>
+<p><strong>}</strong></p>
+<p><strong>public String getNomTitulaire() {</strong></p>
+<p><strong> return nomTitulaire;</strong></p>
+<p><strong>}</strong></p>
+<p><strong>public double getSolde() {</strong></p>
+<p><strong> return solde;</strong></p>
+<p><strong>}</strong></p>
+<p>}</p>
+<p>
+  Maintenant que les attributs sont privés, il n’est plus possible d’y accéder
+  directement dans un programme&nbsp;:
+</p>

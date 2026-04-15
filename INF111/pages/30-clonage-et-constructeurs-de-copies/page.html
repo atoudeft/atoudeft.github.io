@@ -1,0 +1,283 @@
+<h2 id="sec-introduction">Introduction</h2>
+<p>
+  <em>Java</em> utilise des références pour manipuler les objets car c’est plus
+  efficace que d’utiliser des valeurs&nbsp;: les opérations telles que
+  l’affectation et la transmission et retour des objets à des méthodes se font
+  plus rapidement et à moindre coût puisque les objets ne sont pas copiés (ce
+  sont les adresses mémoires qui sont copiées).
+</p>
+<p>
+  Il arrive, cependant, qu’on veuille
+  <strong>créer des copies d’objets</strong>. Le <strong>clonage</strong> et le
+  <strong>constructeur de copies</strong> sont les deux mécanismes utilisés pour
+  cela.
+</p>
+<h2 id="sec-clonage"><a id="_Toc97249395"></a>Clonage</h2>
+<p>Cloner un objet, c’est créer une copie identique de l’objet.</p>
+<p>
+  En <em>Java</em>, la classe <strong><em>Object</em></strong> fournit la
+  méthode <strong><em>clone()</em></strong> dont hérite toute classe. On peut
+  donc cloner n’importe quel objet en utilisant sa méthode
+  <strong><em>clone()</em></strong
+  >. Sauf que la méthode <strong><em>clone()</em></strong> de la classe
+  <strong><em>Object</em></strong> n’est pas publique, elle est protégée
+  (<strong><em>protected</em></strong
+  >). Nous devons donc la redéfinir avec une version publique et faire appel à
+  la méthode <strong><em>clone()</em></strong> de la classe
+  <strong><em>Object</em></strong> en utilisant
+  <strong><em>super.clone()</em></strong
+  >.
+</p>
+<p>
+  D’autre part, le clonage est désactivé par défaut. Pour l’activer, la classe
+  doit implémenter l’interface <strong><em>Cloneable</em></strong
+  >. <strong><em>Cloneable</em></strong> est une
+  <strong
+    >interface de marquage<sup
+      ><a href="#footnote-1" id="footnote-ref-1">[1]</a></sup
+    ></strong
+  >
+  (<em>tagging interface</em>), c’est-à-dire qu’elle ne contient aucune méthode.
+  Son seul rôle est d’activer le clonage pour les objets de la classe.
+</p>
+<p>
+  Voici un exemple d’une classe <strong><em>Point</em></strong
+  >, qui représente des points dans le plan 2D, pour laquelle nous avons activé
+  le clonage et redéfini la méthode <strong><em>clone()</em></strong
+  >&nbsp;:
+</p>
+<p><strong>public class Point implements Cloneable {</strong></p>
+<p><strong> private double abscisse, ordonnee;</strong></p>
+<p><strong> public Point() {</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Point(double abscisse, double ordonnee) {</strong></p>
+<p><strong> this.abscisse = abscisse;</strong></p>
+<p><strong> this.ordonnee = ordonnee;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Point(double abscisse) {</strong></p>
+<p><strong> this.abscisse = abscisse;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> @Override</strong></p>
+<p>
+  <strong> public Object clone() throws CloneNotSupportedException {</strong>
+</p>
+<p><strong> return super.clone();</strong></p>
+<p><strong> } </strong></p>
+<p><strong> //etc...</strong></p>
+<p><strong>}</strong></p>
+<p>
+  On peut maintenant cloner des objets de type <strong><em>Point</em></strong
+  >&nbsp;:
+</p>
+<p><strong>public static void main(String[] args) {</strong></p>
+<p><strong>abscisse : 5</strong></p>
+<p><strong>ordonnee : 8</strong></p>
+<p><strong>abscisse : 5</strong></p>
+<p><strong>ordonnee : 8</strong></p>
+<p><strong>p1</strong></p>
+<p><strong>p2</strong></p>
+<p><strong>clonage</strong></p>
+<p><strong> Point p1 = new Point(5,8);</strong></p>
+<p><strong> try {</strong></p>
+<p><strong> Point p2 = (Point)p1.clone();</strong></p>
+<p><strong> } catch (CloneNotSupportedException e) {</strong></p>
+<p><strong> e.printStackTrace();</strong></p>
+<p><strong> } </strong></p>
+<p><strong>}</strong></p>
+<p>
+  Ça fonctionne très bien pour notre classe <strong><em>Point</em></strong
+  >. Cependant, la méthode <strong><em>clone()</em></strong> de la classe
+  <strong><em>Object</em></strong> effectue des
+  <strong>copies superficielles</strong> des objets. Et ce n’est pas toujours ce
+  qu’on veut.
+</p>
+<h3><a id="_Toc97249396"></a>1. Copies superficielles</h3>
+<p>
+  Faisons le même travail pour cloner des objets de type
+  <strong><em>Cercle</em></strong
+  >&nbsp;:
+</p>
+<p><strong>public class Cercle implements Cloneable {</strong></p>
+<p><strong> private Point centre;</strong></p>
+<p><strong> private double rayon;</strong></p>
+<p><strong> public Cercle() {</strong></p>
+<p><strong> centre = new Point();</strong></p>
+<p><strong> rayon = 10;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Cercle(Point c, double r) {</strong></p>
+<p><strong> centre = c;</strong></p>
+<p><strong> rayon = r;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> @Override</strong></p>
+<p>
+  <strong> public Object clone() throws CloneNotSupportedException {</strong>
+</p>
+<p><strong> return super.clone();</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Point getCentre() {</strong></p>
+<p><strong> return centre;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> //etc...</strong></p>
+<p><strong>}</strong></p>
+<p>
+  Lorsqu’on clone un cercle, la copie obtenue
+  <strong>n’est pas parfaite</strong>&nbsp;(elle est superficielle) :
+</p>
+<p><strong>abscisse : 5</strong></p>
+<p><strong>ordonnee : 8</strong></p>
+<p><strong>c1</strong></p>
+<p><strong>clonage</strong></p>
+<p><strong>centre : </strong></p>
+<p><strong>rayon : 20</strong></p>
+<p><strong>c2</strong></p>
+<p><strong>centre : </strong></p>
+<p><strong>rayon : 20</strong></p>
+<p><strong>public static void main(String[] args) {</strong></p>
+<p><strong> Point p1 = new Point(5,8);</strong></p>
+<p><strong> Cercle c1 = new Cercle(p1,20);</strong></p>
+<p><strong> try {</strong></p>
+<p><strong> Cercle c2 = (Cercle)c1.clone();</strong></p>
+<p><strong> } catch (CloneNotSupportedException e) {</strong></p>
+<p><strong> e.printStackTrace();</strong></p>
+<p><strong> }</strong></p>
+<p><strong>}</strong></p>
+<p>
+  Ici, la méthode <strong><em>clone()</em></strong> copie les 2 attributs
+  <strong><em>centre</em></strong> et <strong><em>rayon</em></strong
+  >. Sauf que <strong><em>centre</em></strong> est une référence. C’est donc
+  l’adresse mémoire qui est copiée et non pas l’objet
+  <strong><em>Point</em></strong> référencé par <strong><em>centre</em></strong
+  >. Le cercle et sa copie se partagent donc le même centre.
+</p>
+<p>
+  En réalité, la méthode <strong><em>clone()</em></strong> de la classe
+  <strong><em>Object</em></strong> effectue le clonage en copiant les valeurs
+  des attributs dans le clone. Cela fonctionne parfaitement lorsque les
+  attributs sont de types primitifs ou des <em>String</em> (car les objets
+  <em>String</em> sont inaltérables). Dès que au moins un des attributs n’est
+  pas primitif ni <em>String</em>, il faut faire un effort supplémentaire pour
+  créer des <strong>copies profondes</strong>.
+</p>
+<h3>2. <a id="_Toc97249397"></a>Copies profondes</h3>
+<p>
+  Une copie profonde est une copie complète de l’objet&nbsp;: l’objet et sa
+  copie ne se partagent aucun objet en commun.
+</p>
+<p>
+  Pour réaliser des copies profondes, la méthode
+  <strong><em>clone()</em></strong> de notre classe doit&nbsp;:
+</p>
+<ol>
+  <li>
+    Appeler <strong><em>super.clone()</em></strong> pour obtenir une copie
+    superficielle;
+  </li>
+  <li>
+    Cloner individuellement tous les attributs qui ne sont pas primitif ou de
+    type <em>String</em>. Cela suppose que les objets attributs sont eux aussi
+    clonables.
+  </li>
+</ol>
+<p>
+  Voici la bonne version de la méthode <strong><em>clone()</em></strong> pour
+  cloner des cercles (ça suppose qu’on peut cloner des points)&nbsp;:
+</p>
+<p><strong>public class Cercle implements Cloneable {</strong></p>
+<p><strong> private Point centre;</strong></p>
+<p><strong> private double rayon;</strong></p>
+<p><strong> public Cercle() {</strong></p>
+<p><strong> centre = new Point();</strong></p>
+<p><strong> rayon = 10;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Cercle(Point c, double r) {</strong></p>
+<p><strong> centre = c;</strong></p>
+<p><strong> rayon = r;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> @Override</strong></p>
+<p>
+  <strong> public Object clone() throws CloneNotSupportedException {</strong>
+</p>
+<p><strong> Cercle copie = (Cercle)super.clone();</strong></p>
+<p><strong> copie.centre = (Point)this.centre.clone();</strong></p>
+<p><strong> return copie;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> //etc...</strong></p>
+<p><strong>}</strong></p>
+<h2 id="sec-constructeurs-de-copies">
+  <a id="_Toc97249398"></a>Constructeurs de copies
+</h2>
+<p>
+  Un constructeur de copies réalise lui aussi des copies d’objets. Le principe
+  est de transmettre à ce constructeur un objet qu’il s’occupe de copier dans
+  l’instance qu’il crée.
+</p>
+<p>
+  Voici un exemple de constructeur de copies de la classe
+  <strong><em>Point</em></strong
+  >&nbsp;:
+</p>
+<p><strong>public class Point {</strong></p>
+<p><strong> private double abscisse, ordonnee;</strong></p>
+<p><strong> public Point() {</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Point(double abscisse, double ordonnee) {</strong></p>
+<p><strong> this.abscisse = abscisse;</strong></p>
+<p><strong> this.ordonnee = ordonnee;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Point(double abscisse) {</strong></p>
+<p><strong> this.abscisse = abscisse;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> //Constructeur de copies&nbsp;:</strong></p>
+<p><strong>public Point(Point original) {</strong></p>
+<p><strong> this.abscisse = original.abscisse;</strong></p>
+<p><strong> this.ordonnee = original.ordonnee;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> //etc...</strong></p>
+<p><strong>}</strong></p>
+<p>Qu’on peut utiliser pour créer des copies de points&nbsp;:</p>
+<p><strong>public static void main(String[] args) {</strong></p>
+<p><strong> Point p1 = new Point(5,8);</strong></p>
+<p><strong> Point p2 = new Point(p1);</strong></p>
+<p><strong>}</strong></p>
+<p>Essayons de faire la même chose avec les cercles&nbsp;:</p>
+<p><strong>public class Cercle {</strong></p>
+<p><strong> private Point centre;</strong></p>
+<p><strong> private double rayon;</strong></p>
+<p><strong> public Cercle() {</strong></p>
+<p><strong> centre = new Point();</strong></p>
+<p><strong> rayon = 10;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Cercle(Point c, double r) {</strong></p>
+<p><strong> centre = c;</strong></p>
+<p><strong> rayon = r;</strong></p>
+<p><strong> }</strong></p>
+<p><strong> public Cercle(Cercle original) {</strong></p>
+<p>
+  <strong> <s>this.centre = original.centre;</s> //(1)</strong>
+</p>
+<p><strong> this.centre = new Point(original.centre); //(2)</strong></p>
+<p><strong> this.rayon = original.rayon;</strong></p>
+<p><strong> } </strong></p>
+<p><strong> //etc...</strong></p>
+<p><strong>}</strong></p>
+<p>
+  L’instruction <strong>(1) </strong>est barrée car elle est fausse. Elle ne
+  copie que l’adresse mémoire du centre (la copie du cercle est donc
+  superficielle). L’instruction doit être remplacée par l’instruction
+  <strong>(2)</strong> qui crée une copie du centre à l’aide du constructeur de
+  copies de la classe <strong><em>Point</em></strong
+  >.
+</p>
+<ol>
+  <li id="footnote-1">
+    <p>
+      Il existe quelques interfaces de marquage dans la bibliothèque
+      <em>Java</em>. <strong><em>Cloneable</em></strong> et
+      <strong><em>Serializable</em></strong
+      >, utilisée dans les flux d’entrées/sorties, sont parmi les plus
+      utilisées. <strong><em>Serializable</em></strong> sert à activer le
+      mécanisme de sérialisation pour des objets.
+      <a href="#footnote-ref-1">↑</a>
+    </p>
+  </li>
+</ol>

@@ -1,0 +1,182 @@
+<h2 id="sec-introduction"><a id="_Toc188272038"></a>Introduction</h2>
+<p>
+  Un tableau est une structure de données composée de cases ou cellules ou
+  éléments contenant des données de même type et de même nature.
+</p>
+<p>
+  Le tableau est identifié par un nom qui permet ainsi d’accéder à toutes les
+  données du tableau.
+</p>
+<p>
+  Les cases du tableau possèdent chacune un numéro appelé
+  <strong>indice</strong> qui permet de les distinguer les unes des autres. En
+  Java, la première case possède toujours l’indice 0 (figure 1).
+</p>
+<p><img src="./assets/img-1776253817431-mhoy6gurmmm.png" /></p>
+<p>
+  Figure 1. Tableau <em>tabNotes</em> contenant 10 cases de type
+  <em>double</em>.
+</p>
+<h2 id="sec-creation"><a id="_Toc188272039"></a>Création</h2>
+<h3><a id="_Toc188272040"></a>1. Déclaration</h3>
+<p>
+  En Java, la déclaration d’un tableau se fait d’une des 2 façons
+  suivantes&nbsp;:
+</p>
+<p>double[] tabNotes;</p>
+<p>ou</p>
+<p>double tabNotes[];</p>
+<p>
+  La déclaration crée la variable de type tableau
+  <strong>mais ne crée pas de tableau</strong>.
+</p>
+<h3><a id="_Toc188272041"></a>2. Instanciation</h3>
+<p>
+  Un tableau est un objet. Sa création se fait donc à l’aide de l’opérateur
+  <strong>new</strong>&nbsp;:
+</p>
+<p>tabNotes = <strong>new double[35]</strong>;</p>
+<p>
+  Dans cet exemple, <strong>tabNotes</strong> référence un tableau de 35 cases
+  de type <em>double</em> indexées de 0 à 34.
+</p>
+<p>
+  La taille du tableau (nombre de cases) est spécifiée à la création du tableau
+  et <strong>ne peut plus changer</strong>.
+</p>
+<p>
+  Un tableau possède un attribut public <strong>length</strong> qui contient la
+  taille du tableau. Ainsi, <strong>tabNotes.length</strong> désigne la taille
+  du tableau <strong>tabNotes</strong>.
+</p>
+<p>
+  La taille du tableau peut être une valeur définie à l’exécution. Par
+  exemple&nbsp;:
+</p>
+<p>int nbNotes;</p>
+<p>System.out.print("Combien de notes avez-vous ? ");</p>
+<p>nbNotes = clavier.nextInt();</p>
+<p>tabNotes = new double[<strong>nbNotes</strong>];</p>
+<p>
+  où <strong>clavier</strong> est l’objet de type
+  <strong>Scanner</strong> permettant de lire au clavier (tel que vu en classe).
+</p>
+<h3><a id="_Toc188272042"></a>3. Initialisation</h3>
+<p>
+  Il est possible de créer un tableau en fournissant ses données initiales au
+  lieu de fournir la taille&nbsp;:
+</p>
+<p>double[] tab = <strong>{25.6, 12.3, 11.44, 31.25, 62.35}</strong>;</p>
+<p>
+  Cet exemple crée un tableau de 5 cases contenant les valeurs fournies entre
+  les accolades { … }.
+</p>
+<p>
+  L’initialisation ne peut se faire que lors de la déclaration du tableau. Il
+  n’est pas possible de la faire après la déclaration&nbsp;:
+</p>
+<p>double[] tab;</p>
+<p>tab = {25.6, 12.3, 11.44, 31.25, 62.35}; //<strong>NON</strong></p>
+<p>
+  L’ancienne syntaxe d’initialisation (qui peut être utile à
+  l’occasion)&nbsp;est :
+</p>
+<p>
+  double[] tab = <strong>new double[]{25.6, 12.3, 11.44, 31.25, 62.35}</strong>;
+</p>
+<h2 id="sec-manipulation"><a id="_Toc188272043"></a>Manipulation</h2>
+<h3><a id="_Toc188272044"></a>1. Accès aux éléments</h3>
+<p>
+  L’accès à une case du tableau se fait à l’aide de l’indice de la case mis
+  entre crochets. Ainsi, <strong>tabNotes[0]</strong> est la première case du
+  tableau et <strong>tabNotes[5]</strong> est la 6<sup>e</sup> case.
+</p>
+<p>
+  On peut, par exemple, afficher le contenu d’un tableau à l’aide d’une
+  boucle&nbsp;:
+</p>
+<p>for (int i=0; i&lt;<strong>tabNotes.length</strong>; i++)</p>
+<p>System.out.println(<strong>tabNotes[i]</strong>);</p>
+<h3><a id="_Toc188272045"></a>2. Affectation</h3>
+<p>
+  Puisqu’un tableau est un objet, l’affectation de tableau est une affectation
+  de références, comme pour les autres objets (figure 2)&nbsp;:
+</p>
+<p>double[] tabNotes = new double[10];</p>
+<p>double[] tab2;</p>
+<p><strong>tab2 = tabNotes;</strong></p>
+<p><img src="./assets/img-1776253817432-5mn8ui56zts.png" /></p>
+<p>Figure 2. L’affectation de tableaux est une affectation de références.</p>
+<p>
+  <a id="_Toc188272046"></a>Dans cet exemple, tabNotes et tab2 référencent le
+  même tableau. Ainsi, tabNotes[5] et tab2[5] désignent la même donnée.
+</p>
+<h2 id="sec-tableau-dobjet">Tableau d’objet</h2>
+<p>
+  Un tableau d’objets est un tableau dont chaque case contient une référence
+  vers un objet.
+</p>
+<p>
+  Supposons qu’on a une classe <em>CompteBancaire</em> (comme celle vue en
+  classe)&nbsp;:
+</p>
+<p>public class CompteBancaire {</p>
+<p>//…</p>
+<p>}</p>
+<p>
+  L’instruction suivante déclare une variable de type tableau d’objets
+  <em>CompteBancaire</em>&nbsp;:
+</p>
+<p>CompteBancaire[] tComptes;</p>
+<p>
+  L’instruction suivante crée un tableau de 15 objets
+  <em>CompteBancaire</em> (mais, <strong>attention</strong>, aucun objet
+  <em>CompteBancaire</em> n’est créé)&nbsp;:
+</p>
+<p>tComptes = new CompteBancaire[15];</p>
+<p>
+  Pour remplir le tableau, il faut instancier la classe
+  <em>CompteBancaire</em> pour créer les objets <em>CompteBancaire</em>.
+</p>
+<p>Par exemple&nbsp;:</p>
+<p><strong>tComptes[0]</strong> = <strong>new CompteBancaire()</strong>;</p>
+<p>CompteBancaire cpt = <strong>new CompteBancaire()</strong>;</p>
+<p><strong>tComptes[1]</strong> = cpt;</p>
+<p>for (int <strong>i=2</strong>; i&lt;tabNotes.length; i++)</p>
+<p><strong>tabNotes[i]</strong> = <strong>new CompteBancaire()</strong>;</p>
+<p>
+  Il peut arriver (même si ce n’est souvent pas souhaitable) que 2 cases du
+  tableau référencent le même objet <em>CompteBancaire</em>&nbsp;:
+</p>
+<p><strong>tComptes[7]</strong> = <strong>tComptes[1]</strong>;</p>
+<p>
+  <a id="_Toc188272047"></a>Les cases 7 et 1 du tableau
+  <em>tComptes</em> référencent le même objet <em>CompteBancaire</em>.
+</p>
+<h2 id="sec-tableau-multidimensionnels">Tableau multidimensionnels</h2>
+<h3><a id="_Toc188272048"></a>1. Tableaux 2D</h3>
+<p>
+  Un tableau à 2 dimensions permet d’organiser les données en lignes et
+  colonnes, comme une matrice mathématique (figure 3).
+</p>
+<p><img src="./assets/img-1776253817433-npik8defril.png" /></p>
+<p>Figure 3. Tableau à 2 dimensions.</p>
+<p>En Java, la déclaration se fait avec 2 paires de crochets [ ]&nbsp;:</p>
+<p><strong>double[][] matrice</strong>;</p>
+<p>Et l’instanciation&nbsp;:</p>
+<p>matrice = <strong>new double[6][4]</strong>;</p>
+<p>qui crée un tableau de 6 lignes et 4 colonnes.</p>
+<p>
+  L’accès aux éléments se fait à l’aide de 2 indices, un pour la ligne et un
+  pour la colonne. Ainsi, <strong>matrice[3][2]</strong> désigne l’élément se
+  trouvant sur la 4<sup>e</sup> ligne et la 3<sup>e</sup> colonne du tableau
+  matrice.
+</p>
+<p>
+  En réalité, un tableau à 2 dimensions est un tableau à 1 dimension dont chaque
+  case contient un tableau à 1 dimension.
+</p>
+<p>
+  Il en résulte que les lignes d’un tableau à 2 dimensions ne sont pas obligées
+  d’être toutes de même taille.
+</p>

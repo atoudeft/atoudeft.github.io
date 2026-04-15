@@ -1,0 +1,135 @@
+<h2 id="sec-agregationcomposition">
+  <a id="_Toc188872197"></a>Agrégation/Composition
+</h2>
+<p>
+  Dans la vie réelle, on peut assembler des objets pour construire des objets
+  plus complexes. Ainsi, on peut assembler une carte mère, des barrettes de
+  mémoire, un disque dur, … pour construire un ordinateur. On peut assembler des
+  briques pour construire un mur, puis assembler des murs, des portes et des
+  fenêtres pour construire des chambres, puis assembler des chambres pour
+  construire des appartements, etc…
+</p>
+<p>
+  De manière similaire, dans un programme orienté objet, on peut assembler des
+  objets pour construire des objets plus complexes. Il existe 2 concepts très
+  similaires pour cela&nbsp;: l’agrégation et la composition.
+</p>
+<p>
+  Dans l’agrégation, les objets qu’on assemble pour construire un objet complexe
+  sont les <strong>agrégats</strong> tandis que l’objet complexe construit est
+  l’<strong>agrégé</strong>.
+</p>
+<p>
+  Dans la composition, les objets qu’on assemble pour construire un objet
+  complexe sont les <strong>composants</strong> tandis que l’objet complexe
+  construit est le <strong>composé</strong>.
+</p>
+<p>
+  La différence entre l’agrégation et la composition est reliée à la durée de
+  vie des objets&nbsp;: dans l’agrégation, les agrégés peuvent exister sans
+  l’agrégat. Donc la destruction de ce dernier n’entraine pas la destruction des
+  agrégats. Mais, dans la composition, les composants ne peuvent pas exister
+  sans le composé. La destruction du composé entraine donc la destruction des
+  composants.
+</p>
+<p>Voici quelques exemples&nbsp;:</p>
+<p>
+  Une bibliothèque contient des livres. Un livre peut exister sans la
+  bibliothèque. Il y a donc une <strong>relation d’agrégation</strong> entre
+  bibliothèque et livre.
+</p>
+<p>
+  Dans une école, il y a des étudiants. Un étudiant peut exister sans être
+  rattaché à une école. C’est donc une
+  <strong>relation d’agrégation</strong> entre école et étudiant.
+</p>
+<p>
+  Une maison contient des chambres. La destruction de la maison entraine la
+  destruction des chambres (une chambre ne peut pas exister en dehors d’une
+  maison). Il y a donc une <strong>relation de composition</strong> entre maison
+  et chambre.
+</p>
+<p>
+  Dans une banque, des opérations bancaires sont effectuées sur des comptes.
+  Plusieurs opérations bancaires peuvent être rattachées à un compte. Mais, une
+  opération bancaire ne peut pas exister sans être rattaché à un compte. Il y a
+  donc une <strong>relation de composition</strong> entre compte bancaire et
+  opération bancaire.
+</p>
+<p>
+  Dans des langages tel que Java, il n’y a pas de différence notable dans
+  l’implémentation de l’agrégation et de la composition. Nous ne ferons donc pas
+  de distinction entre ces concepts dans la suite.
+</p>
+<p>
+  L’agrégation/composition implémente la relation «&nbsp;possède un&nbsp;» (<em
+    >has a</em
+  >
+  ou <strong><em>hasA</em></strong
+  >). Elle se traduit par la présence dans l’agrégé/composé d’attributs de type
+  de l’agrégat/composant.
+</p>
+<p>
+  La plupart du temps, l’agrégé/composé est
+  <strong>appelé à collaborer</strong> avec ses agrégats/composants.
+</p>
+<p>Voyant un exemple&nbsp;:</p>
+<p>Nous avons une classe qui représente des compteurs&nbsp;:</p>
+<p>public class Compteur {</p>
+<p>private int valeur;</p>
+<p>//...</p>
+<p>public int getValeur() {</p>
+<p>return valeur;</p>
+<p>}</p>
+<p>public void incrementer() {</p>
+<p>valeur++;</p>
+<p>}</p>
+<p>}</p>
+<p>
+  Une voiture <strong>possède un</strong> compteur. Et lorsque la voiture
+  avance, son compteur augmente&nbsp;:
+</p>
+<p>public class Voiture {</p>
+<p><strong> private Compteur compteur;</strong></p>
+<p>//...</p>
+<p>public void avancer(int distance) {</p>
+<p>for (int i=0;i&lt;distance;i++)</p>
+<p><strong> compteur.incrementer();</strong></p>
+<p>}</p>
+<p>public int getValeurCompteur() {</p>
+<p><strong> return compteur.getValeur();</strong></p>
+<p>}</p>
+<p>}</p>
+<p>Voici un autre exemple&nbsp;:</p>
+<p>La classe Etudiant représente des étudiants&nbsp;:</p>
+<p>public class Etudiant {</p>
+<p>private double note;</p>
+<p>//...</p>
+<p>public double getNote() {</p>
+<p>return note;</p>
+<p>}</p>
+<p>}</p>
+<p>
+  Un cours-groupe contient des étudiants inscrits à un même cours. On trouve
+  donc dans un objet de type cours-groupe un attribut de type «&nbsp;liste
+  d’étudiants&nbsp;» qui peut être implémenté sous-forme d’un tableau (en
+  attendant de voir d’autres structures de données, comme les vecteurs)&nbsp;:
+</p>
+<p>public class CoursGroupe {</p>
+<p><strong> private Etudiant[] listeEtudiants;</strong></p>
+<p>//...</p>
+<p>public double getMoyenne() {</p>
+<p>double somme = 0, moyenne;</p>
+<p>for (int i=0;i&lt;listeEtudiants.length;i++)</p>
+<p><strong> somme = somme + listeEtudiants[i].getNote();</strong></p>
+<p>moyenne = somme/listeEtudiants.length;</p>
+<p>return moyenne;</p>
+<p>}</p>
+<p>}</p>
+<p>Voici un dernier exemple&nbsp;:</p>
+<p>
+  Dans un cours donné, un étudiant possède plusieurs évaluations (intra 1, intra
+  2, TP1, …). On trouve donc dans un objet de type étudiant un attribut de type
+  «&nbsp;liste d’évaluations&nbsp;» qui peut être implémenté sous-forme d’un
+  tableau.
+</p>

@@ -1,0 +1,89 @@
+<h2 id="sec-la-reference-this">La référence this</h2>
+<p>Considérons la classe CompteBancaire suivante&nbsp;:</p>
+<p>public class CompteBancaire {</p>
+<p>private String numero;</p>
+<p>private double solde;</p>
+<p>public void crediter(double montant) {</p>
+<p>solde = solde + montant;</p>
+<p>}</p>
+<p>}</p>
+<p>
+  Une méthode d’instance est appelée pour un objet donné. Par exemple, avec 2
+  objets de type CompteBancaire&nbsp;:
+</p>
+<p>CompteBancaire cpt1 = new CompteBancaire(),</p>
+<p>cpt2 = new CompteBancaire();</p>
+<p>L’appel&nbsp;:</p>
+<p><strong>cpt1.crediter(200);</strong></p>
+<p>exécute la méthode crediter() pour l’objet cpt1, alors que l’appel&nbsp;:</p>
+<p><strong>cpt2.crediter(200);</strong></p>
+<p>exécute la même méthode mais cette fois-ci pour l’objet cpt2.</p>
+<p>
+  Dans le premier appel, c’est le solde de cpt1 qui est augmenté de 200 et dans
+  le second appel c’est le solde de cpt2 qui est augmenté de 200.
+</p>
+<p>
+  Une méthode d’instance possède donc un paramètre implicite qui est l’objet qui
+  lui fait appel. L’en-tête de la méthode crediter() montre un seul
+  paramètre&nbsp;:
+</p>
+<p>public void crediter(<strong>double montant</strong>)</p>
+<p>Mais, en réalité, il y en a 2, comme on le voit dans l’appel&nbsp;:</p>
+<p><strong>cpt1.crediter(200);</strong></p>
+<p>paramètre explicite</p>
+<p>paramètre implicite</p>
+<p>
+  Il arrive qu’on ait besoin d’accéder au paramètre implicite (l’objet qui fait
+  appel à la méthode). En Java, cet objet est référencé par la référence
+  prédéfinie <strong>this</strong>. On aurait donc pu définir la méthode
+  crediter() comme ceci&nbsp;:
+</p>
+<p>public void crediter(double montant) {</p>
+<p><strong>this</strong>.solde = <strong>this</strong>.solde + montant;</p>
+<p>}</p>
+<p>
+  L’utilisation de <em>this</em> est nécessaire lorsque le paramètre d’une
+  méthode ou d’un constructeur porte le même nom que l’attribut de l’objet,
+  comme dans le constructeur et le mutateur du numéro de compte suivants&nbsp;:
+</p>
+<p>public class CompteBancaire {</p>
+<p>private String numero;</p>
+<p>private double solde;</p>
+<p>public CompteBancaire(String numero) {</p>
+<p>
+  <strong> this.numero = numero; //Ici <em>this</em> est nécessaire</strong>
+</p>
+<p>this.solde = 0; //Ici <em>this</em> <strong>n’est pas</strong> nécessaire</p>
+<p>}</p>
+<p>public void setNumero(String numero) {</p>
+<p>
+  <strong>this.numero = numero; //Ici <em>this</em> est nécessaire</strong>
+</p>
+<p>}</p>
+<p>public void crediter(double montant) {</p>
+<p>
+  this.solde = this.solde + montant; //Ici <em>this</em>
+  <strong>n’est pas</strong> nécessaire
+</p>
+<p>}</p>
+<p>}</p>
+<p>
+  Il arrive aussi qu’on utilise this pour faire référence à l’objet dans son
+  entièreté, comme dans la méthode afficher() suivante qui affiche à l’écran la
+  conversion en <em>String</em> du compte bancaire&nbsp;:
+</p>
+<p>public class CompteBancaire {</p>
+<p>private String numero;</p>
+<p>private double solde;</p>
+<p>public CompteBancaire(String numero) {</p>
+<p>this.numero = numero; //Ici <em>this</em> est nécessaire</p>
+<p>this.solde = 0; //Ici <em>this</em> n’est pas nécessaire</p>
+<p>}</p>
+<p>@Override</p>
+<p>public String toString() {</p>
+<p>return "Compte numéro [" + numero + "] avec " + solde + "$";</p>
+<p>}</p>
+<p>public void afficher() {</p>
+<p>System.out.println(<strong>this</strong>);</p>
+<p>}</p>
+<p>}</p>

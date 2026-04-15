@@ -1,0 +1,455 @@
+<h2 id="sec-utilisation-des-vecteurs">Utilisation des vecteurs</h2>
+<p>
+  Les tableaux peuvent être créés dynamiquement (c'est-à-dire, leur taille peut
+  être fixée à l’exécution) mais, une fois créé, la taille du tableau ne peut
+  plus changer.
+</p>
+<p>
+  Pour avoir une structure de données similaire à un tableau mais dont la taille
+  augmente au besoin, on peut utiliser des vecteurs.
+</p>
+<p>
+  Il existe plusieurs classes qui permettent de créer des vecteurs. Parmi ces
+  classes, <em>ArrayList</em> est une des plus utilisées.
+</p>
+<p>
+  Un ArrayList encapsule un tableau dans lequel sont stockées les données
+  insérées dans le ArrayList. Lorsque le tableau est plein, le ArrayList
+  l’agrandit automatiquement.
+</p>
+<p>
+  On manipule un ArrayList à l’aide de ses méthodes telles que add(), remove(),
+  get(),… On ne peut pas utiliser l’opérateur [] pour les vecteurs.
+</p>
+<p><strong>Remarque&nbsp;:</strong> classe Vector</p>
+<p>
+  La classe Vector est très similaire à ArrayList (fournissent les mêmes
+  méthodes aux programmeurs et sont implémentées de la même façon à l’interne).
+  La différence entre les 2 réside dans leur comportement dans un contexte
+  <strong>multithread</strong>, c’est-à-dire en
+  <strong>«&nbsp;programmation parallèle&nbsp;»</strong> (lorsque les instances
+  sont manipulées par plusieurs méthodes <strong>en même temps</strong>).
+</p>
+<p>
+  Lorsqu’on n’est pas en contexte multithread, ArrayList est
+  <strong>préférable</strong> à Vector.
+</p>
+<h2 id="sec-utilisation-des-vecteurs">
+  <a id="_Toc95825047"></a><a id="_Toc190422299"></a>Utilisation des vecteurs
+</h2>
+<p>
+  À partir de <em>Java 5</em>, la classe ArrayList (et beaucoup d’autres classes
+  similaires) a subi d’importantes modifications. ArrayList est devenue une
+  <strong>classe générique</strong>, c'est-à-dire
+  <strong>une classe paramétrée par un type</strong>.
+</p>
+<p>
+  En effet, même si on peut stocker dans un vecteur des objets de différents
+  types (par exemple, mélanger des comptes bancaires, des dés et des
+  <em>String</em> dans un même vecteur), cela n’arrive généralement pas en
+  pratique. Un vecteur stocke habituellement des objets de la même famille
+  (uniquement des comptes bancaires ou uniquement des dés ou uniquement des
+  <em>String</em> mais pas de mélange). À partir de Java 5, le programmeur a
+  donc la possibilité (c’est même très recommandé) d’indiquer, à la déclaration
+  du vecteur, quel type d’éléments il a l’intention de stocker dans le vecteur.
+  Cela permet au compilateur d’automatiser un certain nombre de tâches qui,
+  avant Java 5, revenaient au programmeur.
+</p>
+<p>
+  À la déclaration d’une variable de type ArrayList, on spécifie donc le type
+  des objets qu’on y stocke&nbsp;:
+</p>
+<p>ArrayList&lt;CompteBancaire&gt; v1;</p>
+<p>Et à l’instanciation&nbsp;:</p>
+<p>v1 = new ArrayList&lt;&gt;();</p>
+<p>On ne peut stocker dans v1 que des objets de type CompteBancaire&nbsp;:</p>
+<p>CompteBancaire cpt1 = new CompteBancaire();</p>
+<p>v1.add(cpt1); //OK</p>
+<p>v1.add(new CompteBancaire()); //OK</p>
+<p>v1.add("Hello"); //<strong>NON</strong></p>
+<p>
+  <a id="_Toc95825052"></a>Pour créer un vecteur qui stocke des données
+  primitives, on utilise les classes enveloppes. Voici un vecteur destiné à
+  contenir des entiers&nbsp;:
+</p>
+<p>Vector&lt;Integer&gt; v2 = new Vector&lt;&gt;();</p>
+<p>On peut insérer dans v2 des entiers&nbsp;:</p>
+<p>v2.add(new Integer(48));</p>
+<p>v2.add(Integer.valueOf(77));</p>
+<p>On peut insérer une donnée primitive&nbsp;:</p>
+<p>v2.add(37);</p>
+<p>
+  Le compilateur s’occupe d’envelopper l’entier 37 dans un Integer (opération
+  appelée <strong>auto boxing</strong>).
+</p>
+<p>
+  Un des avantages des classes génériques est que le compilateur effectue
+  certaines conversions automatiquement. Par exemple, la méthode get() de v1
+  nous retourne automatiquement une référence de type CompteBancaire&nbsp;:
+</p>
+<p>CompteBancaire cpt = v1.get(0);</p>
+<p><strong>Remarque&nbsp;:</strong> avant Java 5</p>
+<p>
+  Avant Java 5, les classes telle que ArrayList n’étaient pas génériques. On ne
+  spécifie donc pas le type d’objets qu’on stocke dans le vecteur&nbsp;:
+</p>
+<p>ArrayList v = new ArrayList();</p>
+<p>
+  Ce qui fait qu’on peut stocker n’importe quel objet dans le vecteur. On peut
+  même mélanger différents types d’objets (ce qui n’est pas réaliste)&nbsp;:
+</p>
+<p>v.add(new CompteBancaire());</p>
+<p>v.add(new Integer(59));</p>
+<p>v.add("Bonjour");</p>
+<p>
+  Par contre, en accédant aux éléments du vecteur, on obtient des références de
+  type Object qu’on doit transtyper vers le bon type&nbsp;:
+</p>
+<p>CompteBancaire c = (CompteBancaire)v.get(0);</p>
+<p>
+  Si l’élément récupéré n’est pas du bon type, une exception de type
+  ClassCastException est déclenchée. On doit donc s’en prémunir par une
+  vérification avec l’opérateur instanceof&nbsp;:
+</p>
+<p>Object x = v.get(0);</p>
+<p>if (x instanceof CompteBancaire) {</p>
+<p>c = (CompteBancaire)x;</p>
+<p>}</p>
+<p>
+  Cette façon d’utiliser les vecteurs est maintenant
+  <strong>déconseillée</strong> et il faut toujours utiliser les versions
+  génériques de ces classes.
+</p>
+<h2 id="sec-principales-methodes">
+  <a id="_Toc190422300"></a>Principales méthodes
+</h2>
+<p>
+  Dans la liste ci-dessous, <strong>E</strong> représente le type des éléments
+  stockés dans le vecteur.
+</p>
+<h3><a id="_Toc95825053"></a><a id="_Toc190422301"></a>Insérer des éléments</h3>
+<p>
+  <strong>boolean </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#add(E)"
+    ><strong>add</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html"
+    ><strong>E</strong></a
+  ><strong>&nbsp;e)</strong>
+</p>
+<p>
+  <strong>void </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#add(int, E)"
+    ><strong>add</strong></a
+  ><strong>(int&nbsp;index, </strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html"
+    ><strong>E</strong></a
+  ><strong>&nbsp;element)</strong>
+</p>
+<p>
+  <strong>void </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#addElement(E)"
+    ><strong>addElement</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html"
+    ><strong>E</strong></a
+  ><strong>&nbsp;obj)</strong>
+</p>
+<p>
+  <strong>void </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#insertElementAt(E, int)"
+    ><strong>insertElementAt</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html"
+    ><strong>E</strong></a
+  ><strong>&nbsp;obj, int&nbsp;index)</strong>
+</p>
+<h3>
+  <a id="_Toc95825058"></a><a id="_Toc190422302"></a
+  ><a id="_Toc95825054"></a>Accéder aux éléments
+</h3>
+<p>
+  <strong>E </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#firstElement()"
+    ><strong>firstElement</strong></a
+  ><strong>()</strong>
+</p>
+<p>
+  <strong>E </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#lastElement()"
+    ><strong>lastElement</strong></a
+  ><strong>()</strong>
+</p>
+<p>
+  <strong>E </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#get(int)"
+    ><strong>get</strong></a
+  ><strong>(int&nbsp;index)</strong>
+</p>
+<p>
+  <strong>E </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#elementAt(int)"
+    ><strong>elementAt</strong></a
+  ><strong>(int&nbsp;index)</strong>
+</p>
+<p>
+  <strong>Object[] </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#toArray()"
+    ><strong>toArray</strong></a
+  ><strong>()</strong>
+</p>
+<p>
+  <a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Enumeration.html"
+    ><strong>Enumeration</strong></a
+  ><strong>&lt;</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html"
+    ><strong>E</strong></a
+  ><strong>&gt; </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#elements()"
+    ><strong>elements</strong></a
+  ><strong>()</strong>
+</p>
+<h3>
+  <a id="_Toc95825055"></a><a id="_Toc190422303"></a>Supprimer des éléments
+</h3>
+<p>
+  <strong>E </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#remove(int)"
+    ><strong>remove</strong></a
+  ><strong>(int&nbsp;index)</strong>
+</p>
+<p>
+  <strong>boolean </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#remove(java.lang.Object)"
+    ><strong>remove</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html"
+    ><strong>Object</strong></a
+  ><strong>&nbsp;o)</strong>
+</p>
+<p>
+  <strong>boolean </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#removeElement(java.lang.Object)"
+    ><strong>removeElement</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html"
+    ><strong>Object</strong></a
+  ><strong>&nbsp;obj)</strong>
+</p>
+<p>
+  <strong>void </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#removeElementAt(int)"
+    ><strong>removeElementAt</strong></a
+  ><strong>(int&nbsp;index)</strong>
+</p>
+<h3><a id="_Toc95825056"></a><a id="_Toc190422304"></a>Vider le vecteur</h3>
+<p>
+  <strong>void </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#removeAllElements()"
+    ><strong>removeAllElements</strong></a
+  ><strong>()</strong>
+</p>
+<p>
+  <strong>void </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#clear()"
+    ><strong>clear</strong></a
+  ><strong>()</strong>
+</p>
+<h3>
+  <a id="_Toc95825057"></a><a id="_Toc190422305"></a>Tester l’état du vecteur
+</h3>
+<p>
+  <strong>boolean </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#isEmpty()"
+    ><strong>isEmpty</strong></a
+  ><strong>()</strong>
+</p>
+<p>
+  <strong>int </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#size()"
+    ><strong>size</strong></a
+  ><strong>()</strong>
+</p>
+<p>
+  <strong>boolean </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#contains(java.lang.Object)"
+    ><strong>contains</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html"
+    ><strong>Object</strong></a
+  ><strong>&nbsp;o)</strong>
+</p>
+<h3>
+  <a id="_Toc95825059"></a><a id="_Toc190422306"></a>Chercher la position des
+  éléments
+</h3>
+<p>
+  <strong>int </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#indexOf(java.lang.Object)"
+    ><strong>indexOf</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html"
+    ><strong>Object</strong></a
+  ><strong>&nbsp;o)</strong>
+</p>
+<p>
+  <strong>int </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#indexOf(java.lang.Object, int)"
+    ><strong>indexOf</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html"
+    ><strong>Object</strong></a
+  ><strong>&nbsp;o, int&nbsp;index)</strong>
+</p>
+<p>
+  <strong>int </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#lastIndexOf(java.lang.Object, int)"
+    ><strong>lastIndexOf</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html"
+    ><strong>Object</strong></a
+  ><strong>&nbsp;o)</strong>
+</p>
+<p>
+  <strong>int </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#lastIndexOf(java.lang.Object, int)"
+    ><strong>lastIndexOf</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/lang/Object.html"
+    ><strong>Object</strong></a
+  ><strong>&nbsp;o, int&nbsp;index)</strong>
+</p>
+<h3><a id="_Toc190422307"></a>Remplacer des éléments</h3>
+<p>
+  <strong>E </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#set(int, E)"
+    ><strong>set</strong></a
+  ><strong>(int&nbsp;index, </strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html"
+    ><strong>E</strong></a
+  ><strong>&nbsp;element)</strong>
+</p>
+<p>
+  <strong>void </strong
+  ><a
+    href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html#setElementAt(E, int)"
+    ><strong>setElementAt</strong></a
+  ><strong>(</strong
+  ><a href="http://download.oracle.com/javase/6/docs/api/java/util/Vector.html"
+    ><strong>E</strong></a
+  ><strong>&nbsp;obj, int&nbsp;index)</strong>
+</p>
+<p>
+  Documentation officielle de la classe ArrayList (Java 8)&nbsp;:
+  <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html"
+    >https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html</a
+  >
+</p>
+<h2 id="sec-iterateurs"><a id="_Toc190422308"></a>Itérateurs</h2>
+<p>
+  Pour parcourir tous les éléments d’un vecteur, on peut utiliser une boucle for
+  classique&nbsp;:
+</p>
+<p>ArrayList&lt;CompteBancaire&gt; v1 = new ArrayList&lt;&gt;();</p>
+<p>//…</p>
+<p>int taille = v1.size();</p>
+<p>for (int i=0;i&lt;taille;i++) {</p>
+<p>System.out.println("Compte numéro "+v1.get(i).getNumero()</p>
+<p>+"; Solde : "+v1.get(i).getSolde()+"$");</p>
+<p>}</p>
+<p>
+  Cette façon de faire n’est pas très efficace car la méthode get() ne mémorise
+  pas la position de parcours d’une itération à l’autre.
+</p>
+<p>
+  Un itérateur permet de parcourir un vecteur (ou n’importe quelle collection)
+  en gardant la position de parcours afin de trouver rapidement l’élément
+  suivant à l’itération suivante. Voici comment on peut parcourir un vecteur v1
+  avec un itérateur&nbsp;:
+</p>
+<p>ArrayList&lt;CompteBancaire&gt; v1 = new ArrayList&lt;&gt;();</p>
+<p>//…</p>
+<p>
+  <strong
+    >ListIterator&lt;CompteBancaire&gt; iterateur = v1.listIterator();</strong
+  >
+</p>
+<p>CompteBancaire cpt;</p>
+<p>while (<strong>iterateur.hasNext()</strong>) {</p>
+<p><strong>cpt = iterateur.next();</strong></p>
+<p>System.out.println("Compte numéro "+cpt.getNumero()</p>
+<p>+"; Solde : "+cpt.getSolde()+"$");</p>
+<p>}</p>
+<p>
+  On n’instancie pas nous-même un itérateur. C’est le vecteur qui nous le
+  fournit à l’aide de sa méthode listIterator().
+</p>
+<p>
+  À sa création, l’itérateur se place avant le premier élément. Il faut appeler
+  next() pour obtenir l’élément suivant du vecteur, à commencer par le
+  premier&nbsp;:
+</p>
+<p><img src="./assets/img-1776253818030-xots3zkossq.png" /></p>
+<p>
+  S’il n’y a pas d’élément suivant, l’appel à next() déclenche une exception de
+  type NoSuchElementException. Il faut donc
+  <strong>toujours vérifier l’existence de l’élément suivant</strong> avant
+  d’appeler next(). On utilise pour cela la méthode hasNext().
+</p>
+<p>
+  <strong>Attention</strong>&nbsp;: chaque appel à next() parcourt un élément du
+  vecteur et déplace l’itérateur à l’élément suivant. Il faut donc appeler une
+  seule fois next() par itération. Le code suivant est
+  <strong>erroné et dangereux</strong>&nbsp;:
+</p>
+<p>ArrayList&lt;CompteBancaire&gt; v1 = new ArrayList&lt;&gt;();</p>
+<p>//…</p>
+<p>
+  <strong
+    >ListIterator&lt;CompteBancaire&gt; iterateur = v1.listIterator();</strong
+  >
+</p>
+<p>while (<strong>iterateur.hasNext()</strong>) {</p>
+<p>
+  System.out.println("Compte numéro "+<strong> iterateur.next()</strong
+  >.getNumero()
+</p>
+<p>+"; Solde : "+<strong> iterateur.next()</strong>.getSolde()+"$");</p>
+<p>}</p>
+<h2 id="sec-for-each"><a id="_Toc190422309"></a>For each</h2>
+<p>
+  On peut aussi parcourir un vecteur (ou un tableau) à l’aide d’une structure
+  for each. À l’instar de l’itérateur, la structure garde la position courante
+  grâce à une variable d’itération&nbsp;:
+</p>
+<p>ArrayList&lt;CompteBancaire&gt; v1 = new ArrayList&lt;&gt;();</p>
+<p>//…</p>
+<p><strong>for (CompteBancaire cpt&nbsp;: v1) {</strong></p>
+<p>System.out.println("Compte numéro "+cpt.getNumero()</p>
+<p>+"; Solde : "+cpt.getSolde()+"$");</p>
+<p>}</p>

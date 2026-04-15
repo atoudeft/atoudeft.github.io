@@ -1,0 +1,465 @@
+<h2 id="sec-introduction">Introduction</h2>
+<p>
+  Dans la plupart des langages, les chaînes de caractères sont représentées par
+  un type intégré au langage. Ce n’est pas le cas en Java qui propose plutôt des
+  classes dans l’API. La classe la plus importante est sans aucun doute
+  <em>la classe</em> <em>String </em>du package <em>java.lang</em>.
+</p>
+<p>
+  Dans un programme java, une chaîne de caractères est un objet instance de la
+  classe <em>String</em>. On crée cette instance en utilisant un constructeur
+  parmi la dizaine offerte par la classe. Mais, on peut aussi utiliser les
+  guillemets (double-quotes) qui constituent, en quelque sorte, un autre
+  constructeur de chaînes. Voici des exemples de construction de chaînes&nbsp;:
+</p>
+<p>String messageDeBienvenue = new String("Bonjour et bienvenue")&nbsp;;</p>
+<p>String prenom = "Bernard"&nbsp;;</p>
+<p>char[] t = {’M’,’o’,’n’,’s’,’i’,’e’,’u’,’r’};</p>
+<p>String titre = new String(t);</p>
+<h2 id="sec-longueur-dune-chaine">
+  <a id="_Toc154407654"></a><a id="_Toc161234205"></a><a id="_Toc373996980"></a
+  ><a id="_Toc164275369"></a>Longueur d’une chaîne
+</h2>
+<p>
+  Pour connaître la longueur d’une chaîne, on utilise la méthode
+  <em>length()</em>&nbsp;:
+</p>
+<p>String prenom = "Bernard"&nbsp;;</p>
+<p>int longueur = <strong>prenom.length()</strong>&nbsp;;</p>
+<p>System.out.println("La longueur du prénom est&nbsp;: "+longueur);</p>
+<h2 id="sec-extraction-de-caracteres-et-de-sous-chaines">
+  <a id="_Toc154407655"></a><a id="_Toc161234206"></a><a id="_Toc373996981"></a
+  ><a id="_Toc164275370"></a>Extraction de caractères et de sous-chaînes
+</h2>
+<p>
+  Pour connaître la valeur du caractère se trouvant à une position donnée de la
+  chaîne, on utilise la méthode <em>charAt()</em>&nbsp;:
+</p>
+<p>String prenom = "Bernard"&nbsp;;</p>
+<p>int i = 4&nbsp;;</p>
+<p>char c = <strong>prenom.charAt(i)</strong>&nbsp;;</p>
+<p>System.out.println("Le caractère de la position "+i+" est: "+c);</p>
+<p>
+  La première position porte le numéro 0. La valeur de i doit être dans le bon
+  intervalle (supérieure ou égale à 0 et inférieure strictement à la longueur de
+  la chaîne) sinon une exception est déclenchée.
+</p>
+<p>
+  La méthode <em>substring()</em> permet d’extraire une sous-chaîne d’une chaîne
+  existante&nbsp;s. L’instruction&nbsp;:
+</p>
+<p>String r = <strong>s.substring(6)</strong>&nbsp;;</p>
+<p>
+  Permet d’extraire tous les caractères situés à partir de la position 6. Tandis
+  que l’instruction&nbsp;:
+</p>
+<p>String r = <strong>s.substring(5,10)</strong>&nbsp;;</p>
+<p>
+  Permet d’extraire tous les caractères situés entre les positions 5 et 9,
+  inclusivement.
+</p>
+<h2 id="sec-conversions">
+  <a id="_Toc154407656"></a><a id="_Toc161234207"></a><a id="_Toc373996982"></a
+  ><a id="_Toc164275371"></a>Conversions
+</h2>
+<h5>
+  <a id="_Toc154407657"></a><a id="_Toc161234208"></a
+  ><a id="_Toc373996983"></a>1. Conversion de données primitives en chaînes de
+  caractères
+</h5>
+<p>
+  La classe <em>String</em> fournit la méthode statique <em>valueOf()</em>,
+  surchargée plusieurs fois (ça veut dire qu’elle existe en plusieurs versions),
+  pour convertir des données primitives en chaînes de caractères. Voici quelques
+  exemples&nbsp;:
+</p>
+<p>int x = 37&nbsp;;</p>
+<p>String s1 = <strong>String.valueOf(x);</strong> //s1 est la chaîne "37"</p>
+<p>double y = 2.36&nbsp;;</p>
+<p>String s2 = <strong>String.valueOf(y);</strong> //s2 est la chaîne "2.36"</p>
+<p>
+  La méthode <em>valueOf()</em> fait le même travail que les méthodes statiques
+  <em>toString()</em> des classes <em>Integer</em>, <em>Double</em>,
+  <em>Float</em>,…. Ainsi, les appels à <em>valueOf()</em> précédents sont
+  équivalents à&nbsp;:
+</p>
+<p>String s1 = <strong>Integer.toString(x);</strong> //s1 est la chaîne "37"</p>
+<p>
+  String s2 = <strong>Double.toString(y);</strong> //s2 est la chaîne "2.36"
+</p>
+<p>
+  Une autre technique consiste à concaténer la donnée primitive avec une chaîne
+  de caractères vide&nbsp;:
+</p>
+<p>String s1 = <strong>""+x;</strong> //s1 est la chaîne "37"</p>
+<p>String s2 = <strong>""+y;</strong> //s2 est la chaîne "2.36"</p>
+<h5>
+  <a id="_Toc154407658"></a><a id="_Toc161234209"></a
+  ><a id="_Toc373996984"></a>2. Conversion d’objets en chaînes de caractères
+</h5>
+<p>
+  Les objets sont convertis en chaînes à l’aide de leur méthode
+  <em>toString()</em>. La méthode <em>toString()</em> est automatiquement
+  présente dans toute classe car elle est héritée de la classe
+  <em>Object</em> dont dérive chaque classe. Cependant, la version de
+  <em>toString()</em> définie dans la classe <em>Object </em>renvoie un résultat
+  qui n’est pas toujours satisfaisant. Il convient donc de surdéfinir cette
+  méthode dans nos classes. Par exemple&nbsp;:
+</p>
+<p>public class Point</p>
+<p>{</p>
+<p>private double abscisse, ordonnee&nbsp;;</p>
+<p>public Point(double a, double o)</p>
+<p>{</p>
+<p>abscisse = a&nbsp;;</p>
+<p>ordonnee = o&nbsp;;</p>
+<p>}</p>
+<p><strong>public String toString()</strong></p>
+<p><strong> {</strong></p>
+<p><strong> return "("+abscisse+";"+ordonnee+")"&nbsp;;</strong></p>
+<p><strong> }</strong></p>
+<p>}</p>
+<p>
+  Cette méthode <em>toString()</em> est ensuite automatiquement invoquée
+  lorsqu’il faut convertir un objet Point en chaîne de caractères&nbsp;:
+</p>
+<p>Point p = new Point(5,-2.5)&nbsp;;</p>
+<p>System.out.println(<strong>"Le point p est " + p</strong>)&nbsp;;</p>
+<h5>
+  <a id="_Toc154407659"></a><a id="_Toc161234210"></a
+  ><a id="_Toc373996985"></a>3. Conversion de chaînes de caractères en données
+  primitives
+</h5>
+<p>
+  La conversion d’une chaîne de caractères en donnée primitive nécessite une
+  analyse de la chaîne. Par exemple, pour convertir une chaîne de caractères en
+  <em>int</em>, la classe <em>Integer</em> fournit&nbsp;la méthode
+  <em>parseInt()</em>, pour convertir une chaîne de caractères en double, la
+  classe <em>Double</em> fournit&nbsp;la méthode <em>parseDouble()</em>, et
+  ainsi de suite :
+</p>
+<p>String s1 = "235"&nbsp;;</p>
+<p>int x = <strong>Integer.parseInt(s1)</strong>&nbsp;; //x vaut 235</p>
+<p>String s2 = "29.13"&nbsp;;</p>
+<p>double y = <strong>Double.parseDouble(s2)</strong>&nbsp;; //y vaut 29.13</p>
+<h5>
+  <a id="_Toc154407660"></a><a id="_Toc161234211"></a
+  ><a id="_Toc373996986"></a>4. Conversion de chaînes de caractères en
+  majuscules/minuscules
+</h5>
+<p>
+  Pour obtenir une chaîne de caractères qui contient les mêmes caractères qu’une
+  chaîne s mais dont les minuscules sont changées en majuscules, on utilise la
+  méthode <em>toUpperCase()</em>&nbsp;:
+</p>
+<p>String s1 = "Bonjour"&nbsp;;</p>
+<p>String s2 = <strong>s1.toUpperCase()</strong>; //s2 vaut ”BONJOUR”.</p>
+<p>
+  Si on veut changer les majuscules en minuscules, on utilise la méthode
+  <em>toLowerCase()</em>&nbsp;:
+</p>
+<p>String s1 = "Bonjour"&nbsp;;</p>
+<p>String s3 = <strong>s1.toLowerCase()</strong>; //s3 vaut ”bonjour”.</p>
+<h5>
+  <a id="_Toc154407661"></a><a id="_Toc161234212"></a
+  ><a id="_Toc373996987"></a>3.5. Conversion de chaînes de caractères en
+  tableaux de caractères&nbsp;:
+</h5>
+<p>
+  La méthode <em>toCharArray()</em> retourne un tableau dont chaque case
+  contient un caractère de la chaîne&nbsp;:
+</p>
+<p>String s1 = "Bonjour"&nbsp;;</p>
+<p>
+  char t[] = <strong>s1.toCharArray()</strong>;//t vaut
+  {’B’,’o’,’n’,’j’,’o’,’u’,’r’}.
+</p>
+<h2 id="sec-concatenation">
+  <a id="_Toc154407662"></a><a id="_Toc161234213"></a><a id="_Toc373996988"></a
+  ><a id="_Toc164275372"></a>Concaténation
+</h2>
+<p>
+  Pour concaténer 2 chaînes de caractères, on utilise l’opérateur
+  <em>+</em>&nbsp;:
+</p>
+<p>String s1 = "Bonjour "&nbsp;;</p>
+<p>String s2 = "tout le monde"&nbsp;;</p>
+<p>
+  String s3 = <strong>s1 + s2</strong>&nbsp;; //s3 est la chaîne&nbsp;"Bonjour
+  tout le monde".
+</p>
+<p>
+  Lorsqu’on applique l’opérateur <em>+</em> à une chaîne et une donnée
+  primitive, cette dernière est d’abord convertie en chaîne, puis les 2 chaînes
+  sont concaténées. Ainsi, on peut calculer&nbsp;la surface d’un cercle d’un
+  rayon donné&nbsp;:
+</p>
+<p>int rayon = 10&nbsp;;</p>
+<p>double surface&nbsp;= Math.PI* Math.pow(rayon,2);</p>
+<p>Puis afficher le résultat dans un message&nbsp;:</p>
+<p>
+  System.out.println<strong
+    >("La surface du cercle de rayon "+rayon+" est égal à " +surface</strong
+  >);
+</p>
+<p>
+  Lorsque l’opérateur <em>+</em> est appliqué à une chaîne de caractères et un
+  objet, ce dernier est converti en chaîne à l’aide de sa méthode
+  <em>toString()</em>. Ensuite, les 2 chaînes sont concaténées.
+</p>
+<p>
+  Pour concaténer 2 chaînes de caractères, on peut aussi utiliser la méthode
+  <em>concat</em>&nbsp;:
+</p>
+<p>String s1 = "Bonjour "&nbsp;;</p>
+<p>String s2 = "tout le monde"&nbsp;;</p>
+<p>
+  String s3 = <strong>s1.concat(s2)</strong>;//donne le même résultat que s3 =
+  s1+s2&nbsp;;
+</p>
+<h2 id="sec-comparaison">
+  <a id="_Toc154407663"></a><a id="_Toc161234214"></a><a id="_Toc373996989"></a
+  ><a id="_Toc164275373"></a>Comparaison
+</h2>
+<h5>
+  <a id="_Toc154407664"></a><a id="_Toc161234215"></a
+  ><a id="_Toc373996990"></a>1. Test d’égalité
+</h5>
+<p>
+  Pour savoir si 2 chaînes ont la même valeur, on utilise, comme pour tous les
+  objets, la méthode <em>equals()</em>. L’opérateur <em>==</em> compare les
+  références :
+</p>
+<p>String s1 = new String("Bonjour")&nbsp;;</p>
+<p>String s2 = new String("Bonjour")&nbsp;;</p>
+<p>if (<strong>s1 == s2</strong>) //condition fausse</p>
+<p>{</p>
+<p>...</p>
+<p>}</p>
+<p>if (<strong>s1.equals(s2)</strong>) //condition vraie</p>
+<p>{</p>
+<p>...</p>
+<p>}</p>
+<p>
+  La méthode <em>equals()</em> tient compte de la casse des caractères. Ainsi,
+  les chaînes "Bonjour" et "bonjour" ne sont pas égales selon <em>equals()</em>.
+</p>
+<p>
+  Pour comparer 2 chaînes indépendamment de la casse des caractères, on utilise
+  la méthode <em>equalsIgnoreCase()</em>.
+</p>
+<p>String s1 = new String("BONJOUR")&nbsp;;</p>
+<p>String s2 = new String("bonjour")&nbsp;;</p>
+<p>if (<strong>s1.equals(s2)</strong>) //condition fausse</p>
+<p>{</p>
+<p>...</p>
+<p>}</p>
+<p>if (<strong>s1.equalsIgnoreCase(s2)</strong>) //condition vraie</p>
+<p>{</p>
+<p>...</p>
+<p>}</p>
+<h5>
+  <a id="_Toc154407665"></a><a id="_Toc161234216"></a
+  ><a id="_Toc373996991"></a>2. Test d’inégalité
+</h5>
+<p>
+  Chaque plate-forme utilise un système de codage pour représenter les
+  caractères. Le code ASCII et le jeu de caractères Unicode sont des exemples de
+  systèmes de codage. Ces systèmes de codage définissent un ordre sur les
+  caractères&nbsp;: un caractère est supérieur à un autre si son code est plus
+  grand.
+</p>
+<p>
+  L’ordre sur les caractères induit un ordre sur les chaînes de caractères.
+  L’ordre entre 2 chaînes est déterminé par l’ordre entre leurs premiers
+  caractères, s’ils sont différents. Sinon, par leurs deuxièmes caractères,
+  s’ils sont différents. Sinon, par leurs troisièmes, et ainsi de suite. En
+  résumé, l’ordre entre 2 chaînes est déterminé par l’ordre entre le premier
+  caractère qui les différencie.
+</p>
+<p>
+  Par exemple, dans le système de codage ASCII, la chaîne "bonjour" est
+  inférieure à la chaîne "bonsoir" car le code du caractère ‘j’ est inférieur au
+  code du caractère ‘s’.
+</p>
+<p>
+  Les méthodes qui déterminent l’ordre sur les chaînes retournent un entier. Cet
+  entier a la valeur 0 si les 2 chaînes sont égales, une valeur négative si la
+  première chaîne est inférieure&nbsp;à la seconde et une valeur positive si la
+  première chaîne est supérieure&nbsp;à la seconde.
+</p>
+<p>
+  La méthode <em>compareTo()</em> compare 2 chaînes de caractères en tenant
+  compte de leur casse, tandis que la méthode <em>compareToIgnoreCase()</em> les
+  compare sans tenir compte de leur casse. Par exemple&nbsp;:
+</p>
+<p>String s1 = new String("Bonjour")&nbsp;;</p>
+<p>String s2 = new String("Bonjour")&nbsp;;</p>
+<p>int r = <strong>s1.compareTo(s2</strong>);</p>
+<p>if (r==0) //s1 et s2 sont égales</p>
+<p>{</p>
+<p>...</p>
+<p>}</p>
+<p>else</p>
+<p>if (r&lt;0) //s1 est inférieure à s2</p>
+<p>{</p>
+<p>...</p>
+<p>}</p>
+<p>else //s1 est supérieure à s2</p>
+<p>{</p>
+<p>...</p>
+<p>}</p>
+<h5>
+  <a id="_Toc154407666"></a><a id="_Toc161234217"></a
+  ><a id="_Toc373996992"></a>3. Autres tests
+</h5>
+<p>
+  Les méthodes <em>startsWith()</em> et <em>endsWith()</em> vérifient si une
+  chaîne débute ou se termine, respectivement, par une sous-chaîne spécifique.
+  Ainsi, l’appel&nbsp;:
+</p>
+<p><strong>s.startsWith(”bon”)</strong>;</p>
+<p>
+  retourne <em>true</em> si la chaîne s commence par la chaîne "bon" et
+  <em>false</em> dans le cas contraire. Tandis que l’appel&nbsp;:
+</p>
+<p><strong>s.startsWith(”bon”,9)</strong>;</p>
+<p>
+  retourne <em>true</em> si la sous-chaîne de s commençant à partir du caractère
+  d’indice 9 débute par la chaîne "bon" et <em>false</em> dans le cas contraire.
+  Autrement dit, l’appel est identique à&nbsp;:
+</p>
+<p>s.substring(9).<strong>startsWith(”bon”)</strong>;</p>
+<p>Et l’appel&nbsp;:</p>
+<p><strong>s.endsWith(”soir”)</strong>;</p>
+<p>
+  retourne <em>true</em> si la chaîne s se termine par la chaîne "soir" et
+  <em>false</em> dans le cas contraire.
+</p>
+<h2 id="sec-recherche">
+  <a id="_Toc154407667"></a><a id="_Toc161234218"></a><a id="_Toc373996993"></a
+  ><a id="_Toc164275374"></a>Recherche
+</h2>
+<p>
+  La méthode <em>indexOf()</em> vérifie si une chaîne ou un caractère est
+  présent(e) dans une autre chaîne. Ainsi, l’appel&nbsp;:
+</p>
+<p><strong>int i = s.indexOf(”monde”</strong>);</p>
+<p>
+  retourne la position (l’indice) où se trouve le mot <em>monde</em> dans la
+  chaîne s. Si le mot <em>monde</em> ne se trouve pas dans la chaîne s, la
+  méthode retourne -1.
+</p>
+<p>
+  Si le mot <em>monde</em> est présent plusieurs fois dans la chaîne s, la
+  méthode retourne la position de la première occurrence uniquement.
+</p>
+<p>De même, l’appel&nbsp;:</p>
+<p><strong>int i = s.indexOf(’j’</strong>);</p>
+<p>
+  retourne la position (l’indice) où se trouve le caractère <em>j</em> dans la
+  chaîne s. Si le caractère <em>j</em> ne se trouve pas dans la chaîne s, la
+  méthode retourne -1.
+</p>
+<p>
+  Là aussi, si le caractère <em>j</em> est présent plusieurs fois dans la chaîne
+  s, la méthode retourne la position de la première occurrence uniquement.
+</p>
+<p>L’appel&nbsp;:</p>
+<p><strong>int i = s.indexOf(”monde”,10</strong>);</p>
+<p>
+  retourne la position (l’indice) où se trouve le mot <em>monde</em> dans la
+  chaîne s mais commence la recherche à partir de la position 10. Si le mot
+  monde n’est pas trouvé, la méthode retourne -1.
+</p>
+<p>Il en est de même pour l’appel&nbsp;:</p>
+<p><strong>int i = s.indexOf(’j’,10</strong>);</p>
+<p>
+  La méthode <em>lastIndexOf()</em> fonctionne comme <em>indexOf()</em> mais
+  retourne la position de la dernière occurrence de la chaîne ou du caractère.
+  Ainsi, l’appel&nbsp;:
+</p>
+<p>
+  <a id="_Toc154407668"></a><a id="_Toc161234219"></a
+  ><strong>int i = s.lastIndexOf(”monde”</strong>);
+</p>
+<p>
+  retourne la position (l’indice) où se trouve la dernière occurrence du mot
+  <em>monde</em> dans la chaîne s. Si le mot monde ne se trouve pas dans la
+  chaîne s, la méthode retourne -1.
+</p>
+<p>De même, l’appel&nbsp;:</p>
+<p><strong>int i = s.lastIndexOf(’j’</strong>);</p>
+<p>
+  retourne la position (l’indice) où se trouve la dernière occurrence du
+  caractère <em>j</em> dans la chaîne s. Si le caractère <em>j</em> ne se trouve
+  pas dans la chaîne s, la méthode retourne -1.
+</p>
+<h2 id="sec-analyse-de-chaines-la-methode-split">
+  <a id="_Toc373996994"></a><a id="_Toc164275375"></a>Analyse de chaînes&nbsp;:
+  la méthode split()
+</h2>
+<p>
+  La méthode <em>split()</em> découpe une chaîne en morceaux et retourne un
+  tableau qui contient les morceaux à raison de 1 morceau par case. Les morceaux
+  sont déterminés par le séparateur fourni à la méthode.
+</p>
+<p>Voici des exemples&nbsp;:</p>
+<p>Si on considère la chaîne s suivante&nbsp;:</p>
+<p>String s = "Dupont,Paul,34:Tremblay,Serge,25:Thibaut,Annie,33"&nbsp;;</p>
+<p>Alors, l’instruction&nbsp;:</p>
+<p>String[] t1 = <strong>s.split(":")</strong>;</p>
+<p>Produit un tableau ayant le contenu suivant&nbsp;:</p>
+<p>t1[0] = Dupont,Paul,34</p>
+<p>t1[1] = Tremblay,Serge,25</p>
+<p>t1[2] = Thibaut,Annie,33</p>
+<p>L’instruction&nbsp;:</p>
+<p>String[] t2 = <strong>s.split(",")</strong>;</p>
+<p>Produit un tableau ayant le contenu suivant&nbsp;:</p>
+<p>t2[0] = Dupont</p>
+<p>t2[1] = Paul</p>
+<p>t2[2] = 34:Tremblay</p>
+<p>t2[3] = Serge</p>
+<p>t2[4] = 25:Thibaut</p>
+<p>t2[5] = Annie</p>
+<p>t2[6] = 33</p>
+<p>Et l’instruction&nbsp;:</p>
+<p>String[] t3 = <strong>s.split("[:,]")</strong>;</p>
+<p>String premierMorceau = <strong>s.split("[:,]")[0]</strong>;</p>
+<p>Produit un tableau ayant le contenu suivant&nbsp;:</p>
+<p>t3[0] = Dupont</p>
+<p>t3[1] = Paul</p>
+<p>t3[2] = 34</p>
+<p>t3[3] = Tremblay</p>
+<p>t3[4] = Serge</p>
+<p>t3[5] = 25</p>
+<p>t3[6] = Thibaut</p>
+<p>t3[7] = Annie</p>
+<p>t3[8] = 33</p>
+<h2 id="sec-divers">
+  <a id="_Toc373996995"></a><a id="_Toc164275376"></a>Divers
+</h2>
+<p>
+  Il existe d’autres méthodes utilitaires sur les chaînes. En voici une liste
+  non exhaustive&nbsp;:
+</p>
+<ul>
+  <li>
+    <em>trim()</em>&nbsp;: supprime les espaces au début et à la fin de la
+    chaîne. Voici un exemple&nbsp;:
+  </li>
+</ul>
+<p>String reponse = " oui ";</p>
+<p><strong>String rep = reponse.trim()&nbsp;; //rep vaut "oui"</strong></p>
+<ul>
+  <li>
+    <em>replace()&nbsp;</em>: crée une copie d’une chaîne mais en prenant soin
+    de remplacer toutes les occurrences d’un caractère par un autre caractère.
+  </li>
+</ul>
+<p>Par exemple, l’instruction&nbsp;:</p>
+<p>String r = s.replace(’a’,’e’);</p>
+<p>
+  retourne dans r une chaîne identique à la chaîne s mais où les caractères
+  <em>a</em> sont remplacés par des <em>e</em>.
+</p>

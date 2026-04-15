@@ -1,154 +1,600 @@
 {
-  "generatedAt": "2025-10-15T20:54:14.962Z",
+  "generatedAt": "2026-04-15T11:50:18.979Z",
   "modules": [
     {
-      "title": "01-heritage",
-      "slug": "01-heritage",
-      "id": "module1-01-heritage",
-      "href": "index.html#module1-01-heritage",
-      "pages": [
-        {
-          "title": "Héritage par extension[1]",
-          "slug": "heritage-par-extension1",
-          "href": "pages/01-heritage/heritage-par-extension1.html",
-          "sections": [
-            {
-              "title": "Terminologie",
-              "slug": "terminologie",
-              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--terminologie"
-            },
-            {
-              "title": "Accès protégé (protected)",
-              "slug": "acces-protege-protected",
-              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--acces-protege-protected"
-            },
-            {
-              "title": "Héritage vs. Agrégation/Composition",
-              "slug": "heritage-vs-agregationcomposition",
-              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--heritage-vs-agregationcomposition"
-            },
-            {
-              "title": "Graphe (ou hiérarchie) d’héritage",
-              "slug": "graphe-ou-hierarchie-dheritage",
-              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--graphe-ou-hierarchie-dheritage"
-            },
-            {
-              "title": "Appel du constructeur de la classe mère – super()",
-              "slug": "appel-du-constructeur-de-la-classe-mere-super",
-              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--appel-du-constructeur-de-la-classe-mere-super"
-            },
-            {
-              "title": "Héritage simple vs. Héritage multiple",
-              "slug": "heritage-simple-vs-heritage-multiple",
-              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--heritage-simple-vs-heritage-multiple"
-            },
-            {
-              "title": "Généralisation et spécialisation",
-              "slug": "generalisation-et-specialisation",
-              "hrefDeep": "index.html#module1-01-heritage--heritage-par-extension1--generalisation-et-specialisation"
-            }
-          ]
-        }
-      ]
+      "title": "01-Présentation du cours",
+      "slug": "01-presentation-du-cours",
+      "id": "module1-01-presentation-du-cours",
+      "href": "index.html#module1-01-presentation-du-cours",
+      "pages": []
     },
     {
-      "title": "02-polymorphisme",
-      "slug": "02-polymorphisme",
-      "id": "module2-02-polymorphisme",
-      "href": "index.html#module2-02-polymorphisme",
+      "title": "02-Concepts et notions",
+      "slug": "02-concepts-et-notions",
+      "id": "module2-02-concepts-et-notions",
+      "href": "index.html#module2-02-concepts-et-notions",
+      "pages": []
+    },
+    {
+      "title": "03-Introduction à la programmation orientée objet",
+      "slug": "03-introduction-a-la-programmation-orientee-objet",
+      "id": "module3-03-introduction-a-la-programmation-orientee-objet",
+      "href": "index.html#module3-03-introduction-a-la-programmation-orientee-objet",
       "pages": [
         {
-          "title": "Polymorphisme",
-          "slug": "polymorphisme",
-          "href": "pages/02-polymorphisme/polymorphisme.html",
+          "title": "Page",
+          "slug": "page",
+          "href": "pages/03-introduction-a-la-programmation-orientee-objet/page.html",
           "sections": [
             {
               "title": "Introduction",
               "slug": "introduction",
-              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--introduction"
+              "hrefDeep": "index.html#module3-03-introduction-a-la-programmation-orientee-objet--page--introduction"
+            },
+            {
+              "title": "Classes",
+              "slug": "classes",
+              "hrefDeep": "index.html#module3-03-introduction-a-la-programmation-orientee-objet--page--classes"
+            },
+            {
+              "title": "Valeurs et références",
+              "slug": "valeurs-et-references",
+              "hrefDeep": "index.html#module3-03-introduction-a-la-programmation-orientee-objet--page--valeurs-et-references"
+            },
+            {
+              "title": "Instanciation",
+              "slug": "instanciation",
+              "hrefDeep": "index.html#module3-03-introduction-a-la-programmation-orientee-objet--page--instanciation"
+            },
+            {
+              "title": "Valeurs par défaut des attributs",
+              "slug": "valeurs-par-defaut-des-attributs",
+              "hrefDeep": "index.html#module3-03-introduction-a-la-programmation-orientee-objet--page--valeurs-par-defaut-des-attributs"
+            },
+            {
+              "title": "Accès aux attributs : l’opérateur point (.)",
+              "slug": "acces-aux-attributs-loperateur-point",
+              "hrefDeep": "index.html#module3-03-introduction-a-la-programmation-orientee-objet--page--acces-aux-attributs-loperateur-point"
+            },
+            {
+              "title": "Encapsulation",
+              "slug": "encapsulation",
+              "hrefDeep": "index.html#module3-03-introduction-a-la-programmation-orientee-objet--page--encapsulation"
+            },
+            {
+              "title": "Méthodes d’accès",
+              "slug": "methodes-dacces",
+              "hrefDeep": "index.html#module3-03-introduction-a-la-programmation-orientee-objet--page--methodes-dacces"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "04-Survol des concepts de la programmation orientée objet",
+      "slug": "04-survol-des-concepts-de-la-programmation-orientee-objet",
+      "id": "module4-04-survol-des-concepts-de-la-programmation-orientee-objet",
+      "href": "index.html#module4-04-survol-des-concepts-de-la-programmation-orientee-objet",
+      "pages": []
+    },
+    {
+      "title": "05-Éléments de programmation Java",
+      "slug": "05-elements-de-programmation-java",
+      "id": "module5-05-elements-de-programmation-java",
+      "href": "index.html#module5-05-elements-de-programmation-java",
+      "pages": []
+    },
+    {
+      "title": "06-Tableaux",
+      "slug": "06-tableaux",
+      "id": "module6-06-tableaux",
+      "href": "index.html#module6-06-tableaux",
+      "pages": [
+        {
+          "title": "Page",
+          "slug": "page",
+          "href": "pages/06-tableaux/page.html",
+          "sections": [
+            {
+              "title": "Introduction",
+              "slug": "introduction",
+              "hrefDeep": "index.html#module6-06-tableaux--page--introduction"
+            },
+            {
+              "title": "Création",
+              "slug": "creation",
+              "hrefDeep": "index.html#module6-06-tableaux--page--creation"
+            },
+            {
+              "title": "Manipulation",
+              "slug": "manipulation",
+              "hrefDeep": "index.html#module6-06-tableaux--page--manipulation"
+            },
+            {
+              "title": "Tableau d’objet",
+              "slug": "tableau-dobjet",
+              "hrefDeep": "index.html#module6-06-tableaux--page--tableau-dobjet"
+            },
+            {
+              "title": "Tableau multidimensionnels",
+              "slug": "tableau-multidimensionnels",
+              "hrefDeep": "index.html#module6-06-tableaux--page--tableau-multidimensionnels"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "07-Méthodes",
+      "slug": "07-methodes",
+      "id": "module7-07-methodes",
+      "href": "index.html#module7-07-methodes",
+      "pages": []
+    },
+    {
+      "title": "08-Chaines de caractères",
+      "slug": "08-chaines-de-caracteres",
+      "id": "module8-08-chaines-de-caracteres",
+      "href": "index.html#module8-08-chaines-de-caracteres",
+      "pages": [
+        {
+          "title": "Page",
+          "slug": "page",
+          "href": "pages/08-chaines-de-caracteres/page.html",
+          "sections": [
+            {
+              "title": "Introduction",
+              "slug": "introduction",
+              "hrefDeep": "index.html#module8-08-chaines-de-caracteres--page--introduction"
+            },
+            {
+              "title": "Longueur d’une chaîne",
+              "slug": "longueur-dune-chaine",
+              "hrefDeep": "index.html#module8-08-chaines-de-caracteres--page--longueur-dune-chaine"
+            },
+            {
+              "title": "Extraction de caractères et de sous-chaînes",
+              "slug": "extraction-de-caracteres-et-de-sous-chaines",
+              "hrefDeep": "index.html#module8-08-chaines-de-caracteres--page--extraction-de-caracteres-et-de-sous-chaines"
+            },
+            {
+              "title": "Conversions",
+              "slug": "conversions",
+              "hrefDeep": "index.html#module8-08-chaines-de-caracteres--page--conversions"
+            },
+            {
+              "title": "Concaténation",
+              "slug": "concatenation",
+              "hrefDeep": "index.html#module8-08-chaines-de-caracteres--page--concatenation"
+            },
+            {
+              "title": "Comparaison",
+              "slug": "comparaison",
+              "hrefDeep": "index.html#module8-08-chaines-de-caracteres--page--comparaison"
+            },
+            {
+              "title": "Recherche",
+              "slug": "recherche",
+              "hrefDeep": "index.html#module8-08-chaines-de-caracteres--page--recherche"
+            },
+            {
+              "title": "Analyse de chaînes : la méthode split()",
+              "slug": "analyse-de-chaines-la-methode-split",
+              "hrefDeep": "index.html#module8-08-chaines-de-caracteres--page--analyse-de-chaines-la-methode-split"
+            },
+            {
+              "title": "Divers",
+              "slug": "divers",
+              "hrefDeep": "index.html#module8-08-chaines-de-caracteres--page--divers"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "09-Tris et fouilles",
+      "slug": "09-tris-et-fouilles",
+      "id": "module9-09-tris-et-fouilles",
+      "href": "index.html#module9-09-tris-et-fouilles",
+      "pages": []
+    },
+    {
+      "title": "10-Collaboration entre objets",
+      "slug": "10-collaboration-entre-objets",
+      "id": "module10-10-collaboration-entre-objets",
+      "href": "index.html#module10-10-collaboration-entre-objets",
+      "pages": [
+        {
+          "title": "Page",
+          "slug": "page",
+          "href": "pages/10-collaboration-entre-objets/page.html",
+          "sections": [
+            {
+              "title": "Collaboration",
+              "slug": "collaboration",
+              "hrefDeep": "index.html#module10-10-collaboration-entre-objets--page--collaboration"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "11-Agrégation-composition",
+      "slug": "11-agregation-composition",
+      "id": "module11-11-agregation-composition",
+      "href": "index.html#module11-11-agregation-composition",
+      "pages": [
+        {
+          "title": "Page",
+          "slug": "page",
+          "href": "pages/11-agregation-composition/page.html",
+          "sections": [
+            {
+              "title": "Agrégation/Composition",
+              "slug": "agregationcomposition",
+              "hrefDeep": "index.html#module11-11-agregation-composition--page--agregationcomposition"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "12-Référence this",
+      "slug": "12-reference-this",
+      "id": "module12-12-reference-this",
+      "href": "index.html#module12-12-reference-this",
+      "pages": [
+        {
+          "title": "Page",
+          "slug": "page",
+          "href": "pages/12-reference-this/page.html",
+          "sections": [
+            {
+              "title": "La référence this",
+              "slug": "la-reference-this",
+              "hrefDeep": "index.html#module12-12-reference-this--page--la-reference-this"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "13-Comparaison d’objets – test d’égalité – equals()",
+      "slug": "13-comparaison-dobjets-test-degalite-equals",
+      "id": "module13-13-comparaison-dobjets-test-degalite-equals",
+      "href": "index.html#module13-13-comparaison-dobjets-test-degalite-equals",
+      "pages": []
+    },
+    {
+      "title": "14-Attributs et méthodes de classe – static",
+      "slug": "14-attributs-et-methodes-de-classe-static",
+      "id": "module14-14-attributs-et-methodes-de-classe-static",
+      "href": "index.html#module14-14-attributs-et-methodes-de-classe-static",
+      "pages": []
+    },
+    {
+      "title": "15-Classes enveloppes",
+      "slug": "15-classes-enveloppes",
+      "id": "module15-15-classes-enveloppes",
+      "href": "index.html#module15-15-classes-enveloppes",
+      "pages": []
+    },
+    {
+      "title": "16-Vecteurs et itérateurs",
+      "slug": "16-vecteurs-et-iterateurs",
+      "id": "module16-16-vecteurs-et-iterateurs",
+      "href": "index.html#module16-16-vecteurs-et-iterateurs",
+      "pages": [
+        {
+          "title": "Page",
+          "slug": "page",
+          "href": "pages/16-vecteurs-et-iterateurs/page.html",
+          "sections": [
+            {
+              "title": "Utilisation des vecteurs",
+              "slug": "utilisation-des-vecteurs",
+              "hrefDeep": "index.html#module16-16-vecteurs-et-iterateurs--page--utilisation-des-vecteurs"
+            },
+            {
+              "title": "Utilisation des vecteurs",
+              "slug": "utilisation-des-vecteurs",
+              "hrefDeep": "index.html#module16-16-vecteurs-et-iterateurs--page--utilisation-des-vecteurs"
+            },
+            {
+              "title": "Principales méthodes",
+              "slug": "principales-methodes",
+              "hrefDeep": "index.html#module16-16-vecteurs-et-iterateurs--page--principales-methodes"
+            },
+            {
+              "title": "Itérateurs",
+              "slug": "iterateurs",
+              "hrefDeep": "index.html#module16-16-vecteurs-et-iterateurs--page--iterateurs"
+            },
+            {
+              "title": "For each",
+              "slug": "for-each",
+              "hrefDeep": "index.html#module16-16-vecteurs-et-iterateurs--page--for-each"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "17-Types de données abstraits – implémentation statique",
+      "slug": "17-types-de-donnees-abstraits-implementation-statique",
+      "id": "module17-17-types-de-donnees-abstraits-implementation-statique",
+      "href": "index.html#module17-17-types-de-donnees-abstraits-implementation-statique",
+      "pages": []
+    },
+    {
+      "title": "18-Chainage",
+      "slug": "18-chainage",
+      "id": "module18-18-chainage",
+      "href": "index.html#module18-18-chainage",
+      "pages": []
+    },
+    {
+      "title": "19-Classes internes",
+      "slug": "19-classes-internes",
+      "id": "module19-19-classes-internes",
+      "href": "index.html#module19-19-classes-internes",
+      "pages": []
+    },
+    {
+      "title": "20-Types de données abstraits – implémentation dynamique",
+      "slug": "20-types-de-donnees-abstraits-implementation-dynamique",
+      "id": "module20-20-types-de-donnees-abstraits-implementation-dynamique",
+      "href": "index.html#module20-20-types-de-donnees-abstraits-implementation-dynamique",
+      "pages": []
+    },
+    {
+      "title": "21-Appels entre constructeurs – this()",
+      "slug": "21-appels-entre-constructeurs-this",
+      "id": "module21-21-appels-entre-constructeurs-this",
+      "href": "index.html#module21-21-appels-entre-constructeurs-this",
+      "pages": []
+    },
+    {
+      "title": "22-Ramasse-miettes et destruction d’objets",
+      "slug": "22-ramasse-miettes-et-destruction-dobjets",
+      "id": "module22-22-ramasse-miettes-et-destruction-dobjets",
+      "href": "index.html#module22-22-ramasse-miettes-et-destruction-dobjets",
+      "pages": []
+    },
+    {
+      "title": "23-Initialisation statique",
+      "slug": "23-initialisation-statique",
+      "id": "module23-23-initialisation-statique",
+      "href": "index.html#module23-23-initialisation-statique",
+      "pages": []
+    },
+    {
+      "title": "24-Introduction aux types énumérés",
+      "slug": "24-introduction-aux-types-enumeres",
+      "id": "module24-24-introduction-aux-types-enumeres",
+      "href": "index.html#module24-24-introduction-aux-types-enumeres",
+      "pages": []
+    },
+    {
+      "title": "25-Héritage",
+      "slug": "25-heritage",
+      "id": "module25-25-heritage",
+      "href": "index.html#module25-25-heritage",
+      "pages": [
+        {
+          "title": "Héritage par extension[1]",
+          "slug": "heritage-par-extension1",
+          "href": "pages/25-heritage/heritage-par-extension1.html",
+          "sections": [
+            {
+              "title": "Terminologie",
+              "slug": "terminologie",
+              "hrefDeep": "index.html#module25-25-heritage--heritage-par-extension1--terminologie"
+            },
+            {
+              "title": "Accès protégé (protected)",
+              "slug": "acces-protege-protected",
+              "hrefDeep": "index.html#module25-25-heritage--heritage-par-extension1--acces-protege-protected"
+            },
+            {
+              "title": "Héritage vs. Agrégation/Composition",
+              "slug": "heritage-vs-agregationcomposition",
+              "hrefDeep": "index.html#module25-25-heritage--heritage-par-extension1--heritage-vs-agregationcomposition"
+            },
+            {
+              "title": "Graphe (ou hiérarchie) d’héritage",
+              "slug": "graphe-ou-hierarchie-dheritage",
+              "hrefDeep": "index.html#module25-25-heritage--heritage-par-extension1--graphe-ou-hierarchie-dheritage"
+            },
+            {
+              "title": "Appel du constructeur de la classe mère – super()",
+              "slug": "appel-du-constructeur-de-la-classe-mere-super",
+              "hrefDeep": "index.html#module25-25-heritage--heritage-par-extension1--appel-du-constructeur-de-la-classe-mere-super"
+            },
+            {
+              "title": "Héritage simple vs. Héritage multiple",
+              "slug": "heritage-simple-vs-heritage-multiple",
+              "hrefDeep": "index.html#module25-25-heritage--heritage-par-extension1--heritage-simple-vs-heritage-multiple"
+            },
+            {
+              "title": "Généralisation et spécialisation",
+              "slug": "generalisation-et-specialisation",
+              "hrefDeep": "index.html#module25-25-heritage--heritage-par-extension1--generalisation-et-specialisation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "26-Polymorphisme",
+      "slug": "26-polymorphisme",
+      "id": "module26-26-polymorphisme",
+      "href": "index.html#module26-26-polymorphisme",
+      "pages": [
+        {
+          "title": "Polymorphisme",
+          "slug": "polymorphisme",
+          "href": "pages/26-polymorphisme/polymorphisme.html",
+          "sections": [
+            {
+              "title": "Introduction",
+              "slug": "introduction",
+              "hrefDeep": "index.html#module26-26-polymorphisme--polymorphisme--introduction"
             },
             {
               "title": "Surcharge de méthodes (overloading)",
               "slug": "surcharge-de-methodes-overloading",
-              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--surcharge-de-methodes-overloading"
+              "hrefDeep": "index.html#module26-26-polymorphisme--polymorphisme--surcharge-de-methodes-overloading"
             },
             {
               "title": "Redéfinition de méthodes (overriding)",
               "slug": "redefinition-de-methodes-overriding",
-              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--redefinition-de-methodes-overriding"
+              "hrefDeep": "index.html#module26-26-polymorphisme--polymorphisme--redefinition-de-methodes-overriding"
             },
             {
               "title": "Méthodes virtuelles et liaison dynamique",
               "slug": "methodes-virtuelles-et-liaison-dynamique",
-              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--methodes-virtuelles-et-liaison-dynamique"
+              "hrefDeep": "index.html#module26-26-polymorphisme--polymorphisme--methodes-virtuelles-et-liaison-dynamique"
             },
             {
               "title": "Méthodes non polymorphiques",
               "slug": "methodes-non-polymorphiques",
-              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--methodes-non-polymorphiques"
+              "hrefDeep": "index.html#module26-26-polymorphisme--polymorphisme--methodes-non-polymorphiques"
             },
             {
               "title": "Méthodes et classes abstraites",
               "slug": "methodes-et-classes-abstraites",
-              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--methodes-et-classes-abstraites"
+              "hrefDeep": "index.html#module26-26-polymorphisme--polymorphisme--methodes-et-classes-abstraites"
             },
             {
               "title": "Méthodes et classes finales",
               "slug": "methodes-et-classes-finales",
-              "hrefDeep": "index.html#module2-02-polymorphisme--polymorphisme--methodes-et-classes-finales"
+              "hrefDeep": "index.html#module26-26-polymorphisme--polymorphisme--methodes-et-classes-finales"
             }
           ]
         }
       ]
     },
     {
-      "title": "03-interfaces",
-      "slug": "03-interfaces",
-      "id": "module3-03-interfaces",
-      "href": "index.html#module3-03-interfaces",
+      "title": "27-Graphisme",
+      "slug": "27-graphisme",
+      "id": "module27-27-graphisme",
+      "href": "index.html#module27-27-graphisme",
+      "pages": []
+    },
+    {
+      "title": "28-Gestion d’exceptions",
+      "slug": "28-gestion-dexceptions",
+      "id": "module28-28-gestion-dexceptions",
+      "href": "index.html#module28-28-gestion-dexceptions",
+      "pages": []
+    },
+    {
+      "title": "29-Interfaces",
+      "slug": "29-interfaces",
+      "id": "module29-29-interfaces",
+      "href": "index.html#module29-29-interfaces",
       "pages": [
         {
           "title": "Interfaces",
           "slug": "interfaces",
-          "href": "pages/03-interfaces/interfaces.html",
+          "href": "pages/29-interfaces/interfaces.html",
           "sections": [
             {
               "title": "Définition d’une interface",
               "slug": "definition-dune-interface",
-              "hrefDeep": "index.html#module3-03-interfaces--interfaces--definition-dune-interface"
+              "hrefDeep": "index.html#module29-29-interfaces--interfaces--definition-dune-interface"
             },
             {
               "title": "Implémentation d’une interface",
               "slug": "implementation-dune-interface",
-              "hrefDeep": "index.html#module3-03-interfaces--interfaces--implementation-dune-interface"
+              "hrefDeep": "index.html#module29-29-interfaces--interfaces--implementation-dune-interface"
             },
             {
               "title": "Propriétés des interfaces",
               "slug": "proprietes-des-interfaces",
-              "hrefDeep": "index.html#module3-03-interfaces--interfaces--proprietes-des-interfaces"
+              "hrefDeep": "index.html#module29-29-interfaces--interfaces--proprietes-des-interfaces"
             },
             {
               "title": "Programmation par contrats",
               "slug": "programmation-par-contrats",
-              "hrefDeep": "index.html#module3-03-interfaces--interfaces--programmation-par-contrats"
+              "hrefDeep": "index.html#module29-29-interfaces--interfaces--programmation-par-contrats"
             }
           ]
         }
       ]
     },
     {
-      "title": "04-observer",
-      "slug": "04-observer",
-      "id": "module4-04-observer",
-      "href": "index.html#module4-04-observer",
+      "title": "30-Clonage et constructeurs de copies",
+      "slug": "30-clonage-et-constructeurs-de-copies",
+      "id": "module30-30-clonage-et-constructeurs-de-copies",
+      "href": "index.html#module30-30-clonage-et-constructeurs-de-copies",
+      "pages": [
+        {
+          "title": "Page",
+          "slug": "page",
+          "href": "pages/30-clonage-et-constructeurs-de-copies/page.html",
+          "sections": [
+            {
+              "title": "Introduction",
+              "slug": "introduction",
+              "hrefDeep": "index.html#module30-30-clonage-et-constructeurs-de-copies--page--introduction"
+            },
+            {
+              "title": "Clonage",
+              "slug": "clonage",
+              "hrefDeep": "index.html#module30-30-clonage-et-constructeurs-de-copies--page--clonage"
+            },
+            {
+              "title": "Constructeurs de copies",
+              "slug": "constructeurs-de-copies",
+              "hrefDeep": "index.html#module30-30-clonage-et-constructeurs-de-copies--page--constructeurs-de-copies"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "31-Introduction à la programmation générique",
+      "slug": "31-introduction-a-la-programmation-generique",
+      "id": "module31-31-introduction-a-la-programmation-generique",
+      "href": "index.html#module31-31-introduction-a-la-programmation-generique",
+      "pages": []
+    },
+    {
+      "title": "32-Programmation graphique avec Swing",
+      "slug": "32-programmation-graphique-avec-swing",
+      "id": "module32-32-programmation-graphique-avec-swing",
+      "href": "index.html#module32-32-programmation-graphique-avec-swing",
+      "pages": []
+    },
+    {
+      "title": "33-Patron Observer",
+      "slug": "33-patron-observer",
+      "id": "module33-33-patron-observer",
+      "href": "index.html#module33-33-patron-observer",
       "pages": [
         {
           "title": "Patron Observer",
           "slug": "patron-observer",
-          "href": "pages/04-observer/patron-observer.html",
+          "href": "pages/33-patron-observer/patron-observer.html",
           "sections": []
         }
       ]
+    },
+    {
+      "title": "34-Introduction à l’architecture MVC",
+      "slug": "34-introduction-a-larchitecture-mvc",
+      "id": "module34-34-introduction-a-larchitecture-mvc",
+      "href": "index.html#module34-34-introduction-a-larchitecture-mvc",
+      "pages": []
+    },
+    {
+      "title": "35-Threads et Swing",
+      "slug": "35-threads-et-swing",
+      "id": "module35-35-threads-et-swing",
+      "href": "index.html#module35-35-threads-et-swing",
+      "pages": []
     }
   ]
 }

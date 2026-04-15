@@ -1,0 +1,88 @@
+<h2 id="sec-collaboration"><a id="_Toc188872196"></a>Collaboration</h2>
+<p>
+  Dans le monde réel, des objets collaborent entre eux pour réaliser des tâches.
+  Ainsi, un client d’une banque peut créditer son compte bancaire avec un
+  montant d’argent. Un enseignant peut évaluer le travail d’un étudiant pour un
+  cours et lui attribuer une note. Une personne peut conduire une voiture et la
+  déplacer d’un point A à un point B.
+</p>
+<p>
+  De manière similaire, dans un programme orienté objet, des objets collaborent
+  pour fournir les fonctionnalités du programme. Par exemple, si une classe
+  Document représente un document électronique (fichier PDF, image JPEG,
+  …)&nbsp;:
+</p>
+<p>public class Document {</p>
+<p>//...</p>
+<p>}</p>
+<p>
+  On peut avoir dans une classe Imprimante, une méthode imprimer() qui permet
+  d’imprimer un document&nbsp;:
+</p>
+<p>public class Imprimante {</p>
+<p>//...</p>
+<p><strong> public boolean imprimer(Document doc) {</strong></p>
+<p><strong> //...</strong></p>
+<p><strong> }</strong></p>
+<p>}</p>
+<p>Dans un programme&nbsp;:</p>
+<p>Document monCv = new Document();</p>
+<p>Imprimanter laserJet = new Imprimante();</p>
+<p>if (<strong>laserJet.imprimer(monCv)</strong>)</p>
+<p>System.out.println("CV imprimé avec succès");</p>
+<p>On peut avoir des objets Personne qui déplacent des voitures&nbsp;:</p>
+<p>public class Voiture {</p>
+<p>//...</p>
+<p><strong> public void avancer(int distance) {</strong></p>
+<p><strong> //...</strong></p>
+<p><strong> }</strong></p>
+<p>}</p>
+<p>public class Personne {</p>
+<p>//...</p>
+<p><strong> public void deplacer(Voiture v, int distance) {</strong></p>
+<p><strong> v.avancer(distance);</strong></p>
+<p><strong> }</strong></p>
+<p>}</p>
+<p>Dans un programme&nbsp;:</p>
+<p>Personne annie = new Personne();</p>
+<p>Voiture maToyota = new Voiture();</p>
+<p><strong>annie.deplacer(maToyota, 30);</strong></p>
+<p>
+  Avant de déplacer la voiture, on peut s’assurer que la personne possède la
+  bonne catégorie de permis de conduire&nbsp;:
+</p>
+<p>public class Voiture {</p>
+<p><strong> private char categoriePermisNecessaire;</strong></p>
+<p>//...</p>
+<p><strong> public void getCategoriePermisNecessaire() {</strong></p>
+<p><strong> return categoriePermisNecessaire;</strong></p>
+<p><strong> }</strong></p>
+<p>public void avancer(int distance) {</p>
+<p>//...</p>
+<p>}</p>
+<p>}</p>
+<p>public class Personne {</p>
+<p><strong> private char categoriePermis;</strong></p>
+<p>//...</p>
+<p>public boolean deplacer(Voiture v, int distance) {</p>
+<p>if (<strong>categoriePermis==v.getCategoriePermisNecessaire()</strong>) {</p>
+<p>v.avancer(distance);</p>
+<p><strong> return true;</strong></p>
+<p>}</p>
+<p>else {</p>
+<p><strong> return false;</strong></p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>Dans un programme&nbsp;:</p>
+<p>Personne annie = new Personne();</p>
+<p>Voiture maToyota = new Voiture();</p>
+<p>if (<strong>!annie.deplacer(maToyota, 30)</strong>)</p>
+<p>System.out.println("La voiture ne peut pas être déplacée");</p>
+<p>
+  Il y a collaboration dès qu’un objet utilise un autre objet. Généralement, la
+  collaboration s’effectue par <strong>«&nbsp;envoi de message&nbsp;»</strong>.
+  Dans des langages tels que Java, l’envoi d’un message s’effectue par appel de
+  méthode&nbsp;: envoyer un message à un objet consiste à appeler une méthode de
+  l’objet.
+</p>
