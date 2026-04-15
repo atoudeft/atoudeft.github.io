@@ -108,29 +108,33 @@ function highlightJava(raw){
   while (i < raw.length){
     if (raw[i]==='/' && raw[i+1]==='/'){
       let end = raw.indexOf('\n',i); if(end===-1) end=raw.length;
-      toks.push(`<span style="color:var(--jcmt);font-style:italic">${escH(raw.slice(i,end))}</span>`);
+      toks.push(`<span class="jcmt">${escH(raw.slice(i,end))}</span>`);
       out+=`\x00T${toks.length-1}\x00`; i=end; continue;
     }
     if (raw[i]==='/' && raw[i+1]==='*'){
       let end=raw.indexOf('*/',i+2); if(end===-1) end=raw.length-2;
-      toks.push(`<span style="color:var(--jcmt);font-style:italic">${escH(raw.slice(i,end+2))}</span>`);
+      toks.push(`<span class="jcmt">${escH(raw.slice(i,end+2))}</span>`);
       out+=`\x00T${toks.length-1}\x00`; i=end+2; continue;
     }
     if (raw[i]==='"'){
       let j=i+1;
       while(j<raw.length && !(raw[j]==='"' && raw[j-1]!=='\\')) j++;
-      toks.push(`<span style="color:var(--jstr)">${escH(raw.slice(i,j+1))}</span>`);
+      toks.push(`<span class="jstr">${escH(raw.slice(i,j+1))}</span>`);
       out+=`\x00T${toks.length-1}\x00`; i=j+1; continue;
+    }
+    if (raw[i]==="'" && i+2<raw.length && raw[i+2]==="'"){
+      toks.push(`<span class="jstr">${escH(raw.slice(i,i+3))}</span>`);
+      out+=`\x00T${toks.length-1}\x00`; i+=3; continue;
     }
     out+=raw[i]; i++;
   }
   out = out.replace(/\b([A-Za-z_][A-Za-z0-9_]*)\b/g, m => {
-    if (JAVA_KW.has(m)) return `<span style="color:var(--jkw)">${m}</span>`;
-    if (/^[A-Z][a-zA-Z0-9_]+$/.test(m)) return `<span style="color:var(--jtype)">${m}</span>`;
+    if (JAVA_KW.has(m)) return `<span class="jkw">${m}</span>`;
+    if (/^[A-Z][a-zA-Z0-9_]+$/.test(m)) return `<span class="jtype">${m}</span>`;
     return m;
   });
-  out = out.replace(/(@[A-Za-z]+)/g, '<span style="color:var(--jann)">$1</span>');
-  out = out.replace(/\b(\d+\.?\d*[LlFfDd]?)\b/g,'<span style="color:var(--jnum)">$1</span>');
+  out = out.replace(/(@[A-Za-z]+)/g, '<span class="jann">$1</span>');
+  out = out.replace(/\b(\d+\.?\d*[LlFfDd]?)\b/g,'<span class="jnum">$1</span>');
   toks.forEach((tok,idx) => { out=out.replace(new RegExp(`\x00T${idx}\x00`), tok); });
   return out;
 }

@@ -317,7 +317,7 @@ main#content .callout .title{ font-weight: 700; margin-bottom: .35rem; }
 /* Petites corrections contre styles inline des convertisseurs */
 main#content [style*="line-height"]{ line-height: inherit !important; }
 main#content [style*="font-size"]{ font-size: inherit !important; }
-main#content [style*="color"]{ color: inherit !important; }
+main#content :not(.java-block *)[style*="color"]{ color: inherit !important; }
 
 /*********************/
 /* Réglages fins pour Inter */

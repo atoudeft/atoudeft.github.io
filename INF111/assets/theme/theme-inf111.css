@@ -1,464 +1,409 @@
 /* ============================================================
    Thème INF111 — Programmation orientée objet en Java
-   Design : académique-moderne, sobre et professionnel
-   Polices : JetBrains Mono (code) + Source Serif 4 (contenu)
+   Polices : JetBrains Mono (code) + Source Serif 4 (prose)
+             + DM Sans (UI / titres)
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap");
 
-/* ── Variables de thème ── */
+/* ─── Variables de couleur ─────────────────────────────────── */
 :root {
-  /* Couleurs principales */
-  --bg:            #F8F7F4;
-  --text:          #1A1A2E;
-  --muted:         #6B7280;
-  --accent:        #1D4ED8;
-  --accent-light:  #DBEAFE;
-  --accent-dark:   #1E3A8A;
-  --border:        #E5E7EB;
+  --bg:          #F9F7F4;
+  --text:        #1C1917;
+  --muted:       #78716C;
+  --accent:      #1D4ED8;
+  --accent-dk:   #1E3A8A;
+  --accent-lt:   #DBEAFE;
+  --border:      #E7E5E4;
 
-  /* Sidebar */
-  --sidebar-bg:    #FFFFFF;
-  --active-bg:     #EFF6FF;
-  --active-bd:     #BFDBFE;
+  --sidebar-bg:  #FFFFFF;
+  --active-bg:   #EFF6FF;
+  --active-bd:   #BFDBFE;
 
-  /* Contenu */
-  --main-bg:       #FFFFFF;
-  --main-text:     #1A1A2E;
-  --main-heading:  #0F172A;
+  --main-bg:     #FFFFFF;
+  --main-text:   #1C1917;
+  --main-heading:#0C0A09;
 
-  /* Navigation */
-  --nav-heading:   #0F172A;
-  --nav-link:      #374151;
-  --nav-active:    #1E3A8A;
+  --nav-heading: #0C0A09;
+  --nav-link:    #44403C;
+  --nav-active:  #1E3A8A;
 
-  /* Java code */
-  --java-bg:       #0D1117;
-  --java-border:   #21262D;
-  --java-header:   #161B22;
-  --java-text:     #E6EDF3;
+  /* ── Blocs Java ── */
+  --java-bg:     #1E1E2E;
+  --java-hdr:    #181825;
+  --java-border: #313244;
+  --java-text:   #CDD6F4;
 
-  /* Tokens Java */
-  --jkw:   #FF7B72;   /* keywords : public, class, void, return … */
-  --jtype: #79C0FF;   /* types : int, double, String, boolean … */
-  --jstr:  #A5D6FF;   /* strings & chars */
-  --jnum:  #F2CC60;   /* nombres */
-  --jcmt:  #8B949E;   /* commentaires */
-  --jann:  #D2A8FF;   /* annotations @Override */
-  --jid:   #E6EDF3;   /* identifiants */
-  --jop:   #FF9E64;   /* opérateurs / ponctuation */
-
-  /* Images */
-  --img-shadow: 0 4px 24px rgba(0,0,0,0.10);
-  --img-radius: 10px;
-
-  /* Typographie */
-  --font-body:  'DM Sans', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --font-code:  'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  /* Tokens syntaxiques (palette Catppuccin Mocha — excellent contraste) */
+  --jkw:  #CBA6F7;   /* keywords  → mauve vif */
+  --jtype:#89DCEB;   /* types     → cyan clair */
+  --jstr: #A6E3A1;   /* strings   → vert menthe */
+  --jnum: #FAB387;   /* nombres   → pêche */
+  --jcmt: #6C7086;   /* comments  → gris bleuté */
+  --jann: #F38BA8;   /* @Override → rose */
+  --jop:  #89B4FA;   /* ponctuation → bleu ciel */
 }
 
-/* ── Typo globale ── */
-body, main#content, header.site, aside#sidebar, nav.menu {
-  font-family: var(--font-body) !important;
+/* ─── Typographie globale ──────────────────────────────────── */
+body,
+header.site,
+aside#sidebar,
+nav.menu,
+nav.menu a,
+#sidebar-list a,
+.java-block__header {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
 }
+
+/* Contenu : prose en Source Serif 4 */
 main#content p,
 main#content li,
-main#content blockquote {
-  font-family: var(--font-serif) !important;
-  font-size: 1.05rem !important;
-  line-height: 1.8 !important;
-}
-main#content h1, main#content h2, main#content h3, main#content h4 {
-  font-family: var(--font-body) !important;
+main#content blockquote,
+main#content td,
+main#content th {
+  font-family: 'Source Serif 4', Georgia, serif !important;
+  font-size:   1.05rem !important;
+  line-height: 1.85    !important;
 }
 
-/* ── Header ── */
+/* Titres en DM Sans */
+main#content h1,
+main#content h2,
+main#content h3,
+main#content h4 {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+}
+
+/* Code monospace */
+main#content code,
+main#content pre,
+.java-block pre,
+.java-block code {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace !important;
+}
+
+/* ─── Header ───────────────────────────────────────────────── */
 header.site {
-  background: var(--sidebar-bg) !important;
+  background:    #FFFFFF !important;
   border-bottom: 2px solid var(--accent) !important;
-  padding: 0 20px !important;
-  height: 56px !important;
 }
 header.site strong {
-  font-family: var(--font-body) !important;
-  font-size: 1rem !important;
-  font-weight: 700 !important;
-  color: var(--accent-dark) !important;
+  font-size:   0.95rem  !important;
+  font-weight: 700      !important;
+  color:       var(--accent-dk) !important;
   letter-spacing: -0.01em;
 }
-header.site strong::before {
-  content: '☕ ';
-  font-style: normal;
-}
 
-/* ── Sidebar ── */
+/* ─── Sidebar ──────────────────────────────────────────────── */
 aside#sidebar {
-  background: var(--sidebar-bg) !important;
+  background:   #FFFFFF !important;
   border-right: 1px solid var(--border) !important;
 }
 
-nav.menu h3 {
-  font-family: var(--font-body) !important;
-  font-size: 0.7rem !important;
-  font-weight: 700 !important;
-  color: var(--muted) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.1em !important;
-}
-
+/* Modules (niveau 1) */
 #sidebar-list > li > a {
-  font-family: var(--font-body) !important;
-  font-weight: 600 !important;
-  font-size: 0.88rem !important;
-  color: var(--nav-heading) !important;
-  padding: 8px 12px !important;
-  border-radius: 6px !important;
+  font-weight: 700    !important;
+  font-size:   0.87rem !important;
+  color:       var(--nav-heading) !important;
+  padding:     9px 12px !important;
+  border-radius: 6px   !important;
   border-left: 3px solid transparent !important;
-  transition: all 0.15s ease !important;
+  transition:  background 0.12s, border-color 0.12s !important;
 }
 #sidebar-list > li > a::before { display: none !important; }
 #sidebar-list > li > a:hover {
-  background: var(--active-bg) !important;
-  border-left-color: var(--accent) !important;
+  background:   var(--active-bg)  !important;
+  border-color: var(--accent)     !important;
 }
 #sidebar-list > li > a.active {
-  background: var(--active-bg) !important;
-  border-left: 3px solid var(--accent) !important;
-  color: var(--accent-dark) !important;
-  outline: none !important;
+  background:   var(--active-bg)  !important;
+  border-left:  3px solid var(--accent) !important;
+  color:        var(--accent-dk)  !important;
+  outline:      none              !important;
 }
 
+/* Sections (niveau 2) */
 #sidebar-list li li > a {
-  font-size: 0.82rem !important;
-  color: var(--muted) !important;
-  padding: 4px 10px !important;
-  border-radius: 4px !important;
+  font-size:    0.82rem !important;
+  font-weight:  400     !important;
+  color:        var(--muted) !important;
+  padding:      4px 10px    !important;
+  border-radius: 4px        !important;
 }
 #sidebar-list li li > a:hover {
   background: var(--active-bg) !important;
-  color: var(--nav-link) !important;
+  color:      var(--nav-link)  !important;
 }
 #sidebar-list li li > a.active {
-  background: var(--active-bg) !important;
-  color: var(--accent-dark) !important;
-  font-weight: 600 !important;
-  outline: none !important;
+  background:  var(--active-bg)  !important;
+  color:       var(--accent-dk)  !important;
+  font-weight: 600               !important;
+  outline:     none              !important;
 }
 
-/* ── Contenu principal ── */
+/* ─── Zone de contenu ──────────────────────────────────────── */
 main#content {
-  background: var(--main-bg) !important;
-  max-width: 860px !important;
-  padding: 36px 48px 60px !important;
+  background:  #FFFFFF !important;
+  padding:     36px 52px 72px !important;
+  max-width:   none !important;
 }
 
 /* Titres */
 main#content h1 {
-  font-size: 2.1rem !important;
-  font-weight: 700 !important;
-  color: var(--main-heading) !important;
-  letter-spacing: -0.025em !important;
+  font-size:     2rem    !important;
+  font-weight:   800     !important;
+  color:         var(--main-heading) !important;
+  letter-spacing: -0.02em !important;
   border-bottom: 3px solid var(--accent) !important;
   padding-bottom: 0.5rem !important;
-  margin-bottom: 1.5rem !important;
+  margin-bottom:  1.2rem !important;
 }
 main#content h2 {
-  font-size: 1.45rem !important;
-  font-weight: 700 !important;
-  color: var(--main-heading) !important;
+  font-size:     1.4rem  !important;
+  font-weight:   700     !important;
+  color:         var(--main-heading) !important;
   letter-spacing: -0.015em !important;
-  border-bottom: 1px solid var(--border) !important;
-  padding-bottom: 0.35rem !important;
-  margin-top: 2.5rem !important;
-  margin-bottom: 1rem !important;
+  border-bottom:  1px solid var(--border) !important;
+  padding-bottom: 0.3rem  !important;
+  margin-top:     2.5rem  !important;
+  margin-bottom:  0.9rem  !important;
 }
 main#content h3 {
-  font-size: 1.15rem !important;
-  font-weight: 600 !important;
-  color: var(--accent-dark) !important;
-  margin-top: 1.8rem !important;
-  margin-bottom: 0.6rem !important;
+  font-size:   1.1rem !important;
+  font-weight: 600    !important;
+  color:       var(--accent-dk) !important;
+  margin-top:  1.8rem !important;
 }
-main#content h4 {
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  color: var(--muted) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
-  font-size: 0.8rem !important;
-  margin-top: 1.4rem !important;
-}
-
-/* Numéro de section */
 main#content .sec-num {
-  color: var(--accent) !important;
-  font-weight: 700 !important;
-  font-family: var(--font-code) !important;
-  font-size: 0.85em !important;
-  margin-right: 0.4rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size:   0.8em   !important;
+  font-weight: 600     !important;
+  color:       var(--accent)  !important;
+  margin-right: 0.3em  !important;
 }
 
-/* ── BLOCS DE CODE JAVA ── */
-
-/* Conteneur généré par JS */
+/* ─── BLOCS DE CODE JAVA ───────────────────────────────────── */
 .java-block {
-  margin: 1.5rem 0 !important;
-  border-radius: 10px !important;
-  overflow: hidden !important;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.18) !important;
-  font-family: var(--font-code) !important;
-  font-size: 0.87rem !important;
-  line-height: 1.65 !important;
-  position: relative !important;
+  margin:        1.5rem 0 !important;
+  border-radius: 10px    !important;
+  overflow:      hidden  !important;
+  box-shadow:    0 4px 24px rgba(0,0,0,.22) !important;
+  font-size:     0.9rem  !important;
+  line-height:   1.7     !important;
 }
 
-/* Barre de titre du bloc */
+/* Barre de titre */
 .java-block__header {
-  background: var(--java-header) !important;
-  display: flex !important;
-  align-items: center !important;
+  display:         flex     !important;
+  align-items:     center   !important;
   justify-content: space-between !important;
-  padding: 8px 16px !important;
-  border-bottom: 1px solid var(--java-border) !important;
-  user-select: none !important;
+  padding:         10px 16px !important;
+  background:      var(--java-hdr)   !important;
+  border-bottom:   1px solid var(--java-border) !important;
+  user-select:     none !important;
 }
 .java-block__dots {
-  display: flex !important;
-  gap: 6px !important;
+  display: flex  !important;
+  gap:     6px   !important;
 }
 .java-block__dots span {
-  width: 12px !important;
-  height: 12px !important;
-  border-radius: 50% !important;
-  display: inline-block !important;
+  width:         12px !important;
+  height:        12px !important;
+  border-radius: 50%  !important;
+  display:       inline-block !important;
 }
 .java-block__dots span:nth-child(1) { background: #FF5F57 !important; }
 .java-block__dots span:nth-child(2) { background: #FFBD2E !important; }
 .java-block__dots span:nth-child(3) { background: #28C840 !important; }
 .java-block__lang {
-  font-family: var(--font-code) !important;
-  font-size: 0.72rem !important;
-  color: #8B949E !important;
-  font-weight: 500 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
+  font-family:     'JetBrains Mono', monospace !important;
+  font-size:       0.72rem !important;
+  letter-spacing:  0.1em   !important;
+  color:           #585B70  !important;
+  text-transform:  uppercase !important;
 }
 .java-block__copy {
-  background: transparent !important;
-  border: 1px solid #30363D !important;
-  border-radius: 5px !important;
-  color: #8B949E !important;
-  font-family: var(--font-code) !important;
-  font-size: 0.7rem !important;
-  padding: 2px 8px !important;
-  cursor: pointer !important;
-  transition: all 0.15s !important;
+  background:    transparent !important;
+  border:        1px solid var(--java-border) !important;
+  border-radius: 5px     !important;
+  color:         #585B70  !important;
+  font-family:   'DM Sans', sans-serif !important;
+  font-size:     0.72rem  !important;
+  padding:       3px 10px !important;
+  cursor:        pointer  !important;
+  transition:    all 0.15s !important;
 }
 .java-block__copy:hover {
-  background: #21262D !important;
-  color: #E6EDF3 !important;
+  background: var(--java-border) !important;
+  color:      var(--java-text)   !important;
 }
 .java-block__copy.copied {
-  color: #3FB950 !important;
-  border-color: #3FB950 !important;
+  color:        #A6E3A1 !important;
+  border-color: #A6E3A1 !important;
 }
 
 /* Zone de code */
 .java-block pre {
-  margin: 0 !important;
-  padding: 1.25rem 1.5rem !important;
+  margin:     0            !important;
+  padding:    1.4rem 1.6rem !important;
   background: var(--java-bg) !important;
-  overflow-x: auto !important;
-  border: 0 !important;
-  border-radius: 0 !important;
+  overflow-x: auto         !important;
+  border:     0            !important;
+  border-radius: 0         !important;
 }
 .java-block pre code {
-  background: transparent !important;
-  border: 0 !important;
-  padding: 0 !important;
-  font-family: var(--font-code) !important;
-  font-size: inherit !important;
-  color: var(--java-text) !important;
-  white-space: pre !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size:   0.88rem   !important;
+  line-height: 1.7       !important;
+  background:  transparent !important;
+  border:      0           !important;
+  padding:     0           !important;
+  color:       var(--java-text) !important;
+  white-space: pre         !important;
+  /* Garantir que les couleurs inline ne sont PAS écrasées */
 }
 
-/* Mise en évidence inline (<strong> dans les <p>) */
-.java-inline {
-  font-family: var(--font-code) !important;
-  background: #1C2128 !important;
-  color: #79C0FF !important;
-  border: 1px solid #30363D !important;
-  border-radius: 4px !important;
-  padding: 0.05em 0.4em !important;
-  font-size: 0.9em !important;
+/* ── Neutraliser l'override inline-color de style.css ─────── */
+/* style.css ligne 320 a: main#content [style*="color"]{ color: inherit !important; }
+   On surclasse avec une spécificité plus élevée pour les descendants de .java-block */
+main#content .java-block [style*="color"] {
+  color: unset !important;
 }
+/* Et on redéfinit chaque token avec une règle CSS à haute spécificité */
+main#content .java-block .jkw  { color: var(--jkw)  !important; }
+main#content .java-block .jtype{ color: var(--jtype) !important; }
+main#content .java-block .jstr { color: var(--jstr)  !important; }
+main#content .java-block .jnum { color: var(--jnum)  !important; }
+main#content .java-block .jcmt { color: var(--jcmt)  !important; font-style: italic !important; }
+main#content .java-block .jann { color: var(--jann)  !important; }
+main#content .java-block .jop  { color: var(--jop)   !important; }
 
-/* ── IMAGES ── */
-main#content img {
-  max-width: 100% !important;
-  height: auto !important;
-  display: block !important;
-  border-radius: var(--img-radius) !important;
-  box-shadow: var(--img-shadow) !important;
-  border: 1px solid var(--border) !important;
-  margin: 1rem auto !important;
-}
-
-/* Wrapper figure généré autour des images */
-main#content figure.img-figure {
-  margin: 1.5rem 0 !important;
-  text-align: center !important;
-}
-main#content figure.img-figure img {
-  margin: 0 auto !important;
-}
-main#content figure.img-figure figcaption {
-  font-family: var(--font-body) !important;
-  font-size: 0.83rem !important;
-  color: var(--muted) !important;
-  margin-top: 0.5rem !important;
-  font-style: italic !important;
-}
-
-/* Paragraphe de légende juste après une image */
-main#content p.img-caption {
-  text-align: center !important;
-  font-size: 0.85rem !important;
-  color: var(--muted) !important;
-  font-style: italic !important;
-  margin-top: -0.5rem !important;
-  font-family: var(--font-body) !important;
-}
-
-/* ── TABLEAUX ── */
-main#content table {
-  width: 100% !important;
-  border-collapse: collapse !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06) !important;
-  border: 1px solid var(--border) !important;
-  margin: 1.2rem 0 !important;
-  font-family: var(--font-body) !important;
-  font-size: 0.93rem !important;
-}
-main#content th {
-  background: var(--accent-dark) !important;
-  color: white !important;
-  font-weight: 600 !important;
-  padding: 0.65rem 1rem !important;
-  text-align: left !important;
-  border: 0 !important;
-}
-main#content td {
-  padding: 0.55rem 1rem !important;
-  border-top: 1px solid var(--border) !important;
-  vertical-align: top !important;
-}
-main#content tbody tr:nth-child(even) td {
-  background: #F9FAFB !important;
-}
-main#content tbody tr:hover td {
-  background: var(--active-bg) !important;
-}
-
-/* ── TABLEAUX CONTENANT DU CODE (héritage, etc.) ── */
-main#content table.code-table {
-  font-family: var(--font-code) !important;
-  background: var(--java-bg) !important;
-  border-color: var(--java-border) !important;
-  font-size: 0.87rem !important;
-  color: var(--java-text) !important;
-}
-main#content table.code-table td {
-  border-color: var(--java-border) !important;
-  padding: 0.8rem 1.2rem !important;
-  background: var(--java-bg) !important;
-}
-main#content table.code-table td strong {
-  font-weight: 500 !important;
-  color: var(--java-text) !important;
-}
-
-/* ── BLOCKQUOTE ── */
-main#content blockquote {
-  border-left: 4px solid var(--accent) !important;
-  background: var(--active-bg) !important;
-  border-radius: 0 8px 8px 0 !important;
-  padding: 1rem 1.2rem !important;
-  margin: 1rem 0 !important;
-}
-
-/* ── CODE INLINE ── */
+/* ─── Code inline (hors blocs Java) ───────────────────────── */
 main#content code:not(.java-block code) {
-  font-family: var(--font-code) !important;
-  background: #F1F5F9 !important;
-  border: 1px solid #CBD5E1 !important;
+  font-family:  'JetBrains Mono', monospace !important;
+  background:   #F1F5F9 !important;
+  border:       1px solid #CBD5E1 !important;
   border-radius: 4px !important;
-  padding: 0.1em 0.4em !important;
-  font-size: 0.88em !important;
-  color: #1E3A8A !important;
+  padding:      0.1em 0.4em !important;
+  font-size:    0.87em !important;
+  color:        var(--accent-dk) !important;
 }
 
-/* ── PRE existants ── */
+/* ─── PRE existants (hors java-block) ─────────────────────── */
 main#content pre:not(.java-block pre) {
-  background: var(--java-bg) !important;
-  border: 1px solid var(--java-border) !important;
-  border-radius: 8px !important;
-  padding: 1.2rem 1.5rem !important;
-  overflow-x: auto !important;
-  font-family: var(--font-code) !important;
-  font-size: 0.87rem !important;
-  line-height: 1.65 !important;
-  color: var(--java-text) !important;
-  margin: 1.2rem 0 !important;
+  background:   var(--java-bg) !important;
+  border:       1px solid var(--java-border) !important;
+  border-radius: 8px     !important;
+  padding:      1.2rem 1.5rem !important;
+  overflow-x:   auto    !important;
+  font-size:    0.88rem  !important;
+  line-height:  1.7      !important;
+  color:        var(--java-text) !important;
+  margin:       1rem 0   !important;
 }
 main#content pre:not(.java-block pre) code {
   background: transparent !important;
-  border: 0 !important;
-  padding: 0 !important;
-  color: inherit !important;
+  border:     0 !important;
+  padding:    0 !important;
+  color:      inherit !important;
 }
 
-/* ── FOOTER du contenu ── */
-main#content .page-footer {
-  margin-top: 3rem !important;
-  padding-top: 1rem !important;
+/* ─── Images ───────────────────────────────────────────────── */
+main#content img {
+  max-width:    100% !important;
+  height:       auto !important;
+  display:      block !important;
+  border-radius: 8px  !important;
+  box-shadow:   0 2px 16px rgba(0,0,0,.10) !important;
+  border:       1px solid var(--border) !important;
+  margin:       0.75rem auto !important;
+}
+main#content figure.img-figure {
+  margin:      1.5rem 0 !important;
+  text-align:  center   !important;
+}
+main#content figure.img-figure img { margin: 0 auto !important; }
+main#content figure.img-figure figcaption {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size:   0.83rem !important;
+  color:       var(--muted) !important;
+  margin-top:  0.45rem !important;
+  font-style:  italic  !important;
+}
+
+/* ─── Tableaux ─────────────────────────────────────────────── */
+main#content table:not(.code-table) {
+  width:          100% !important;
+  border-collapse: collapse !important;
+  border-radius:  8px  !important;
+  overflow:       hidden !important;
+  border:         1px solid var(--border) !important;
+  margin:         1rem 0  !important;
+  font-family:    'DM Sans', sans-serif !important;
+  font-size:      0.92rem !important;
+}
+main#content table:not(.code-table) th {
+  background:  var(--accent-dk) !important;
+  color:       #FFFFFF !important;
+  font-weight: 600     !important;
+  padding:     0.6rem 1rem !important;
+  border:      0 !important;
+}
+main#content table:not(.code-table) td {
+  padding:    0.5rem 1rem !important;
   border-top: 1px solid var(--border) !important;
-  font-size: 0.82rem !important;
-  color: var(--muted) !important;
-  font-family: var(--font-body) !important;
+}
+main#content table:not(.code-table) tbody tr:nth-child(even) td {
+  background: #F8F7F5 !important;
 }
 
-/* ── Scrollbar style ── */
-aside#sidebar::-webkit-scrollbar { width: 5px; }
+/* Tableaux de code (héritage, polymorphisme) */
+main#content table.code-table {
+  font-family:  'JetBrains Mono', monospace !important;
+  font-size:    0.86rem !important;
+  background:   var(--java-bg)  !important;
+  border-color: var(--java-border) !important;
+}
+main#content table.code-table td {
+  border-color: var(--java-border) !important;
+  padding:      1rem 1.4rem !important;
+  color:        var(--java-text) !important;
+  background:   var(--java-bg)  !important;
+  vertical-align: top !important;
+}
+main#content table.code-table pre {
+  margin: 0 !important; padding: 0 !important;
+  background: transparent !important; border: 0 !important;
+  font-family: inherit !important; font-size: inherit !important;
+  color: inherit !important; white-space: pre-wrap !important;
+}
+/* Tokens dans les tableaux code */
+main#content .code-table [style*="color"] { color: unset !important; }
+main#content .code-table .jkw  { color: var(--jkw)  !important; }
+main#content .code-table .jtype{ color: var(--jtype) !important; }
+main#content .code-table .jstr { color: var(--jstr)  !important; }
+main#content .code-table .jnum { color: var(--jnum)  !important; }
+main#content .code-table .jcmt { color: var(--jcmt)  !important; font-style: italic !important; }
+main#content .code-table .jann { color: var(--jann)  !important; }
+
+/* ─── Blockquote ───────────────────────────────────────────── */
+main#content blockquote {
+  border-left: 4px solid var(--accent) !important;
+  background:  var(--active-bg) !important;
+  border-radius: 0 8px 8px 0   !important;
+  padding:     0.9rem 1.2rem    !important;
+  margin:      1rem 0           !important;
+}
+
+/* ─── Scrollbars ───────────────────────────────────────────── */
+.java-block pre::-webkit-scrollbar { height: 5px; }
+.java-block pre::-webkit-scrollbar-track { background: var(--java-hdr); }
+.java-block pre::-webkit-scrollbar-thumb { background: var(--java-border); border-radius: 99px; }
+aside#sidebar::-webkit-scrollbar { width: 4px; }
 aside#sidebar::-webkit-scrollbar-track { background: transparent; }
 aside#sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
 
-main#content pre::-webkit-scrollbar { height: 6px; }
-main#content pre::-webkit-scrollbar-track { background: #161B22; }
-main#content pre::-webkit-scrollbar-thumb { background: #30363D; border-radius: 99px; }
-
-/* ── Responsive ── */
+/* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 900px) {
-  main#content {
-    padding: 24px 20px 48px !important;
-  }
+  main#content { padding: 20px 18px 48px !important; }
 }
-
-/* ── Neutraliser les variables code de style.css ── */
-:root {
-  --code-bg: #F1F5F9;
-  --code-bd: #CBD5E1;
-  --thead-bg: #1E3A8A;
-  --row-alt:  #F9FAFB;
-}
-
-/* ── Styles Highlight.js injectés dans les blocs Java ── */
-.jkw   { color: var(--jkw)   !important; }
-.jtype { color: var(--jtype) !important; }
-.jstr  { color: var(--jstr)  !important; }
-.jnum  { color: var(--jnum)  !important; }
-.jcmt  { color: var(--jcmt)  !important; font-style: italic !important; }
-.jann  { color: var(--jann)  !important; }
