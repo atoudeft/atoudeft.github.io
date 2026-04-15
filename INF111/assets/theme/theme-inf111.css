@@ -32,16 +32,16 @@
   --java-bg:     #1E1E2E;
   --java-hdr:    #181825;
   --java-border: #313244;
-  --java-text:   #CDD6F4;
+  --java-text:   #F8F8F2;
 
-  /* Tokens syntaxiques (palette Catppuccin Mocha — excellent contraste) */
-  --jkw:  #CBA6F7;   /* keywords  → mauve vif */
-  --jtype:#89DCEB;   /* types     → cyan clair */
-  --jstr: #A6E3A1;   /* strings   → vert menthe */
-  --jnum: #FAB387;   /* nombres   → pêche */
-  --jcmt: #6C7086;   /* comments  → gris bleuté */
-  --jann: #F38BA8;   /* @Override → rose */
-  --jop:  #89B4FA;   /* ponctuation → bleu ciel */
+  /* Tokens syntaxiques — palette Dracula (très lisible, fort contraste) */
+  --jkw:  #FF79C6;   /* keywords  : public class void → rose vif */
+  --jtype:#8BE9FD;   /* types     : String ArrayList  → cyan vif */
+  --jstr: #F1FA8C;   /* strings   : "hello"           → jaune vif */
+  --jnum: #BD93F9;   /* nombres   : 42 3.14           → mauve */
+  --jcmt: #6272A4;   /* comments  : //…               → bleu gris */
+  --jann: #50FA7B;   /* @Override                     → vert vif */
+  --jop:  #FFB86C;   /* opérateurs                    → orange */
 }
 
 /* ─── Typographie globale ──────────────────────────────────── */
