@@ -291,9 +291,9 @@
           "href": "pages/16-vecteurs-et-iterateurs/page.html",
           "sections": [
             {
-              "title": "Introduction",
-              "slug": "Introduction",
-              "hrefDeep": "index.html#module16-16-vecteurs-et-iterateurs--page--introduction"
+              "title": "Utilisation des vecteurs",
+              "slug": "utilisation-des-vecteurs",
+              "hrefDeep": "index.html#module16-16-vecteurs-et-iterateurs--page--utilisation-des-vecteurs"
             },
             {
               "title": "Utilisation des vecteurs",
