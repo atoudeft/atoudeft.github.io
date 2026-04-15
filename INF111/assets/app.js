@@ -278,9 +278,36 @@ function groupParagraphs(container){
 }
 
 /* Reconstruit le DOM avec les blocs Java */
+function indentJava(raw) {
+  const INDENT = '    ';
+  const lines = raw.split('\n');
+  let depth = 0;
+  const result = [];
+  for (let line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed) { result.push(''); continue; }
+    // Leading } reduce depth before printing
+    const leading = (trimmed.match(/^}+/) || [''])[0].length;
+    depth = Math.max(0, depth - leading);
+    result.push(INDENT.repeat(depth) + trimmed);
+    // Count net { vs } in this line (skip strings and line comments)
+    let opens = 0, inStr = false;
+    for (let i = 0; i < trimmed.length; i++) {
+      const c = trimmed[i];
+      if (!inStr && c === '/' && trimmed[i+1] === '/') break;
+      if (c === '"' && !inStr)  { inStr = true;  continue; }
+      if (c === '"' &&  inStr)  { inStr = false; continue; }
+      if (!inStr && c === '{')  opens++;
+      if (!inStr && c === '}')  opens--;
+    }
+    if (opens + leading > 0) depth += opens + leading;
+  }
+  return result.join('\n');
+}
+
 function buildJavaBlock(texts){
   // Joindre les lignes; les connecteurs (score=0 dans le bloc) deviennent des commentaires légers
-  const raw = texts.join('\n');
+  const raw = indentJava(texts.join('\n'));
 
   const div = document.createElement('div');
   div.className = 'java-block';
