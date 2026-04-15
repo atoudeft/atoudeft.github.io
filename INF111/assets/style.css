@@ -275,19 +275,19 @@ main#content blockquote{
 }
 
 /* Code inline & blocs */
-main#content code{
+main#content code:not(.java-block code){
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace !important;
   background: var(--code-bg) !important;
   border: 1px solid var(--code-bd) !important;
   padding: .05rem .35rem; border-radius: 6px; font-size: .92em;
 }
-main#content pre{
+main#content pre:not(.java-block pre){
   background: var(--code-bg) !important;
   border: 1px solid var(--code-bd) !important;
   padding: 1rem 1.1rem; border-radius: 12px; overflow: auto;
   margin-bottom: var(--content-gap);
 }
-main#content pre code{ background: transparent !important; border: 0 !important; padding: 0 !important; }
+main#content pre:not(.java-block pre) code{ background: transparent !important; border: 0 !important; padding: 0 !important; }
 
 /* Tableaux */
 main#content table{
