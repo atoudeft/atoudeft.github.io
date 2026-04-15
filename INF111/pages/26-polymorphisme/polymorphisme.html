@@ -27,24 +27,20 @@
 <p>
   <strong>Exemple&nbsp;:</strong> voici 2 méthodes
   <strong><em>distance()</em></strong> dans une classe
-  <strong><em>Point</em></strong
-  >&nbsp;:
+  <strong><em>Point</em></strong>&nbsp;:
 </p>
-<p><strong>public class Point {</strong></p>
-<p><strong> private double abscisse, ordonnee;</strong></p>
-<p><strong> </strong></p>
-<p><strong> public double distance(Point p) {</strong></p>
-<p>
-  <strong>
-    return Math.<em>hypot</em>(abscisse-p.abscisse,
-    ordonnee-p.ordonnee);</strong
-  >
+<p class="code java">
+  <span class="langage">Java</span>
+public class Point {<br>
+&nbsp;&nbsp;private double abscisse, ordonnee;<br>
+&nbsp;&nbsp;public double <span class="en-evidence">distance</span>(Point p) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return Math.<em>hypot</em>(abscisse-p.abscisse,ordonnee-p.ordonnee);<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;public double <span class="en-evidence">distance</span>(double x, double y) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return Math.<em>hypot</em>(abscisse-x, ordonnee-y);<br>
+&nbsp;&nbsp;} <br>
+}
 </p>
-<p><strong> }</strong></p>
-<p><strong> public double distance(double x, double y) {</strong></p>
-<p><strong> return Math.<em>hypot</em>(abscisse-x, ordonnee-y);</strong></p>
-<p><strong> } </strong></p>
-<p><strong>}</strong></p>
 <h2 id="sec-redefinition-de-methodes-overriding">
   <a id="_Toc97498601"></a>Redéfinition de méthodes (<em>overriding</em>)
 </h2>
@@ -54,7 +50,7 @@
   <strong>doit garder la même signature</strong> que dans la classe mère.
 </p>
 <p>
-  Nous avons déjà vu 2 cas de surdéfinition&nbsp;: les méthodes
+  Nous avons déjà vu 2 cas de redéfinition&nbsp;: les méthodes
   <strong><em>toString()</em></strong> et <strong><em>equals()</em></strong
   >, héritées de la classe <strong><em>Object</em></strong
   >.
@@ -66,25 +62,28 @@
   personne qui déménage change de ville alors qu’un étudiant qui déménage change
   d’établissement scolaire)&nbsp;:
 </p>
-<p><strong>public class Personne {</strong></p>
-<p><strong> private String nom, prenom, ville;</strong></p>
-<p><strong> public void demenage(String nouvelleVille) {</strong></p>
-<p><strong> this.ville = nouvelleVille;</strong></p>
-<p><strong> }</strong></p>
-<p><strong>//...etc</strong></p>
-<p><strong>}</strong></p>
-<p><strong>public class Etudiant extends Personne {</strong></p>
-<p><strong> private String etablissement, programme;</strong></p>
-<p><strong> public void demenage(String nouvelEtablissement) {</strong></p>
-<p><strong> this.etablissement = nouvelEtablissement;</strong></p>
-<p><strong> }</strong></p>
-<p><strong>//...etc</strong></p>
-<p><strong>}</strong></p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Personne {br>
+&nbsp;&nbsp;private String nom, prenom, ville;<br>
+&nbsp;&nbsp;<span class="en-evidence">public void demenage(String nouvelleVille) {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">this.ville = nouvelleVille;</span><br>
+&nbsp;&nbsp;<span class="en-evidence">}</span><br>
+&nbsp;&nbsp;//...etc<br>
+}<br>
+public class Etudiant extends Personne {<br>
+&nbsp;&nbsp;private String etablissement, programme;<br>
+&nbsp;&nbsp;<span class="en-evidence">public void demenage(String nouvelEtablissement) {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">this.etablissement = nouvelEtablissement;</span><br>
+&nbsp;&nbsp;<span class="en-evidence">}</span><br>
+&nbsp;&nbsp;//...etc<br>
+}
+</p>
 <h2 id="sec-methodes-virtuelles-et-liaison-dynamique">
   <a id="_Toc97498602"></a>Méthodes virtuelles et liaison dynamique
 </h2>
 <p>
-  Lorsqu’une méthode est surdéfinie (présente dans la classe mère et dans la
+  Lorsqu’une méthode est redéfinie (présente dans la classe mère et dans la
   classe fille), <strong>comment</strong> le compilateur choisit laquelle
   appeler ?
 </p>
@@ -98,10 +97,12 @@
   Dans ce cas, il n’y a pas d’ambiguïté&nbsp;: c’est la méthode de la classe
   mère qui est appelée&nbsp;:
 </p>
-<p>Personne p1 = new Personne();</p>
-<p>String str = "…";</p>
-<p>p1.demenage(str); //appelle demenage() de Personne (modifie</p>
-<p>// la ville de p1).</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Personne p1 = new Personne();<br>
+String str = "…";<br>
+p1.demenage(str); /*<span class="en-evidence">appelle demenage() de Personne (modifie la ville de p1).</span>*/
+</p>
 <p>
   <strong
     >2<sup>e</sup> cas&nbsp;: une référence de la classe fille sur un objet de
@@ -112,10 +113,12 @@
   Dans ce cas aussi, il n’y a pas d’ambiguïté&nbsp;: c’est la méthode de la
   classe fille qui est appelée&nbsp;:
 </p>
-<p>Etudiant e1 = new Etudiant();</p>
-<p>String str = "…";</p>
-<p>e1.demenage(str); //appelle demenage() de Etudiant (modifie</p>
-<p>// l’établissement de e1).</p>
+<p class="code java">
+  <span class="langage">Java</span>
+  Etudiant e1 = new Etudiant();<br>
+String str = "…";<br>
+e1.demenage(str); /*<span class="en-evidence">appelle demenage() de Etudiant (modifie l’établissement de e1).</span>*/
+</p>
 <p>
   <strong
     >3<sup>e</sup> cas&nbsp;: une référence de la classe mère sur un objet de la
@@ -161,32 +164,38 @@
   référencée et <strong>non pas</strong> en fonction du type de la
   référence&nbsp;:
 </p>
-<p>Personne p1 = new Etudiant();</p>
-<p>String str = "…";</p>
-<p>p1.demenage(str); //appelle demenage() de Etudiant (modifie</p>
-<p>// l’établissement de p1).</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Personne p1 = new Etudiant();<br>
+String str = "…";<br>
+p1.demenage(str); /*<span class="en-evidence">appelle demenage() de Etudiant (modifie l’établissement de p1).</span>*/
+</p>
 <p>
   Les méthodes virtuelles, telle que <strong><em>demenage()</em></strong
   >, nous permettent de raisonner de manière polymorphique. On peut, par
   exemple, itérer sur un tableau ou une collection de
-  <strong><em>Personnes</em></strong> qui contient un mélange de
-  <strong><em>Etudiants</em></strong
-  >, <strong><em>Stagiaires</em></strong
-  >, <strong><em>Employes</em></strong
-  >, <strong><em>Secretaires</em></strong> et <strong><em>Managers</em></strong
+  <strong><em>Personnes</em></strong> qui contient un mélange d'objets de type
+  <strong><em>Etudiant</em></strong
+  >, <strong><em>Stagiaire</em></strong
+  >, <strong><em>Employe</em></strong
+  >, <strong><em>Secretaire</em></strong> et <strong><em>Manager</em></strong
   >. Lors des itérations, on peut appeler pour chaque élément la méthode
   <strong><em>demenage()</em></strong
   >. Le compilateur appellera la bonne méthode
   <strong><em>demenage()</em></strong> en fonction du type de l’élément&nbsp;:
 </p>
-<p>Personne[] tabPersonnes = new Personne[10];</p>
-<p>tabPersonnes[0] = new Personne();</p>
-<p>tabPersonnes[1] = new Etudiant();</p>
-<p>tabPersonnes[2] = new Manager();</p>
-<p>tabPersonnes[3] = new Stagiaire();</p>
-<p>//...etc</p>
-<p>for (int i=0; i&lt; tabPersonnes.length; i++)</p>
-<p>tabPersonnes[i].demenage(...);</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Personne[] tabPersonnes = new Personne[10];<br>
+tabPersonnes[0] = new Secretaire();<br>
+tabPersonnes[1] = new Etudiant();<br>
+tabPersonnes[2] = new Manager();<br>
+tabPersonnes[3] = new Stagiaire();<br>
+//...etc<br>
+for (int i=0; i&lt; tabPersonnes.length; i++) {<br>
+&nbsp;&nbsp;tabPersonnes[i].demenage(...); /*<span class="en-evidence">choisit demenage() en fonction du type de l'objet à la case i.</span>*/<br>
+}
+</p>
 <h2 id="sec-methodes-non-polymorphiques">
   <a id="_Toc97498603"></a>Méthodes non polymorphiques
 </h2>
@@ -206,19 +215,24 @@
 <p>
   On ne peut pas appeler une telle méthode à partir d’une référence de la classe
   mère&nbsp;:
+<p class="code java">
+  <span class="langage">Java</span>
+Personne p1 = new Etudiant();<br>
+String str;<br>
+str = p1.getEtablissement(); /*<span class="en-evidence">NON : pas de méthode getEtablissement() dans la classe Personne.</span>*/
 </p>
-<p>Personne p1 = new Etudiant();</p>
-<p>String str;</p>
-<p>str = p1.getEtablissement(); //NON&nbsp;: pas de méthode</p>
-<p>//getEtablissement() dans la classe Personne.</p>
 <p>
   Il faudrait convertir la référence vers la classe fille, après s’être assuré
   que l’objet référencé est bien de la classe fille&nbsp;:
 </p>
-<p>Personne p1 = new Etudiant();</p>
-<p>String str;</p>
-<p>if (p1 instanceof Etudiant)</p>
-<p>str = ((Etudiant)p1).getEtablissement(); //OK.</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Personne p1 = new Etudiant();<br>
+String str;<br>
+if (p1 instanceof Etudiant) {<br>
+&nbsp;&nbsp;<span class="en-evidence">str = ((Etudiant)p1).getEtablissement(); //OK.</span><br>
+}
+</p>
 <p>
   Les méthodes non polymorphiques, on ne les aime pas trop. On aurait aimé que
   la méthode <strong><em>getEtablissement()</em></strong> soit comme
@@ -246,71 +260,65 @@
   <strong><em>getSurface()</em></strong> qui calcule et retourne la surface de
   la figure&nbsp;:
 </p>
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <p><strong>public class Figure {</strong></p>
-        <p><strong>private Color couleur;</strong></p>
-        <p><strong>public Figure(Color couleur) {</strong></p>
-        <p><strong> this.couleur = couleur;</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>//etc...</strong></p>
-        <p><strong>}</strong></p>
-      </td>
-      <td>
-        <p><strong>public class Cercle extends Figure {</strong></p>
-        <p><strong>private Point centre;</strong></p>
-        <p><strong>private double rayon; </strong></p>
-        <p><strong>public Cercle(Color couleur) {</strong></p>
-        <p><strong> super(couleur);</strong></p>
-        <p><strong> //etc...</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>public double getSurface() {</strong></p>
-        <p>
-          <strong>
-            return Math.<em>PI</em> * Math.<em>pow</em>(rayon, 2);</strong
-          >
-        </p>
-        <p><strong>}</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>public class Rectangle extends Figure {</strong></p>
-        <p><strong>private Point sommetHautGauche;</strong></p>
-        <p><strong>private double largeur, longueur;</strong></p>
-        <p><strong> </strong></p>
-        <p><strong>public Rectangle(Color couleur) {</strong></p>
-        <p><strong> super(couleur);</strong></p>
-        <p><strong> //etc...</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>public double getSurface() {</strong></p>
-        <p><strong> return largeur*longueur;</strong></p>
-        <p><strong>}</strong></p>
-        <p><strong>}</strong></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Figure {<br>
+&nbsp;&nbsp;private Color couleur;<br>
+&nbsp;&nbsp;public Figure(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.couleur = couleur;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//etc...<br>
+}<br>
+public class Cercle extends Figure {<br>
+&nbsp;&nbsp;private Point centre;<br>
+&nbsp;&nbsp;private double rayon; <br>
+&nbsp;&nbsp;public Cercle(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super(couleur);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//etc...<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="en-evidence">public double getSurface() {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">return Math.<em>PI</em> * Math.<em>pow</em>(rayon, 2);</span><br>
+&nbsp;&nbsp;<span class="en-evidence">}</span><br>
+}<br>
+public class Rectangle extends Figure {<br>
+&nbsp;&nbsp;private Point sommetHautGauche;<br>
+&nbsp;&nbsp;private double largeur, longueur;<br>
+&nbsp;&nbsp;public Rectangle(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super(couleur);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;//etc...<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="en-evidence">public double getSurface() {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="en-evidence">return largeur*longueur;</span><br>
+&nbsp;&nbsp;<span class="en-evidence">}</span><br>
+}
+</p>
 <p>
   Ici, la méthode <strong><em>getSurface()</em></strong> n’est pas
   polymorphique. Ce qui nous empêche de l’appeler à partir d’une référence de
   type <strong><em>Figure</em></strong
   >&nbsp;:
 </p>
-<p>Figure fig = ...;</p>
-<p>double surface = fig.getSurface();//NON&nbsp;: pas de méthode</p>
-<p>//getSurface() dans la classe Figure.</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Figure fig = ...;<br>
+double surface = fig.getSurface();/*<span class="en-evidence">NON : pas de méthode getSurface() dans la classe Figure.</span>*/
+</p>
 <p>
   En particulier, si on a une liste de figures dans un tableau ou une collection
   (comme dans la classe <strong><em>Dessin</em></strong> vue en laboratoire), on
   ne peut pas faire un traitement polymorphique&nbsp;:
 </p>
-<p>Figure[] figures = new Figure[5];</p>
-<p>figures[0] = new Cercle(...);</p>
-<p>figures[1] = new Rectangle(...);</p>
-<p>figures[2] = new Cercle(...);</p>
-<p>//...etc</p>
-<p>for (int i=0; i&lt;figures.length; i++)</p>
-<p>System.out.println("Surface : "+figures[i].getSurface());//NON</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Figure[] figures = new Figure[5];<br>
+figures[0] = new Cercle(...);<br>
+figures[1] = new Rectangle(...);<br>
+figures[2] = new Cercle(...);<br>
+//...etc<br>
+for (int i=0; i&lt;figures.length; i++) {<br>
+&nbsp;&nbsp;System.out.println("Surface : "+figures[i].getSurface());//<span class="en-evidence">NON</span><br>
+}
+</p>
 <p>
   La solution ici est de rendre la méthode
   <strong><em>getSurface()</em></strong> polymorphique en l’ajoutant à la classe
@@ -332,30 +340,47 @@
   Lorsqu’une classe contient au moins une méthode abstraite, la classe aussi
   doit être abstraite.
 </p>
-<p><strong>public abstract class Figure {</strong></p>
-<p><strong>private Color couleur;</strong></p>
-<p><strong>public abstract double getSurface();</strong></p>
-<p><strong>public Figure(Color couleur) {</strong></p>
-<p><strong> this.couleur = couleur;</strong></p>
-<p><strong>}</strong></p>
-<p><strong>//etc...</strong></p>
-<p><strong>}</strong></p>
-<p>
-  Une méthode abstraite n’a pas de corps (on termine son en-tête par un
-  point-virgule).
+<p class="code java">
+  <span class="langage">Java</span>
+public abstract class Figure {<br>
+&nbsp;&nbsp;private Color couleur;<br>
+&nbsp;&nbsp;<span class="en-evidence">abstract double getSurface();</span><br>
+&nbsp;&nbsp;public Figure(Color couleur) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;this.couleur = couleur;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//etc...<br>
+}
 </p>
-<p>Une classe abstraite ne peut pas être instanciée.</p>
-<p>Figure fig;</p>
-<p>fig = new Figure(…);//NON</p>
-<p>fig = new Cercle(…);//OK</p>
+<p>
+  Une méthode abstraite n’a pas de corps (on termine son en-tête par un point-virgule).
+</p>
+<p>On peut déclarer des variables du type d'une classe abstraite :</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Figure fig;
+</p>
+<p>Mais, une classe abstraite ne peut pas être instanciée :</p>
+<p class="code java">
+  <span class="langage">Java</span>
+fig = new Figure(…);<span class="en-evidence">//NON</span>
+</p>
+<p>La variable va servir pour référencer un objet instance d'une classe concrète fille de la classe abstraite :</p>
+<p class="code java">
+  <span class="langage">Java</span>
+fig = new Cercle(…);<span class="en-evidence">//OK</span>
+</p>
 <p>
   Maintenant, la méthode <strong><em>getSurface()</em></strong> est
   polymorphique&nbsp;:
 </p>
-<p>Figure fig = …;</p>
-<p>double surface = fig.getSurface();//OK</p>
-<p>for (int i=0; i&lt;figures.length; i++)</p>
-<p>System.out.println("Surface : "+figures[i].getSurface());//OK</p>
+<p class="code java">
+  <span class="langage">Java</span>
+Figure fig = …;<br>
+double surface = fig.getSurface();//OK<br>
+for (int i=0; i&lt;figures.length; i++) {<br>
+&nbsp;&nbsp;System.out.println("Surface : "+figures[i].getSurface());//<span class="en-evidence">OK</span><br>
+}
+</p>
 <p>
   Une classe peut être abstraite même si elle n’a pas de méthode abstraite. Par
   exemple, les classes <strong><em>AbstractPersonnage</em></strong> et
@@ -370,20 +395,29 @@
   On peut empêcher qu’une méthode soit redéfinie dans les classes filles. Pour
   cela, en <em>Java</em>, on déclare la <strong>méthode finale</strong>&nbsp;:
 </p>
-<p><strong>public class Personne {</strong></p>
-<p><strong> private String nom, prenom, ville;</strong></p>
-<p><strong> public final String getNom() {</strong></p>
-<p><strong> return nom;</strong></p>
-<p><strong> }</strong></p>
-<p><strong> //etc...</strong></p>
-<p><strong>}</strong></p>
-<p><strong>public class Etudiant extends Personne {</strong></p>
-<p><strong> private String etablissement, programme;</strong></p>
-<p><strong> public String getNom() {//NON, getNom() est finale</strong></p>
-<p><strong> return ...;</strong></p>
-<p><strong> }</strong></p>
-<p><strong> //etc...</strong></p>
-<p><strong>}</strong></p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Personne {<br>
+&nbsp;&nbsp;private String nom, prenom, ville;<br>
+&nbsp;&nbsp;public <span class="en-evidence">final</span> String getNom() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return nom;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//etc...<br>
+}
+</p>
+<p>
+  Puisque la méthode getNom() est finale, elle ne peut pas être redéfinie &nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Etudiant extends Personne {<br>
+&nbsp;&nbsp;private String etablissement, programme;<br>
+&nbsp;&nbsp;public String getNom() {/*NON, getNom() est finale*/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return ...;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;//etc...<br>
+}
+</p>
 <p>Il y a 2 raisons qui peuvent motiver à rendre une méthode finale&nbsp;:</p>
 <ol>
   <li>
@@ -404,25 +438,32 @@
         conditionnelles), le compilateur en fera une
         <strong>méthode «&nbsp;inline&nbsp;»</strong>&nbsp;: il remplace l’appel
         par le corps de la méthode de sorte qu’il n’y est pas de
-        branchement/retour de/vers la méthode. Ce qui est plus efficace. Les
-        méthodes d’accès sont de bonnes candidates à être finales.
+        branchement/retour de/vers la méthode. Ce qui est plus efficace.
       </li>
     </ol>
   </li>
 </ol>
 <p>
+Les méthodes d’accès sont de bonnes candidates à être finales.
+</p>
+<p>
   On peut aussi empêcher une classe d’avoir des classes filles. Pour cela, en
   <em>Java</em>, on déclare la <strong>classe finale</strong>&nbsp;:
 </p>
-<p><strong>public final class Manager extends Employe {</strong></p>
-<p><strong> //etc...</strong></p>
-<p><strong>}</strong></p>
-<p>
-  <strong
-    >public class Directeur extends Manager {//NON, Manager est finale</strong
-  >
+<p class="code java">
+  <span class="langage">Java</span>
+public <span class="en-evidence">final</span> class Manager extends Employe {<br>
+&nbsp;&nbsp;//etc...<br>
+}
 </p>
-<p><strong>}</strong></p>
+<p>
+  Puisque la classe Manager est finale, elle ne peut pas être étendue&nbsp;:
+</p>
+<p class="code java">
+  <span class="langage">Java</span>
+public class Directeur extends Manager { /*<span class="en-evidence">NON</span>, Manager est finale*/<br>
+}
+</p>
 <p>
   Lorsqu’une classe est finale, toutes ses méthodes sont automatiquement
   finales.
